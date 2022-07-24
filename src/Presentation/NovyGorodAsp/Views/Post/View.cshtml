@@ -1,0 +1,19 @@
+﻿@model NovyGorod.Application.Contracts.Posts.Dto.PostDto
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = @Model.Title;
+}
+
+<div>
+    <h1>@Model.Title</h1>
+    <div>@Model.Summary</div>
+    <img src="@Model.Preview.Url" alt="preview"/>
+    
+    @foreach (var block in @Model.Blocks)
+    {
+        <h2>@block.Title</h2>
+        <div>@block.Text</div>
+    }
+    
+</div>

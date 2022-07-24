@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <LangVersion>latestmajor</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Update="dbsettings.template.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Domain\NovyGorod.Domain.Models\NovyGorod.Domain.Models.csproj" />
+      <ProjectReference Include="..\NovyGorod.Infrastructure.DataAccess.Core\NovyGorod.Infrastructure.DataAccess.Core.csproj" />
+      <ProjectReference Include="..\NovyGorod.Infrastructure.ModelConfigs\NovyGorod.Infrastructure.ModelConfigs.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.7" />
+      <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.1" />
+    </ItemGroup>
+
+</Project>

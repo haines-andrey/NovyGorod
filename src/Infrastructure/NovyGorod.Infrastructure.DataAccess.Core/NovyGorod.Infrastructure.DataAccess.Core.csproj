@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>latestmajor</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Common\NovyGorod.Common\NovyGorod.Common.csproj" />
+      <ProjectReference Include="..\..\Domain\NovyGorod.Domain.EntityAccess\NovyGorod.Domain.EntityAccess.csproj" />
+      <ProjectReference Include="..\..\Domain\NovyGorod.Domain.Models\NovyGorod.Domain.Models.csproj" />
+      <ProjectReference Include="..\..\Domain\NovyGorod.Domain.Services\NovyGorod.Domain.Services.csproj" />
+    </ItemGroup>
+
+</Project>

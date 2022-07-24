@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <LangVersion>latestmajor</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Domain\NovyGorod.Domain.EntityAccess\NovyGorod.Domain.EntityAccess.csproj" />
+      <ProjectReference Include="..\..\Domain\NovyGorod.Domain.Models\NovyGorod.Domain.Models.csproj" />
+      <ProjectReference Include="..\..\Domain\NovyGorod.Domain.Services\NovyGorod.Domain.Services.csproj" />
+      <ProjectReference Include="..\NovyGorod.Application.Contracts\NovyGorod.Application.Contracts.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="11.0.1" />
+      <PackageReference Include="AutoMapper.Contrib.Autofac.DependencyInjection" Version="6.1.0" />
+      <PackageReference Include="MediatR" Version="10.0.1" />
+      <PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="8.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
+        <HintPath>C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\6.0.7\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>

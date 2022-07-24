@@ -1,0 +1,526 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Andrey\\Projects\\NovyGorod\\tools\\NovyGorod.DbSeeder\\NovyGorod.DbSeeder.csproj": {}
+  },
+  "projects": {
+    "D:\\Andrey\\Projects\\NovyGorod\\src\\Common\\NovyGorod.Common\\NovyGorod.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Andrey\\Projects\\NovyGorod\\src\\Common\\NovyGorod.Common\\NovyGorod.Common.csproj",
+        "projectName": "NovyGorod.Common",
+        "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Common\\NovyGorod.Common\\NovyGorod.Common.csproj",
+        "packagesPath": "D:\\Andrey\\ItraProjects\\BAM\\Additional packages",
+        "outputPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Common\\NovyGorod.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\haines_andrey\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "D:\\Andrey\\ItraProjects\\BAM\\Additional packages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.EntityAccess\\NovyGorod.Domain.EntityAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.EntityAccess\\NovyGorod.Domain.EntityAccess.csproj",
+        "projectName": "NovyGorod.Domain.EntityAccess",
+        "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.EntityAccess\\NovyGorod.Domain.EntityAccess.csproj",
+        "packagesPath": "D:\\Andrey\\ItraProjects\\BAM\\Additional packages",
+        "outputPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.EntityAccess\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\haines_andrey\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "D:\\Andrey\\ItraProjects\\BAM\\Additional packages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Andrey\\Projects\\NovyGorod\\src\\Common\\NovyGorod.Common\\NovyGorod.Common.csproj": {
+                "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Common\\NovyGorod.Common\\NovyGorod.Common.csproj"
+              },
+              "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Models\\NovyGorod.Domain.Models.csproj": {
+                "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Models\\NovyGorod.Domain.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Autofac": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Models\\NovyGorod.Domain.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Models\\NovyGorod.Domain.Models.csproj",
+        "projectName": "NovyGorod.Domain.Models",
+        "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Models\\NovyGorod.Domain.Models.csproj",
+        "packagesPath": "D:\\Andrey\\ItraProjects\\BAM\\Additional packages",
+        "outputPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\haines_andrey\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "D:\\Andrey\\ItraProjects\\BAM\\Additional packages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Services\\NovyGorod.Domain.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Services\\NovyGorod.Domain.Services.csproj",
+        "projectName": "NovyGorod.Domain.Services",
+        "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Services\\NovyGorod.Domain.Services.csproj",
+        "packagesPath": "D:\\Andrey\\ItraProjects\\BAM\\Additional packages",
+        "outputPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\haines_andrey\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "D:\\Andrey\\ItraProjects\\BAM\\Additional packages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Andrey\\Projects\\NovyGorod\\src\\Common\\NovyGorod.Common\\NovyGorod.Common.csproj": {
+                "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Common\\NovyGorod.Common\\NovyGorod.Common.csproj"
+              },
+              "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Models\\NovyGorod.Domain.Models.csproj": {
+                "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Models\\NovyGorod.Domain.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.DataAccess.Core\\NovyGorod.Infrastructure.DataAccess.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.DataAccess.Core\\NovyGorod.Infrastructure.DataAccess.Core.csproj",
+        "projectName": "NovyGorod.Infrastructure.DataAccess.Core",
+        "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.DataAccess.Core\\NovyGorod.Infrastructure.DataAccess.Core.csproj",
+        "packagesPath": "D:\\Andrey\\ItraProjects\\BAM\\Additional packages",
+        "outputPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.DataAccess.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\haines_andrey\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "D:\\Andrey\\ItraProjects\\BAM\\Additional packages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Andrey\\Projects\\NovyGorod\\src\\Common\\NovyGorod.Common\\NovyGorod.Common.csproj": {
+                "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Common\\NovyGorod.Common\\NovyGorod.Common.csproj"
+              },
+              "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.EntityAccess\\NovyGorod.Domain.EntityAccess.csproj": {
+                "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.EntityAccess\\NovyGorod.Domain.EntityAccess.csproj"
+              },
+              "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Models\\NovyGorod.Domain.Models.csproj": {
+                "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Models\\NovyGorod.Domain.Models.csproj"
+              },
+              "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Services\\NovyGorod.Domain.Services.csproj": {
+                "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Services\\NovyGorod.Domain.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.DataAccess.EF\\NovyGorod.Infrastructure.DataAccess.EF.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.DataAccess.EF\\NovyGorod.Infrastructure.DataAccess.EF.csproj",
+        "projectName": "NovyGorod.Infrastructure.DataAccess.EF",
+        "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.DataAccess.EF\\NovyGorod.Infrastructure.DataAccess.EF.csproj",
+        "packagesPath": "D:\\Andrey\\ItraProjects\\BAM\\Additional packages",
+        "outputPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.DataAccess.EF\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\haines_andrey\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "D:\\Andrey\\ItraProjects\\BAM\\Additional packages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Models\\NovyGorod.Domain.Models.csproj": {
+                "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Models\\NovyGorod.Domain.Models.csproj"
+              },
+              "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.DataAccess.Core\\NovyGorod.Infrastructure.DataAccess.Core.csproj": {
+                "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.DataAccess.Core\\NovyGorod.Infrastructure.DataAccess.Core.csproj"
+              },
+              "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.ModelConfigs\\NovyGorod.Infrastructure.ModelConfigs.csproj": {
+                "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.ModelConfigs\\NovyGorod.Infrastructure.ModelConfigs.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[6.0.7, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.ModelConfigs\\NovyGorod.Infrastructure.ModelConfigs.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.ModelConfigs\\NovyGorod.Infrastructure.ModelConfigs.csproj",
+        "projectName": "NovyGorod.Infrastructure.ModelConfigs",
+        "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.ModelConfigs\\NovyGorod.Infrastructure.ModelConfigs.csproj",
+        "packagesPath": "D:\\Andrey\\ItraProjects\\BAM\\Additional packages",
+        "outputPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.ModelConfigs\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\haines_andrey\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "D:\\Andrey\\ItraProjects\\BAM\\Additional packages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Models\\NovyGorod.Domain.Models.csproj": {
+                "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Models\\NovyGorod.Domain.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Andrey\\Projects\\NovyGorod\\tools\\NovyGorod.DbSeeder\\NovyGorod.DbSeeder.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Andrey\\Projects\\NovyGorod\\tools\\NovyGorod.DbSeeder\\NovyGorod.DbSeeder.csproj",
+        "projectName": "NovyGorod.DbSeeder",
+        "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\tools\\NovyGorod.DbSeeder\\NovyGorod.DbSeeder.csproj",
+        "packagesPath": "D:\\Andrey\\ItraProjects\\BAM\\Additional packages",
+        "outputPath": "D:\\Andrey\\Projects\\NovyGorod\\tools\\NovyGorod.DbSeeder\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\haines_andrey\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "D:\\Andrey\\ItraProjects\\BAM\\Additional packages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.EntityAccess\\NovyGorod.Domain.EntityAccess.csproj": {
+                "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.EntityAccess\\NovyGorod.Domain.EntityAccess.csproj"
+              },
+              "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Models\\NovyGorod.Domain.Models.csproj": {
+                "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Domain\\NovyGorod.Domain.Models\\NovyGorod.Domain.Models.csproj"
+              },
+              "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.DataAccess.Core\\NovyGorod.Infrastructure.DataAccess.Core.csproj": {
+                "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.DataAccess.Core\\NovyGorod.Infrastructure.DataAccess.Core.csproj"
+              },
+              "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.DataAccess.EF\\NovyGorod.Infrastructure.DataAccess.EF.csproj": {
+                "projectPath": "D:\\Andrey\\Projects\\NovyGorod\\src\\Infrastructure\\NovyGorod.Infrastructure.DataAccess.EF\\NovyGorod.Infrastructure.DataAccess.EF.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.UserSecrets": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
