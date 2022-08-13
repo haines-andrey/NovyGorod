@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using NovyGorod.Application.Contracts.Posts;
 using NovyGorod.Application.Contracts.Posts.Requests;
+using NovyGorod.Domain.Models.Posts;
+using NovyGorodAsp.Models.Posts;
 
 namespace NovyGorodAsp.Controllers;
 
@@ -15,16 +16,23 @@ public class PostController : Controller
         _mediator = mediator;
     }
     
-    public IActionResult ViewList()
+    public async Task<IActionResult> ViewList(PostType type)
     {
-        return PartialView();
+        var request = new SearchPostsRequest { Type = type };
+        var result = await _mediator.Send(request);
+
+        var viewModel = new PostsViewModel {Type = type, Posts = result.Items};
+
+        return PartialView(viewModel);
     }
     
     public async Task<IActionResult> View(int id)
     {
         var request = new GetPostRequest { Id = id };
-        var dto = await _mediator.Send(request);
+        var post = await _mediator.Send(request);
 
-        return PartialView(dto);
+        var viewModel = new PostViewModel { Post = post};
+
+        return PartialView(viewModel);
     }
 }

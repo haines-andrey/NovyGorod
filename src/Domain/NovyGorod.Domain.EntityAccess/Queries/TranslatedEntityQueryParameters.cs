@@ -1,25 +1,18 @@
-﻿using NovyGorod.Common.Extensions;
-using NovyGorod.Domain.Models.Common;
+﻿using NovyGorod.Domain.Models.Common;
 
 namespace NovyGorod.Domain.EntityAccess.Queries;
 
-public class TranslatedEntityQueryParameters<TEntity, TTranslation> : BaseEntityQueryParameters<TEntity>
+public class TranslatedEntityQueryParameters<TEntity, TTranslation> : BaseQueryParameters<TEntity>
     where TEntity : IBaseEntity, ITranslatedEntity<TEntity, TTranslation>
     where TTranslation : ITranslationOfEntity<TEntity>
 {
-    public int? LanguageId { get; set; }
-    public string LanguageCode { get; set; }
+    public int? EntityId { get; set; }
+
+    public int LanguageId { get; set; }
 
     protected override void AddFilters()
     {
-        base.AddFilters();
-
-        FilterIf(
-            LanguageId.HasValue && LanguageCode.IsNullOrEmpty(),
-            entity => entity.Translations.Any(translation => translation.LanguageId == LanguageId));
-
-        FilterIf(
-            !LanguageId.HasValue && !LanguageCode.IsNullOrEmpty(),
-            entity => entity.Translations.Any(translation => translation.Language.Code == LanguageCode));
+        FilterIf(EntityId.HasValue, entity => entity.Id == EntityId);
+        Filter(entity => entity.Translations.Any(translation => translation.LanguageId == LanguageId));
     }
 }

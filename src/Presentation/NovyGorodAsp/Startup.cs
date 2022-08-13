@@ -67,7 +67,7 @@ public class Startup
             SupportedCultures = supportedCultures,
             SupportedUICultures = supportedCultures,
             ApplyCurrentCultureToResponseHeaders = true,
-            RequestCultureProviders = new List<IRequestCultureProvider>{new QueryStringRequestCultureProvider()}
+            RequestCultureProviders = new List<IRequestCultureProvider>{new RouteDataRequestCultureProvider()}
         });
 
         app.UseCors();
@@ -78,7 +78,7 @@ public class Startup
         {
             endpoints.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=home}/{action=index}/{id?}");
+                pattern: "{controller=home}/{culture=ru}/{action=index}/{id?}");
         });
     }
 }

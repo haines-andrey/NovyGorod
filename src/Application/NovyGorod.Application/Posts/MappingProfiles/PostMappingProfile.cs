@@ -14,6 +14,12 @@ public class PostMappingProfile : Profile
             .ForMemberMapFromTranslation(dto => dto.Title, translation => translation.Title)
             .ForMemberMapFromTranslation(dto => dto.Summary, translation => translation.Summary)
             .ForMemberMapFromTranslation(dto => dto.Preview, translation => translation.Preview);
+        
+        CreateMap<Post, PostListDto>()
+            .FindTranslationBeforeMap()
+            .ForMemberMapFromTranslation(dto => dto.Title, translation => translation.Title)
+            .ForMemberMapFromTranslation(dto => dto.Summary, translation => translation.Summary)
+            .ForMemberMapFromTranslation(dto => dto.Preview, translation => translation.Preview);
 
         CreateMap<PostBlock, PostBlockDto>()
             .FindTranslationBeforeMap()

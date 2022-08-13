@@ -40,11 +40,16 @@ public abstract class BaseQueryParameters<TEntity> : IQueryParameters<TEntity>
         _builder.OrWhere(predicate);
     }
 
+    protected void Sort<TKey>(OrderType orderType, Expression<Func<TEntity, TKey>> keySelector)
+    {
+        _builder.Ordering(orderType, keySelector);
+    }
+
     protected void SortIf<TKey>(bool predicate, OrderType orderType, Expression<Func<TEntity, TKey>> keySelector)
     {
         if (predicate)
         {
-            _builder.Ordering(orderType, keySelector);
+            Sort(orderType, keySelector);
         }
     }
 

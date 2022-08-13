@@ -12,7 +12,6 @@
       <ProjectReference Include="..\..\Domain\NovyGorod.Domain.EntityAccess\NovyGorod.Domain.EntityAccess.csproj" />
       <ProjectReference Include="..\..\Infrastructure\NovyGorod.Infrastructure.DataAccess.Core\NovyGorod.Infrastructure.DataAccess.Core.csproj" />
       <ProjectReference Include="..\..\Infrastructure\NovyGorod.Infrastructure.DataAccess.EF\NovyGorod.Infrastructure.DataAccess.EF.csproj" />
-      <ProjectReference Include="..\..\Infrastructure\NovyGorod.Infrastructure.Migrations\NovyGorod.Infrastructure.Migrations.csproj" />
     </ItemGroup>
 
     <ItemGroup>
