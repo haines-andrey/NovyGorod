@@ -13,7 +13,8 @@ public class PostMappingProfile : Profile
             .FindTranslationBeforeMap()
             .ForMemberMapFromTranslation(dto => dto.Title, translation => translation.Title)
             .ForMemberMapFromTranslation(dto => dto.Summary, translation => translation.Summary)
-            .ForMemberMapFromTranslation(dto => dto.Preview, translation => translation.Preview);
+            .ForMemberMapFromTranslation(dto => dto.Preview, translation => translation.Preview)
+            .ForMemberMapFromTranslation(dto => dto.Video, translation => translation.Video);
         
         CreateMap<Post, PostListDto>()
             .FindTranslationBeforeMap()

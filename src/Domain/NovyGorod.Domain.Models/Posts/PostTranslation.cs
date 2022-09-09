@@ -14,6 +14,10 @@ public class PostTranslation : BaseEntity, ITranslationOfEntity<Post>
 
     public virtual MediaData Preview { get; set; }
 
+    public int? VideoId { get; set; }
+
+    public virtual MediaData Video { get; set; }
+
     public int LanguageId { get; set; }
 
     public virtual Language Language { get; set; }

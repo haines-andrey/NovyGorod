@@ -15,6 +15,8 @@ public record PostDto : BaseEntityDto
 
     public MediaDataDto Preview { get; init; }
 
+    public MediaDataDto Video { get; init; }
+
     public DateTimeOffset CreatedAt { get; init; }
     
     public virtual ICollection<PostBlockDto> Blocks { get; init; }
