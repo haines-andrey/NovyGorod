@@ -1,5 +1,0 @@
-﻿{
-  "ConnectionStrings": {
-    "MySQL": "server=;user=novy_gorod_admin;password=;database=novyGorodDb"
-  }
-}
