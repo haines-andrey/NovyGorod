@@ -1,19 +1,37 @@
-﻿@model NovyGorod.Application.Contracts.Posts.Dto.PostDto
+﻿@model NovyGorodAsp.Models.Posts.PostViewModel
 
 @{
+    var post = Model.Post;
     Layout = "_Layout";
-    ViewBag.Title = @Model.Title;
+    ViewBag.Title = post.Title;
 }
 
-<div>
-    <h1>@Model.Title</h1>
-    <div>@Model.Summary</div>
-    <img src="@Model.Preview.Url" alt="preview"/>
-    
-    @foreach (var block in @Model.Blocks)
-    {
-        <h2>@block.Title</h2>
-        <div>@block.Text</div>
-    }
-    
+<div class="container px-0" style="max-width: 800px;">
+    <div class="card shadow-lg">
+        @if (post.Video is null)
+        {
+            <img class="card-img-top" src="@post.Preview.Url" alt="preview"/>
+        }
+        else
+        {
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item"
+                        src=@post.Video.Url
+                        allowfullscreen>
+                </iframe>
+            </div>
+        }
+        <div class="card-body">
+            <h3 class="card-title">@post.Title</h3>
+            <h5 class="card-subtitle">@post.Summary</h5>
+
+            @foreach (var block in @post.Blocks)
+            {
+                <div>
+                    <h4>@block.Title</h4>
+                    <p>@block.Text</p>
+                </div>
+            }
+        </div>
+    </div>
 </div>

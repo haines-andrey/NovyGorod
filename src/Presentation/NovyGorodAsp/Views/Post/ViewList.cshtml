@@ -1,8 +1,25 @@
 ﻿@model NovyGorodAsp.Models.Posts.PostsViewModel
 @{
+    var posts = Model.Posts;
     Layout = "_Layout";
+    ViewBag.Title = Model.Type;
 }
 
-<div>
-    
+<div class="container p-">
+    <div class="row justify-content-center">
+        @foreach (var post in posts)
+        {
+            <div class="card m-2 shadow-sm" style="width: 20rem">
+                <img src="@post.Preview.Url" class="card-img-top" alt="preview">
+                <div class="card-body">
+                    <p class="card-text">@post.Title</p>
+                </div>
+
+                <a asp-controller="Post" asp-action="View" asp-route-id=@(post.Id)
+                   class="card-link stretched-link ml-auto mb-3 mr-3">
+                    Подробнее
+                </a>
+            </div>
+        }
+    </div>
 </div>
