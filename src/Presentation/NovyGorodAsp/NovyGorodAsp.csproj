@@ -27,4 +27,28 @@
       <None Include="wwwroot\images\logo.png" />
     </ItemGroup>
 
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\Views\Shared\_Layout.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>_Layout.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Shared\_NavBarView.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>_NavBarView.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Resources\Views\Shared\_Layout.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>_Layout.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Views\Shared\_NavBarView.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>_NavBarView.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>
