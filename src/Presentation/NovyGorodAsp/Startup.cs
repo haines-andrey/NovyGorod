@@ -23,7 +23,8 @@ public class Startup
         
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddControllersWithViews();
+        services.AddControllersWithViews()
+            .AddViewLocalization(opt => opt.ResourcesPath = "Resources");
         services.AddHttpContextAccessor();
         services.AddRouting(opt =>
         {
