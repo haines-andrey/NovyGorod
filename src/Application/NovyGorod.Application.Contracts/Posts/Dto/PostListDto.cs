@@ -13,4 +13,6 @@ public record PostListDto : BaseEntityDto
     public string Summary { get; init; }
 
     public MediaDataDto Preview { get; init; }
+    
+    public DateTimeOffset CreatedAt { get; init; }
 }
