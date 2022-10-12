@@ -18,7 +18,7 @@ public class PostController : Controller
     
     public async Task<IActionResult> ViewList(PostType type)
     {
-        var request = new SearchPostsRequest { Type = type };
+        var request = new SearchPostsRequest { Type = type, PageSize = 9 };
         var result = await _mediator.Send(request);
 
         var viewModel = new PostsViewModel {Type = type, Posts = result.Items};
