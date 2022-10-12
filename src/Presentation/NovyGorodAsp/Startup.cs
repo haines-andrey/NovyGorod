@@ -61,7 +61,7 @@ public class Startup
 
         app.UseRouting();
             
-        var supportedCultures = new[] {new CultureInfo("ru"), new CultureInfo("en")};
+        var supportedCultures = new[] {new CultureInfo("ru")};
         app.UseRequestLocalization(new RequestLocalizationOptions
         {
             DefaultRequestCulture = new RequestCulture("ru"),
@@ -79,7 +79,7 @@ public class Startup
         {
             endpoints.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=home}/{culture=ru}/{action=index}/{id?}");
+                pattern: "{controller=home}/{action=index}/{id?}");
         });
     }
 }
