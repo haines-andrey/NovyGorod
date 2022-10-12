@@ -1,20 +1,25 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
 @using NovyGorod.Domain.Models.Posts
 @using Microsoft.AspNetCore.Mvc.Localization
+
 @inject IViewLocalizer Localizer
 
-<div class="container">
-    <nav class="navbar navbar-expand-md navbar-light">
-        <a class="navbar-brand p-0" asp-controller="Home" asp-action="Index">
+<nav class="navbar navbar-expand-md navbar-light py-1">
+    <div class="container-fluid p-0">
+        <a class="navbar-brand p-0 m-0" asp-controller="Home" asp-action="Index">
             <img class="align-top img-fluid" style="max-height:60px" src="~/images/logo.png" alt="logo"/>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse">
-            <ul class="navbar-nav">
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">
                         @Localizer["About us"]
@@ -28,14 +33,14 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" asp-controller="Post" asp-action="ViewList"
-                       asp-route-type="@PostType.School">
-                        @Localizer["School"]
+                       asp-route-type="@PostType.Theatre">
+                        @Localizer["Theatre"]
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" asp-controller="Post" asp-action="ViewList"
-                       asp-route-type="@PostType.Theatre">
-                        @Localizer["Theatre"]
+                       asp-route-type="@PostType.School">
+                        @Localizer["School"]
                     </a>
                 </li>
                 <li class="nav-item">
@@ -45,19 +50,28 @@
                     </a>
                 </li>
             </ul>
-            <div class="dropdown ml-auto">
-                <a class="btn btn-sm btn-outline-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    Translate
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li>
-                        <a class="dropdown-item" href="#">Русский</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">English</a>
-                    </li>
-                </ul>
-            </div>
+            @* <div class="dropdown ml-auto"> *@
+            @*     <button class="btn btn-sm btn-outline-secondary dropdown-toggle" *@
+            @*             type="button" *@
+            @*             id="dropdownMenuButton" *@
+            @*             data-toggle="dropdown" *@
+            @*             aria-haspopup="true" *@
+            @*             aria-expanded="false"> *@
+            @*         Translate *@
+            @*     </button> *@
+            @*     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> *@
+            @*         <a class="dropdown-item" *@
+            @*            asp-all-route-data="@Context.GetRouteData().Values.ToDictionary(x => x.Key, x => x.Value.ToString())" *@
+            @*            asp-route-culture="en"> *@
+            @*             English *@
+            @*         </a> *@
+            @*         <a class="dropdown-item" *@
+            @*            asp-all-route-data="@Context.GetRouteData().Values.ToDictionary(x => x.Key, x => x.Value.ToString())" *@
+            @*            asp-route-culture="ru"> *@
+            @*             Русский *@
+            @*         </a> *@
+            @*     </div> *@
+            @* </div> *@
         </div>
-    </nav>
-</div>
+    </div>
+</nav>

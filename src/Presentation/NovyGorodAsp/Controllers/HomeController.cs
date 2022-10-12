@@ -1,12 +1,40 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using NovyGorod.Application.Contracts.Posts.Requests;
+using NovyGorod.Domain.Models.Posts;
 using NovyGorodAsp.Models;
+using NovyGorodAsp.Models.Home;
 
 namespace NovyGorodAsp.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index()
+    private readonly IMediator _mediator;
+
+    public HomeController(IMediator mediator)
     {
-        return View(new HomeViewModel());
+        _mediator = mediator;
+    }
+
+    public async Task<IActionResult> Index()
+    {
+        var projects = await _mediator.Send(new SearchPostsRequest { Type = PostType.Project, PageSize = 3 });
+        var theatre = await _mediator.Send(new SearchPostsRequest { Type = PostType.Theatre, PageSize = 3 });
+        var school = await _mediator.Send(new SearchPostsRequest { Type = PostType.School, PageSize = 3 });
+
+        var viewModel = new HomeViewModel
+        {
+            LastProjects = projects.Items,
+            LastTheatrePosts = theatre.Items,
+            LastSchoolPosts = school.Items,
+        };
+
+        return View(viewModel);
+    }
+    
+    public IActionResult Translate(string culture, string returnUrl)
+    {
+        return Ok();
     }
 }

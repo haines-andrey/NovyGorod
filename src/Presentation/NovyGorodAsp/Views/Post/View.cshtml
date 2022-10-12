@@ -1,37 +1,39 @@
-﻿@model NovyGorodAsp.Models.Posts.PostViewModel
+﻿@using NovyGorod.Common.Extensions
+@model NovyGorodAsp.Models.Posts.PostViewModel
 
 @{
     var post = Model.Post;
     Layout = "_Layout";
     ViewBag.Title = post.Title;
+    ViewBag.MaxWidth = 720;
 }
 
-<div class="container px-0" style="max-width: 800px;">
-    <div class="card shadow-lg">
-        @if (post.Video is null)
-        {
-            <img class="card-img-top" src="@post.Preview.Url" alt="preview"/>
-        }
-        else
-        {
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item"
-                        src=@post.Video.Url
-                        allowfullscreen>
-                </iframe>
-            </div>
-        }
-        <div class="card-body">
-            <h3 class="card-title">@post.Title</h3>
-            <h5 class="card-subtitle">@post.Summary</h5>
+<h1 class="display-4 text-break">@post.Title</h1>
+@if (!post.Summary.IsNullOrEmpty())
+{
+    <p class="lead">@post.Summary</p>
+}
 
-            @foreach (var block in @post.Blocks)
-            {
-                <div>
-                    <h4>@block.Title</h4>
-                    <p>@block.Text</p>
-                </div>
-            }
+<div class="shadow-sm my-4">
+    @if (post.Video is null)
+    {
+        <img src="@post.Preview.Url" alt="preview"/>
+    }
+    else
+    {
+        <div class="ratio ratio-16x9">
+            <iframe src=@post.Video.Url allowfullscreen>
+            </iframe>
         </div>
-    </div>
+    }
+</div>
+
+<div>
+    @foreach (var block in @post.Blocks)
+    {
+        <div>
+            <h1 class="display-6">@block.Title</h1>
+            <p>@block.Text</p>
+        </div>
+    }
 </div>

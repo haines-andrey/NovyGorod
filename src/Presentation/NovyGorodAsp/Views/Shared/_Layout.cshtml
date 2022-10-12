@@ -12,14 +12,16 @@
     <link rel="stylesheet" href="~/css/site.css"/>
 </head>
 <body class="bg-light">
-<header class="bg-white shadow-sm border-bottom sticky-top">
-    @{
-        await Html.RenderPartialAsync("_NavBarView");
-    }
+<header class="container-fluid bg-white shadow-sm border-bottom sticky-top">
+    <div class="container" style="max-width: 800px">
+        @{ await Html.RenderPartialAsync("_NavBarView"); }
+    </div>
 </header>
 
-<main role="main" class="container p-3">
-    @RenderBody()
+<main role="main" class="container-fluid my-3">
+    <div class="container" style="max-width: @ViewData["MaxWidth"]px">
+        @RenderBody()
+    </div>
 </main>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
