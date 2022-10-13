@@ -9,7 +9,9 @@ public class PostListQueryParameters : TranslatedEntityQueryParameters<Post, Pos
 {
     public PostType? Type { get; set; }
 
-    public int Count { get; set; }
+    public int Page { get; set; }
+
+    public int PageSize { get; set; }
 
     protected override void AddFilters()
     {
@@ -25,6 +27,6 @@ public class PostListQueryParameters : TranslatedEntityQueryParameters<Post, Pos
 
     protected override void AddPaging()
     {
-        Paging(new Paging(0, Count));
+        Paging(new Paging(Page, PageSize));
     }
 }

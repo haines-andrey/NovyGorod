@@ -16,16 +16,16 @@ public class PostController : Controller
         _mediator = mediator;
     }
     
-    public async Task<IActionResult> ViewList(PostType type)
+    [HttpGet]
+    public async Task<IActionResult> ViewList(SearchPostsRequest request)
     {
-        var request = new SearchPostsRequest { Type = type, PageSize = 9 };
         var result = await _mediator.Send(request);
-
-        var viewModel = new PostsViewModel {Type = type, Posts = result.Items};
+        var viewModel = new PostsViewModel {Type = request.Type, SearchResult = result};
 
         return PartialView(viewModel);
     }
     
+    [HttpGet]
     public async Task<IActionResult> View(int id)
     {
         var request = new GetPostRequest { Id = id };

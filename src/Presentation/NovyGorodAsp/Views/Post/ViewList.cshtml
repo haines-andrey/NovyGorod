@@ -1,10 +1,26 @@
 ﻿@using NovyGorodAsp.Models.Posts
 @model NovyGorodAsp.Models.Posts.PostsViewModel
 @{
-    var posts = Model.Posts;
+    var searchResult = Model.SearchResult;
     Layout = "_Layout";
     ViewBag.Title = Model.Type;
     ViewBag.MaxWidth = 900;
 }
 
-@await Html.PartialAsync("PostListContainerView", new PostListContainerViewModel { Posts = posts })
+<nav aria-label="Posts pages">
+    <ul class="pagination">
+        <li class="page-item @(searchResult.Paging.HasPreviousPage ? "" : "disabled")">
+            <a class="page-link" href="#">Previous</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item @(searchResult.Paging.HasNextPage ? "" : "disabled")">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>
+
+@await Html.PartialAsync("PostListContainerView", new PostListContainerViewModel { Posts = searchResult.Items })

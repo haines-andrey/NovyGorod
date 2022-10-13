@@ -1,8 +1,14 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
 @using NovyGorod.Domain.Models.Posts
 @using Microsoft.AspNetCore.Mvc.Localization
+@using NovyGorod.Application.Contracts.Posts.Requests
 
 @inject IViewLocalizer Localizer
+
+@{
+    var pageNumber = 1;
+    var pageSize = 9;
+}
 
 <nav class="navbar navbar-expand-md navbar-light py-1">
     <div class="container-fluid p-0">
@@ -16,36 +22,37 @@
                 aria-controls="navbarSupportedContent"
                 aria-expanded="false"
                 aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">
+                    <a class="nav-link text-dark"
+                       href="@Url.Action("Index", "Home")">
                         @Localizer["About us"]
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="Post" asp-action="ViewList"
-                       asp-route-type="@PostType.Project">
+                    <a class="nav-link text-dark"
+                       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Project, Page = pageNumber, PageSize = pageSize})">
                         @Localizer["Projects"]
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="Post" asp-action="ViewList"
-                       asp-route-type="@PostType.Theatre">
+                    <a class="nav-link text-dark"
+                       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Theatre, Page = pageNumber, PageSize = pageSize})">
                         @Localizer["Theatre"]
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="Post" asp-action="ViewList"
-                       asp-route-type="@PostType.School">
+                    <a class="nav-link text-dark"
+                       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.School, Page = pageNumber, PageSize = pageSize})">
                         @Localizer["School"]
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="Post" asp-action="ViewList"
-                       asp-route-type="@PostType.Festival">
+                    <a class="nav-link text-dark"
+                       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Festival, Page = pageNumber, PageSize = pageSize})">
                         @Localizer["Festivals"]
                     </a>
                 </li>
