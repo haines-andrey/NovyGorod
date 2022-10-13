@@ -1,0 +1,47 @@
+﻿<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="Title" xml:space="preserve">
+        <value>О нас</value>
+    </data>
+    <data name="CompanyName" xml:space="preserve">
+        <value>Телестудия Новый Город</value>
+    </data>
+    <data name="CompanySummary" xml:space="preserve">
+        <value>белорусская частная компания, осуществляющая производство авторских телевизионных программ и видеопродукции различного назначения (документальные и постановочные фильмы, рекламные ролики, презентационные фильмы), сотрудничающая с ведущими государственными и частными телевизионными каналами Республики Беларусь.</value>
+    </data>
+    <data name="Projects" xml:space="preserve">
+        <value>Проекты</value>
+    </data>
+    <data name="MoreAboutProjects" xml:space="preserve">
+        <value>Подробнее о проектах</value>
+    </data>
+    <data name="Theatre" xml:space="preserve">
+        <value>Антрепризный театр «Окна»</value>
+    </data>
+    <data name="TheatreSummary" xml:space="preserve">
+        <value>Еще одно очень важное направление деятельности Телестудии – антрепризный театр «Окна», созданный в 2016 году с постановки музыкальной комедии «Пальто из Бобруйска». С нашим спектаклем мы объездили всю Беларусь. И продолжаем творчески развиваться.</value>
+    </data>
+    <data name="MoreAboutTheatre" xml:space="preserve">
+        <value>Подробнее о театре</value>
+    </data>
+    <data name="SchoolAndFestivals" xml:space="preserve">
+        <value>Телешкола и фестивали</value>
+    </data>
+    <data name="SchoolAndFestivalsSummary" xml:space="preserve">
+        <value>В 2012 году «Телестудия Новый Город» организовала детскую школу телевизионного мастерства и журналистики, где ребята осваивают актерское мастерство, технику речи, психологию интервью, мастерство оператора и видеоинженера, работу на съемочной площадке. Наши ученики участвовали уже во многих международных фестивалях детского экранного творчества, становясь победителями на некоторых из них.</value>
+    </data>
+    <data name="MoreAboutSchool" xml:space="preserve">
+        <value>Подробнее о телешколе</value>
+    </data>
+</root>

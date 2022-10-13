@@ -1,30 +1,43 @@
-﻿@using NovyGorodAsp.Models.Posts
+﻿@using Microsoft.AspNetCore.Mvc.Localization
 @using NovyGorod.Application.Contracts.Posts.Requests
+@using NovyGorodAsp.Models.Posts
 @model NovyGorodAsp.Models.Posts.PostsViewModel
+@inject IViewLocalizer Localizer
 @{
     Layout = "_Layout";
-    ViewBag.Title = Model.Type;
+    ViewBag.Title = Localizer[Model.Type.ToString()];
     ViewBag.MaxWidth = 900;
-    
+
     var searchResult = Model.SearchResult;
     var paging = searchResult.Paging;
 }
 
-<nav aria-label="Posts pages">
-    <ul class="pagination">
+<h1 class="display-4">@Localizer[Model.Type.ToString()]</h1>
+
+<hr/>
+
+<nav aria-label="Posts pages" class="d-flex flex-wrap">
+    <div class="my-auto me-2 text-center">
+        @string.Format(Localizer["PagesCountTemplate"].Value, paging.PageIndex + 1, paging.TotalPages)
+    </div>
+    <ul class="pagination my-auto">
         <li class="page-item @(paging.HasPreviousPage ? "" : "disabled")">
             <a class="page-link"
-               href=@Url.Action("ViewList", "Post", new SearchPostsRequest { Type = Model.Type, PageIndex = paging.PageIndex - 1, PageSize = paging.PageSize})>
-                Previous
+               href=@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = Model.Type, PageIndex = paging.PageIndex - 1, PageSize = paging.PageSize})>
+                @Localizer["Previous"]
             </a>
         </li>
         <li class="page-item @(paging.HasNextPage ? "" : "disabled")">
             <a class="page-link"
-               href=@Url.Action("ViewList", "Post", new SearchPostsRequest { Type = Model.Type, PageIndex = paging.PageIndex + 1, PageSize = paging.PageSize})>
-                Next
+               href=@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = Model.Type, PageIndex = paging.PageIndex + 1, PageSize = paging.PageSize})>
+                @Localizer["Next"]
             </a>
         </li>
     </ul>
 </nav>
 
+<hr/>
+
 @await Html.PartialAsync("PostListContainerView", new PostListContainerViewModel {Posts = searchResult.Items})
+
+<hr/>

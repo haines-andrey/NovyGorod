@@ -36,6 +36,14 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>_NavBarView.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Post\ViewList.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>ViewList.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Home\Index.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Index.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -48,6 +56,16 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>_NavBarView.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Views\Post\ViewList.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>ViewList.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Views\Home\Index.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Index.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 

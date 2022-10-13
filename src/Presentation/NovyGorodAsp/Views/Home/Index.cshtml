@@ -1,9 +1,11 @@
 ﻿@using NovyGorodAsp.Models.Posts
 @using NovyGorod.Application.Contracts.Posts.Requests
 @using NovyGorod.Domain.Models.Posts
+@using Microsoft.AspNetCore.Mvc.Localization
 @model NovyGorodAsp.Models.Home.HomeViewModel
+@inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = Localizer["Title"];
     ViewBag.MaxWidth = 720;
 
     const int pageIndex = 0;
@@ -11,47 +13,61 @@
 }
 
 <h1 class="display-4 text-center text-break mb-3">
-    Телестудия Новый Город
+    @Localizer["CompanyName"]
 </h1>
-<p>
-    белорусская частная компания, осуществляющая производство авторских телевизионных программ и видеопродукции различного назначения (документальные и постановочные фильмы, рекламные ролики, презентационные фильмы), сотрудничающая с ведущими государственными и частными телевизионными каналами Республики Беларусь.
+<p class="text-center">
+    @Localizer["CompanySummary"]
 </p>
 
-<h1 class="display-6 text-center text-break mb-3">Проекты</h1>
+<hr/>
+
+<h1 class="display-6 text-center text-break">
+    @Localizer["Projects"]
+</h1>
 <div class="mb-3">
     @{ await Html.RenderPartialAsync("PostListContainerView", new PostListContainerViewModel {Posts = Model.LastProjects}); }
 </div>
-<div class="d-flex mb-3">
+<div class="d-flex">
     <a class="btn btn-primary mx-auto" style="width: 22rem"
        href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Project, PageIndex = pageIndex, PageSize = pageSize})">
-        Подробнее о проектах
+        @Localizer["MoreAboutProjects"]
     </a>
 </div>
 
-<h1 class="display-6 text-center text-break mb-3">Антрепризный театр «Окна»</h1>
-<p>
-    Еще одно очень важное направление деятельности Телестудии – антрепризный театр «Окна», созданный в 2016 году с постановки музыкальной комедии «Пальто из Бобруйска». С нашим спектаклем мы объездили всю Беларусь. И продолжаем творчески развиваться.
-</p>
-<div class="mb-3">
-    @{ await Html.RenderPartialAsync("PostListContainerView", new PostListContainerViewModel {Posts = Model.LastProjects}); }
-</div>
-<div class="d-flex mb-3">
-    <a class="btn btn-primary mx-auto" style="width: 22rem"
-       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Project, PageIndex = pageIndex, PageSize = pageSize})">
-        Подробнее о театре
-    </a>
-</div>
+<hr/>
 
-<h1 class="display-6 text-center text-break mb-3">Телешкола и фестивали</h1>
-<p>
-    В 2012 году «Телестудия Новый Город» организовала детскую школу телевизионного мастерства и журналистики, где ребята осваивают актерское мастерство, технику речи, психологию интервью, мастерство оператора и видеоинженера, работу на съемочной площадке. Наши ученики участвовали уже во многих международных фестивалях детского экранного творчества, становясь победителями на некоторых из них.
+<h1 class="display-6 text-center text-break">
+    @Localizer["Theatre"]
+</h1>
+<p class="text-center">
+    @Localizer["TheatreSummary"]
 </p>
 <div class="mb-3">
     @{ await Html.RenderPartialAsync("PostListContainerView", new PostListContainerViewModel {Posts = Model.LastProjects}); }
 </div>
-<div class="d-flex mb-3">
+<div class="d-flex">
     <a class="btn btn-primary mx-auto" style="width: 22rem"
-       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Project, PageIndex = pageIndex, PageSize = pageSize})">
-        Подробнее о телешколе
+       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Theatre, PageIndex = pageIndex, PageSize = pageSize})">
+        @Localizer["MoreAboutTheatre"]
     </a>
 </div>
+
+<hr/>
+
+<h1 class="display-6 text-center text-break">
+    @Localizer["SchoolAndFestivals"]
+</h1>
+<p class="text-center">
+    @Localizer["SchoolAndFestivalsSummary"]
+</p>
+<div class="mb-3">
+    @{ await Html.RenderPartialAsync("PostListContainerView", new PostListContainerViewModel {Posts = Model.LastProjects}); }
+</div>
+<div class="d-flex">
+    <a class="btn btn-primary mx-auto" style="width: 22rem"
+       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.School, PageIndex = pageIndex, PageSize = pageSize})">
+        @Localizer["MoreAboutSchool"]
+    </a>
+</div>
+
+<hr/>
