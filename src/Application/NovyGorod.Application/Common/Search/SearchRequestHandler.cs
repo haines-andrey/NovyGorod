@@ -34,10 +34,10 @@ public abstract class SearchRequestHandler<TRequest, TEntity, TDto>
         CancellationToken cancellationToken)
     {
         var query = CreateQuery(request);
-        var result = await _entityAccessService.GetAll(query);
+        var result = await _entityAccessService.Search(query);
 
         var itemsDto = _mapper.MapWithTranslation<TDto[]>(result.Items, CurrentLanguageId);
-        var pagingDto = _mapper.Map<PagingDto>(result.Paging);
+        var pagingDto = _mapper.Map<PagingResultDto>(result.Paging);
 
         var resultDto = new SearchResultDto<TDto> {Items = itemsDto, Paging = pagingDto};
 

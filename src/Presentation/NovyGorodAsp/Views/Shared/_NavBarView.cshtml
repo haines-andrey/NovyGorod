@@ -6,8 +6,8 @@
 @inject IViewLocalizer Localizer
 
 @{
-    var pageNumber = 1;
-    var pageSize = 9;
+    const int pageIndex = 0;
+    const int pageSize = 6;
 }
 
 <nav class="navbar navbar-expand-md navbar-light py-1">
@@ -34,25 +34,25 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark"
-                       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Project, Page = pageNumber, PageSize = pageSize})">
+                       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Project, PageIndex = pageIndex, PageSize = pageSize})">
                         @Localizer["Projects"]
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark"
-                       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Theatre, Page = pageNumber, PageSize = pageSize})">
+                       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Theatre, PageIndex = pageIndex, PageSize = pageSize})">
                         @Localizer["Theatre"]
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark"
-                       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.School, Page = pageNumber, PageSize = pageSize})">
+                       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.School, PageIndex = pageIndex, PageSize = pageSize})">
                         @Localizer["School"]
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark"
-                       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Festival, Page = pageNumber, PageSize = pageSize})">
+                       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Festival, PageIndex = pageIndex, PageSize = pageSize})">
                         @Localizer["Festivals"]
                     </a>
                 </li>

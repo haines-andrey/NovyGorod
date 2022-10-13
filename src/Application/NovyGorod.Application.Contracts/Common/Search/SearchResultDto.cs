@@ -7,5 +7,5 @@ public record SearchResultDto<TDto>
 {
     public IReadOnlyCollection<TDto> Items { get; init; }
 
-    public PagingDto Paging { get; init; }
+    public PagingResultDto Paging { get; init; }
 }

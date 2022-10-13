@@ -8,6 +8,6 @@ public class SearchResultMappingProfile : Profile
 {
     public SearchResultMappingProfile()
     {
-        CreateMap<PagingResult, PagingDto>();
+        CreateMap<PagingResult, PagingResultDto>();
     }
 }

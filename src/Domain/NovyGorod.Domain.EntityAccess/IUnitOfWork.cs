@@ -10,16 +10,29 @@ public interface IUnitOfWork : ICommitter
     IRepository<TEntity> GetRepository<TEntity>()
         where TEntity : class;
 
-    Task<SearchResult<TEntity>> GetAll<TEntity>(Query<TEntity> query, CancellationToken cancellationToken = default)
+    Task<SearchResult<TEntity>> Search<TEntity>(Query<TEntity> query, CancellationToken cancellationToken = default)
         where TEntity : class;
 
-    Task<SearchResult<TResult>> GetAll<TEntity, TResult>(
+    Task<SearchResult<TResult>> Search<TEntity, TResult>(
         Query<TEntity> query,
         Expression<Func<TEntity, TResult>> selector,
         CancellationToken cancellationToken = default)
         where TEntity : class;
 
-    Task<IList<TEntity>> GetCollection<TEntity>(Query<TEntity> query, CancellationToken cancellationToken = default)
+    Task<IReadOnlyCollection<TEntity>> GetCollection<TEntity>(
+        Query<TEntity> query,
+        CancellationToken cancellationToken = default)
+        where TEntity : class;
+
+    Task<IReadOnlyCollection<TResult>> GetCollection<TResult, TEntity>(
+        Query<TEntity> query,
+        Expression<Func<TEntity, TResult>> selector,
+        CancellationToken cancellationToken = default)
+        where TEntity : class;
+
+    Task<IReadOnlyCollection<TResult>> Distinct<TEntity, TResult>(
+        Query<TEntity> query,
+        Expression<Func<TEntity, TResult>> selector)
         where TEntity : class;
 
     Task<TEntity> GetFirstOrDefault<TEntity>(Query<TEntity> query)
@@ -52,12 +65,6 @@ public interface IUnitOfWork : ICommitter
 
     Task<int> Sum<TEntity>(Query<TEntity> query, Expression<Func<TEntity, int>> selector)
         where TEntity : class;
-
-    Task<List<TType>> Distinct<TEntity, TType>(Query<TEntity> query, Expression<Func<TEntity, TType>> selector)
-        where TEntity : class;
-
-    Task<TEntity> AddOrUpdate<TEntity>(TEntity entity)
-        where TEntity : class, IBaseEntity;
 
     Task<TEntity> Add<TEntity>(TEntity entity, CancellationToken cancellationToken = default)
         where TEntity : class, IBaseEntity;

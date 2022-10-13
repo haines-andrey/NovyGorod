@@ -6,13 +6,21 @@ namespace NovyGorod.Domain.EntityAccess;
 
 public interface IEntityAccessService<TEntity>
 {
-    Task<SearchResult<TData>> GetAll<TData>(
+    Task<SearchResult<TEntity>> Search(IQueryParameters<TEntity> queryParameters);
+
+    Task<SearchResult<TData>> Search<TData>(
         IQueryParameters<TEntity> queryParameters,
         Expression<Func<TEntity, TData>> selector);
 
-    Task<SearchResult<TEntity>> GetAll(IQueryParameters<TEntity> queryParameters);
+    Task<IReadOnlyCollection<TEntity>> GetCollection(IQueryParameters<TEntity> queryParameters);
 
-    Task<IList<TEntity>> GetCollection(IQueryParameters<TEntity> queryParameters);
+    Task<IReadOnlyCollection<TResult>> GetCollection<TResult>(
+        IQueryParameters<TEntity> queryParameters,
+        Expression<Func<TEntity, TResult>> selector);
+    
+    Task<IReadOnlyCollection<TResult>> Distinct<TResult>(
+        IQueryParameters<TEntity> queryParameters,
+        Expression<Func<TEntity, TResult>> selector);
 
     Task<TData> GetSingleOrDefault<TData>(
         IQueryParameters<TEntity> queryParameters,

@@ -23,6 +23,11 @@ public class SearchPostsRequestHandler : SearchRequestHandler<SearchPostsRequest
     protected override IQueryParameters<Post> CreateQuery(SearchPostsRequest request)
     {
         return new PostListQueryParameters
-            {Type = request.Type, LanguageId = CurrentLanguageId, PageSize = request.PageSize};
+        {
+            Type = request.Type,
+            LanguageId = CurrentLanguageId,
+            PageIndex = request.PageIndex,
+            PageSize = request.PageSize
+        };
     }
 }

@@ -38,29 +38,45 @@ internal class UnitOfWork : IUnitOfWork
         return _repositoryFactory.GetGenericRepository<TEntity>();
     }
 
-    public Task<SearchResult<TEntity>> GetAll<TEntity>(
+    public Task<SearchResult<TEntity>> Search<TEntity>(
         Query<TEntity> query,
         CancellationToken cancellationToken = default)
         where TEntity : class
     {
-        return GetRepository<TEntity>().GetAll(query, cancellationToken);
+        return GetRepository<TEntity>().Search(query, cancellationToken);
     }
 
-    public Task<SearchResult<TResult>> GetAll<TEntity, TResult>(
+    public Task<SearchResult<TResult>> Search<TEntity, TResult>(
         Query<TEntity> query,
         Expression<Func<TEntity, TResult>> selector,
         CancellationToken cancellationToken = default)
         where TEntity : class
     {
-        return GetRepository<TEntity>().GetAll(query, selector, cancellationToken);
+        return GetRepository<TEntity>().Search(query, selector, cancellationToken);
     }
 
-    public Task<IList<TEntity>> GetCollection<TEntity>(
+    public Task<IReadOnlyCollection<TEntity>> GetCollection<TEntity>(
         Query<TEntity> query,
         CancellationToken cancellationToken = default)
         where TEntity : class
     {
         return GetRepository<TEntity>().GetCollection(query, cancellationToken);
+    }
+
+    public Task<IReadOnlyCollection<TResult>> GetCollection<TResult, TEntity>(
+        Query<TEntity> query,
+        Expression<Func<TEntity, TResult>> selector,
+        CancellationToken cancellationToken = default) where TEntity : class
+    {
+        return GetRepository<TEntity>().GetCollection(query, selector, cancellationToken);
+    }
+
+    public Task<IReadOnlyCollection<TType>> Distinct<TEntity, TType>(
+        Query<TEntity> query,
+        Expression<Func<TEntity, TType>> selector)
+        where TEntity : class
+    {
+        return GetRepository<TEntity>().Distinct(query, selector);
     }
 
     public Task<TEntity> GetFirstOrDefault<TEntity>(Query<TEntity> query)
@@ -119,12 +135,6 @@ internal class UnitOfWork : IUnitOfWork
         where TEntity : class
     {
         return GetRepository<TEntity>().Sum(query, selector);
-    }
-
-    public Task<List<TType>> Distinct<TEntity, TType>(Query<TEntity> query, Expression<Func<TEntity, TType>> selector)
-        where TEntity : class
-    {
-        return GetRepository<TEntity>().Distinct(query, selector);
     }
 
     public Task<TEntity> AddOrUpdate<TEntity>(TEntity entity)

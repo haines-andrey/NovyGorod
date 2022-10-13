@@ -19,29 +19,54 @@ public abstract class EfRepositoryBase<TEntity> : IRepository<TEntity>
     {
         DbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
     }
-    
-    protected DbContext DbContext { get; set; }
 
-    public Task<SearchResult<TEntity>> GetAll(
+    protected DbContext DbContext { get; }
+
+    public async Task<SearchResult<TEntity>> Search(
         Query<TEntity> query,
         CancellationToken cancellationToken = default)
     {
-        return Query(query).ToSearchResult(query.Paging, cancellationToken);
+        var totalCount = await CountWithoutPaging(query);
+
+        return await Query(query).ToSearchResult(query.Paging, totalCount, cancellationToken);
     }
 
-    public Task<SearchResult<TResult>> GetAll<TResult>(
+    public async Task<SearchResult<TResult>> Search<TResult>(
         Query<TEntity> query,
         Expression<Func<TEntity, TResult>> selector,
         CancellationToken cancellationToken = default)
     {
-        return Query(query).Select(selector).ToSearchResult(query.Paging, cancellationToken);
+        var totalCount = await CountWithoutPaging(query);
+
+        return await Query(query).Select(selector).ToSearchResult(query.Paging, totalCount, cancellationToken);
     }
 
-    public async Task<IList<TEntity>> GetCollection(
+    public async Task<IReadOnlyCollection<TEntity>> GetCollection(
         Query<TEntity> query,
         CancellationToken cancellationToken = default)
     {
-        return await Query(query).ToListAsync(cancellationToken);
+        var items = await Query(query).ToListAsync(cancellationToken);
+
+        return items;
+    }
+
+    public async Task<IReadOnlyCollection<TResult>> GetCollection<TResult>(
+        Query<TEntity> query,
+        Expression<Func<TEntity, TResult>> selector,
+        CancellationToken cancellationToken = default)
+    {
+        var items = await Query(query).Select(selector).ToListAsync(cancellationToken);
+
+        return items;
+    }
+
+    public async Task<IReadOnlyCollection<TResult>> Distinct<TResult>(
+        Query<TEntity> query,
+        Expression<Func<TEntity, TResult>> selector)
+    {
+        var items = await Query(query).Select(selector).Distinct().ToListAsync();
+
+        return items;
     }
 
     public Task<TEntity> GetFirstOrDefault(Query<TEntity> query)
@@ -93,11 +118,6 @@ public abstract class EfRepositoryBase<TEntity> : IRepository<TEntity>
         return Query(query).Select(selector).SumAsync();
     }
 
-    public Task<List<TType>> Distinct<TType>(Query<TEntity> query, Expression<Func<TEntity, TType>> selector)
-    {
-        return Query(query).Select(selector).Distinct().ToListAsync();
-    }
-
     public abstract Task<TEntity> Add(
         TEntity entity,
         CancellationToken cancellationToken = default);
@@ -113,9 +133,9 @@ public abstract class EfRepositoryBase<TEntity> : IRepository<TEntity>
     public abstract Task Delete(TEntity entity, CancellationToken cancellationToken = default);
 
     public abstract Task DeleteRange(IEnumerable<TEntity> entities);
-    
+
     protected abstract IQueryable<TEntity> GetQueryable();
-    
+
     protected virtual IQueryable<TEntity> Query(Query<TEntity> query)
     {
         var queryable = GetQueryable();
@@ -145,5 +165,15 @@ public abstract class EfRepositoryBase<TEntity> : IRepository<TEntity>
         }
 
         return queryable;
+    }
+
+    protected async Task<int> CountWithoutPaging(Query<TEntity> query)
+    {
+        var paging = query.Paging;
+        query.Paging = null;
+        var totalCount = await Query(query).CountAsync();
+        query.Paging = paging;
+
+        return totalCount;
     }
 }

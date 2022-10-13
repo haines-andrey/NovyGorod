@@ -3,13 +3,13 @@
 namespace NovyGorod.Application.Contracts.Common.Search;
 
 [ExcludeFromCodeCoverage]
-public record PagingDto
+public record PagingResultDto
 {
-    public int Page { get; init; }
-
     public int PageSize { get; init; }
 
-    public int TotalCount { get; init; }
+    public int Total { get; init; }
+
+    public int PageIndex { get; init; }
 
     public int TotalPages { get; init; }
 
