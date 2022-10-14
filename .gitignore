@@ -1,4 +1,8 @@
-﻿/.idea/
+﻿# User secrets #
+scripts/UserSecrets.ps1
+
+
+/.idea/
 *.com
 *.class
 *.dll
