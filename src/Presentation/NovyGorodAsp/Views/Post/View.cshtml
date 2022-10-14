@@ -22,18 +22,17 @@
     else
     {
         <div class="ratio ratio-16x9">
-            <iframe src=@post.Video.Url allowfullscreen>
-            </iframe>
+            <iframe src=@post.Video.Url allowfullscreen></iframe>
         </div>
     }
 </div>
 
 <div>
-    @foreach (var block in @post.Blocks)
+    @foreach (var block in post.Blocks)
     {
         <div>
             <h1 class="display-6">@block.Title</h1>
-            <p>@block.Text</p>
+            <p>@Html.Raw(block.Text)</p>
         </div>
     }
 </div>

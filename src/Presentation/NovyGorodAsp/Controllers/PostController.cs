@@ -20,7 +20,7 @@ public class PostController : Controller
     public async Task<IActionResult> ViewList(SearchPostsRequest request)
     {
         var result = await _mediator.Send(request);
-        var viewModel = new PostsViewModel {Type = request.Type, SearchResult = result};
+        var viewModel = new PostsListViewModel {Type = request.Type, SearchResult = result};
 
         return PartialView(viewModel);
     }

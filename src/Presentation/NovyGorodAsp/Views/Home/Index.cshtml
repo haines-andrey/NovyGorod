@@ -2,10 +2,11 @@
 @using NovyGorod.Application.Contracts.Posts.Requests
 @using NovyGorod.Domain.Models.Posts
 @using Microsoft.AspNetCore.Mvc.Localization
-@model NovyGorodAsp.Models.Home.HomeViewModel
+@using NovyGorodAsp.Models.Shared
+@model NovyGorodAsp.Models.Home.IndexViewModel
 @inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = Localizer["Title"];
+    ViewData["Title"] = Localizer["about-us"];
     ViewBag.MaxWidth = 720;
 
     const int pageIndex = 0;
@@ -13,16 +14,16 @@
 }
 
 <h1 class="display-4 text-center text-break mb-3">
-    @Localizer["CompanyName"]
+    @Localizer["company-name"]
 </h1>
 <p class="text-center">
-    @Localizer["CompanySummary"]
+    @Localizer["company-summary"]
 </p>
 
 <hr/>
 
 <h1 class="display-6 text-center text-break">
-    @Localizer["Projects"]
+    @Localizer["projects"]
 </h1>
 <div class="mb-3">
     @{ await Html.RenderPartialAsync("PostListContainerView", new PostListContainerViewModel {Posts = Model.LastProjects}); }
@@ -30,17 +31,17 @@
 <div class="d-flex">
     <a class="btn btn-primary mx-auto" style="width: 22rem"
        href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Project, PageIndex = pageIndex, PageSize = pageSize})">
-        @Localizer["MoreAboutProjects"]
+        @Localizer["more-about-projects"]
     </a>
 </div>
 
 <hr/>
 
 <h1 class="display-6 text-center text-break">
-    @Localizer["Theatre"]
+    @Localizer["theatre"]
 </h1>
 <p class="text-center">
-    @Localizer["TheatreSummary"]
+    @Localizer["theatre-summary"]
 </p>
 <div class="mb-3">
     @{ await Html.RenderPartialAsync("PostListContainerView", new PostListContainerViewModel {Posts = Model.LastProjects}); }
@@ -48,17 +49,17 @@
 <div class="d-flex">
     <a class="btn btn-primary mx-auto" style="width: 22rem"
        href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Theatre, PageIndex = pageIndex, PageSize = pageSize})">
-        @Localizer["MoreAboutTheatre"]
+        @Localizer["more-about-theatre"]
     </a>
 </div>
 
 <hr/>
 
 <h1 class="display-6 text-center text-break">
-    @Localizer["SchoolAndFestivals"]
+    @Localizer["school-and-festivals"]
 </h1>
 <p class="text-center">
-    @Localizer["SchoolAndFestivalsSummary"]
+    @Localizer["school-and-festivals-summary"]
 </p>
 <div class="mb-3">
     @{ await Html.RenderPartialAsync("PostListContainerView", new PostListContainerViewModel {Posts = Model.LastProjects}); }
@@ -66,7 +67,7 @@
 <div class="d-flex">
     <a class="btn btn-primary mx-auto" style="width: 22rem"
        href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.School, PageIndex = pageIndex, PageSize = pageSize})">
-        @Localizer["MoreAboutSchool"]
+        @Localizer["more-about-school"]
     </a>
 </div>
 

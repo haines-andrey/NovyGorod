@@ -1,16 +1,10 @@
-﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
-@using NovyGorod.Domain.Models.Posts
-@using Microsoft.AspNetCore.Mvc.Localization
-@using NovyGorod.Application.Contracts.Posts.Requests
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model NovyGorodAsp.Models.Shared.NavBarViewModel
 @inject IViewLocalizer Localizer
-@{
-    const int pageIndex = 0;
-    const int pageSize = 6;
-}
 
 <nav class="navbar navbar-expand-md navbar-light py-1">
     <div class="container-fluid p-0">
-        <a class="navbar-brand p-0 m-0" asp-controller="Home" asp-action="Index">
+        <a class="navbar-brand p-0 m-0" href="@Url.Action("Index", "Home")">
             <img class="align-top img-fluid" style="max-height:60px" src="~/images/logo.png" alt="logo"/>
         </a>
         <button class="navbar-toggler"
@@ -27,31 +21,31 @@
                 <li class="nav-item">
                     <a class="nav-link text-dark"
                        href="@Url.Action("Index", "Home")">
-                        @Localizer["About us"]
+                        @Localizer["about-us"]
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark"
-                       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Project, PageIndex = pageIndex, PageSize = pageSize})">
-                        @Localizer["Projects"]
+                       href="@Url.Action("ViewList", "Post", Model.SearchProjectsRequest)">
+                        @Localizer["projects"]
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark"
-                       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Theatre, PageIndex = pageIndex, PageSize = pageSize})">
-                        @Localizer["Theatre"]
+                       href="@Url.Action("ViewList", "Post", Model.SearchTheatreRequest)">
+                        @Localizer["theatre"]
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark"
-                       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.School, PageIndex = pageIndex, PageSize = pageSize})">
-                        @Localizer["School"]
+                       href="@Url.Action("ViewList", "Post", Model.SearchSchoolRequest)">
+                        @Localizer["school"]
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark"
-                       href="@Url.Action("ViewList", "Post", new SearchPostsRequest {Type = PostType.Festival, PageIndex = pageIndex, PageSize = pageSize})">
-                        @Localizer["Festivals"]
+                       href="@Url.Action("ViewList", "Post", Model.SearchFestivalsRequest)">
+                        @Localizer["festivals"]
                     </a>
                 </li>
             </ul>

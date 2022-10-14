@@ -11,7 +11,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="company-name" xml:space="preserve">
-        <value>Novy Gorod</value>
+    <data name="next" xml:space="preserve">
+        <value>Next</value>
+    </data>
+    <data name="pages-count-template" xml:space="preserve">
+        <value>Page {0} of {1}</value>
+    </data>
+    <data name="previous" xml:space="preserve">
+        <value>Previous</value>
     </data>
 </root>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NovyGorodAsp.Resources.Views.Home {
+namespace NovyGorodAsp.Resources.Views.Shared {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace NovyGorodAsp.Resources.Views.Home {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Index {
+    internal class NavBarView {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Index() {
+        internal NavBarView() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace NovyGorodAsp.Resources.Views.Home {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NovyGorodAsp.Resources.Views.Home.Index", typeof(Index).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NovyGorodAsp.Resources.Views.Shared.NavBarView", typeof(NavBarView).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -72,45 +72,9 @@ namespace NovyGorodAsp.Resources.Views.Home {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string company_name {
+        internal static string festivals {
             get {
-                return ResourceManager.GetString("company-name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string company_summary {
-            get {
-                return ResourceManager.GetString("company-summary", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string more_about_projects {
-            get {
-                return ResourceManager.GetString("more-about-projects", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string more_about_school {
-            get {
-                return ResourceManager.GetString("more-about-school", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string more_about_theatre {
-            get {
-                return ResourceManager.GetString("more-about-theatre", resourceCulture);
+                return ResourceManager.GetString("festivals", resourceCulture);
             }
         }
         
@@ -126,27 +90,18 @@ namespace NovyGorodAsp.Resources.Views.Home {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string school_and_festivals {
+        internal static string school {
             get {
-                return ResourceManager.GetString("school-and-festivals", resourceCulture);
+                return ResourceManager.GetString("school", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string school_and_festivals_summary {
+        internal static string theatre {
             get {
-                return ResourceManager.GetString("school-and-festivals-summary", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string theatre_summary {
-            get {
-                return ResourceManager.GetString("theatre-summary", resourceCulture);
+                return ResourceManager.GetString("theatre", resourceCulture);
             }
         }
     }

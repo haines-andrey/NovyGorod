@@ -63,63 +63,36 @@ namespace NovyGorodAsp.Resources.Views.Post {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string Festival {
+        internal static string ENUM_Festival {
             get {
-                return ResourceManager.GetString("Festival", resourceCulture);
+                return ResourceManager.GetString("ENUM-Festival", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string Next {
+        internal static string ENUM_Project {
             get {
-                return ResourceManager.GetString("Next", resourceCulture);
+                return ResourceManager.GetString("ENUM-Project", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string PagesCountTemplate {
+        internal static string ENUM_School {
             get {
-                return ResourceManager.GetString("PagesCountTemplate", resourceCulture);
+                return ResourceManager.GetString("ENUM-School", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string Previous {
+        internal static string ENUM_Theatre {
             get {
-                return ResourceManager.GetString("Previous", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string Project {
-            get {
-                return ResourceManager.GetString("Project", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string School {
-            get {
-                return ResourceManager.GetString("School", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string Theatre {
-            get {
-                return ResourceManager.GetString("Theatre", resourceCulture);
+                return ResourceManager.GetString("ENUM-Theatre", resourceCulture);
             }
         }
     }

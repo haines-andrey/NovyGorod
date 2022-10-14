@@ -4,5 +4,5 @@ namespace NovyGorodAsp.Models.Posts;
 
 public class PostViewModel
 {
-    public PostDto Post { get; set; }
+    public PostDto Post { get; init; }
 }

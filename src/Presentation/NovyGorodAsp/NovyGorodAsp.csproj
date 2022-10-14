@@ -32,9 +32,9 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>_Layout.Designer.cs</LastGenOutput>
       </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Shared\_NavBarView.resx">
+      <EmbeddedResource Update="Resources\Views\Shared\NavBarView.resx">
         <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>_NavBarView.Designer.cs</LastGenOutput>
+        <LastGenOutput>NavBarView.Designer.cs</LastGenOutput>
       </EmbeddedResource>
       <EmbeddedResource Update="Resources\Views\Post\ViewList.resx">
         <Generator>ResXFileCodeGenerator</Generator>
@@ -44,6 +44,38 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>Index.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Shared\PostListPaginationView.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>PostListPaginationView.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Post\ViewList.en.resx">
+        <DependentUpon>ViewList.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Post\ViewList.ru.resx">
+        <DependentUpon>ViewList.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Shared\_Layout.en.resx">
+        <DependentUpon>_Layout.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Shared\_Layout.ru.resx">
+        <DependentUpon>_Layout.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Shared\NavBarView.en.resx">
+        <DependentUpon>NavBarView.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Shared\NavBarView.ru.resx">
+        <DependentUpon>NavBarView.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Shared\PostListContainerView.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>PostListContainerView.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Home\Index.en.resx">
+        <DependentUpon>Index.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Home\Index.ru.resx">
+        <DependentUpon>Index.resx</DependentUpon>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -52,7 +84,7 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>_Layout.resx</DependentUpon>
       </Compile>
-      <Compile Update="Resources\Views\Shared\_NavBarView.Designer.cs">
+      <Compile Update="Resources\Views\Shared\NavBarView.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>_NavBarView.resx</DependentUpon>
@@ -66,6 +98,19 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>Index.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Views\Shared\PostListPaginationView.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>PostListpaginationView.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Views\Shared\PostListPaginationView.Designer.cs">
+        <DependentUpon>PostListPaginationView.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Views\Shared\PostListContainerView.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>PostListContainerView.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 

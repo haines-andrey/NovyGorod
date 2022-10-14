@@ -21,31 +21,16 @@
     <data name="about-us" xml:space="preserve">
         <value />
     </data>
-    <data name="company-name" xml:space="preserve">
-        <value />
-    </data>
-    <data name="company-summary" xml:space="preserve">
-        <value />
-    </data>
     <data name="projects" xml:space="preserve">
         <value />
     </data>
-    <data name="more-about-projects" xml:space="preserve">
+    <data name="school" xml:space="preserve">
         <value />
     </data>
-    <data name="theatre-summary" xml:space="preserve">
+    <data name="theatre" xml:space="preserve">
         <value />
     </data>
-    <data name="more-about-theatre" xml:space="preserve">
-        <value />
-    </data>
-    <data name="school-and-festivals" xml:space="preserve">
-        <value />
-    </data>
-    <data name="school-and-festivals-summary" xml:space="preserve">
-        <value />
-    </data>
-    <data name="more-about-school" xml:space="preserve">
+    <data name="festivals" xml:space="preserve">
         <value />
     </data>
 </root>

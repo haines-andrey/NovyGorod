@@ -23,7 +23,7 @@ public class HomeController : Controller
         var theatre = await _mediator.Send(new SearchPostsRequest { Type = PostType.Theatre, PageSize = 3 });
         var school = await _mediator.Send(new SearchPostsRequest { Type = PostType.School, PageSize = 3 });
 
-        var viewModel = new HomeViewModel
+        var viewModel = new IndexViewModel
         {
             LastProjects = projects.Items,
             LastTheatrePosts = theatre.Items,

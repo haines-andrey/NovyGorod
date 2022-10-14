@@ -11,25 +11,16 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="Project" xml:space="preserve">
+    <data name="ENUM-Project" xml:space="preserve">
         <value>Проекты</value>
     </data>
-    <data name="Theatre" xml:space="preserve">
+    <data name="ENUM-Theatre" xml:space="preserve">
         <value>Театр Окна</value>
     </data>
-    <data name="School" xml:space="preserve">
+    <data name="ENUM-School" xml:space="preserve">
         <value>Телешкола</value>
     </data>
-    <data name="Festival" xml:space="preserve">
+    <data name="ENUM-Festival" xml:space="preserve">
         <value>Фестивали</value>
-    </data>
-    <data name="PagesCountTemplate" xml:space="preserve">
-        <value>Страница {0} из {1}</value>
-    </data>
-    <data name="Next" xml:space="preserve">
-        <value>Следующая</value>
-    </data>
-    <data name="Previous" xml:space="preserve">
-        <value>Предыдущая</value>
     </data>
 </root>
