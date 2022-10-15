@@ -14,7 +14,7 @@
     <data name="next" xml:space="preserve">
         <value>Следующая</value>
     </data>
-    <data name="pages-count-template" xml:space="preserve">
+    <data name="pages-pointer-template" xml:space="preserve">
         <value>Страница {0} из {1}</value>
     </data>
     <data name="previous" xml:space="preserve">

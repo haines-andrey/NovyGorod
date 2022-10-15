@@ -14,7 +14,7 @@
     <data name="next" xml:space="preserve">
         <value>Next</value>
     </data>
-    <data name="pages-count-template" xml:space="preserve">
+    <data name="pages-pointer-template" xml:space="preserve">
         <value>Page {0} of {1}</value>
     </data>
     <data name="previous" xml:space="preserve">

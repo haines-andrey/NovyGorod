@@ -72,9 +72,9 @@ namespace NovyGorodAsp.Resources.Views.Shared {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string pages_count_template {
+        internal static string pages_pointer_template {
             get {
-                return ResourceManager.GetString("pages-count-template", resourceCulture);
+                return ResourceManager.GetString("pages-pointer-template", resourceCulture);
             }
         }
         

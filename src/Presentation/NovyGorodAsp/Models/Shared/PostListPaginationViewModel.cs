@@ -23,4 +23,11 @@ public class PostListPaginationViewModel
         PageSize = Paging.PageSize,
         PageIndex = Paging.PageIndex + 1,
     };
+
+    public string GetPagesPointer(string template)
+    {
+        var currentPageIndex = Paging.TotalPages == default ? default : Paging.PageIndex + 1;
+
+        return string.Format(template, currentPageIndex, Paging.TotalPages);
+    }
 }

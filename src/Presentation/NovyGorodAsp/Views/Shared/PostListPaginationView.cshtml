@@ -4,7 +4,7 @@
 
 <nav aria-label="Posts pages" class="d-inline-flex flex-wrap">
     <div class="my-auto me-2 text-center">
-        @string.Format(Localizer["pages-count-template"].Value, Model.Paging.PageIndex + 1, Model.Paging.TotalPages)
+        @Model.GetPagesPointer(Localizer["pages-pointer-template"].Value)
     </div>
     <ul class="pagination my-auto">
         <li class="page-item @(Model.Paging.HasPreviousPage ? "" : "disabled")">
