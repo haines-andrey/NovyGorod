@@ -9,19 +9,13 @@
 
 <h1 class="display-4">@Localizer[$"ENUM-{Model.Type.ToString()}"]</h1>
 
-<hr/>
-
-<div class="d-flex flex-wrap">
+<div class="d-flex flex-wrap my-3 py-2 border-top border-bottom">
     @{ await Html.RenderPartialAsync("PostListPaginationView", Model.PaginationViewModel); }
 </div>
 
-<hr/>
-
 @{ await Html.RenderPartialAsync("PostListContainerView", Model.ContainerViewModel); }
 
-<hr/>
-
-<div class="d-flex flex-wrap">
+<div class="d-flex flex-wrap my-3 py-2 border-top">
     <div class="ms-auto">
         @{ await Html.RenderPartialAsync("PostListPaginationView", Model.PaginationViewModel); }
     </div>

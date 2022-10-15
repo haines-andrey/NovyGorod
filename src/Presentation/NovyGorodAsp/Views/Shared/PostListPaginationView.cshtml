@@ -2,22 +2,26 @@
 @model NovyGorodAsp.Models.Shared.PostListPaginationViewModel
 @inject IViewLocalizer Localizer
 
-<nav aria-label="Posts pages" class="d-inline-flex flex-wrap">
-    <div class="my-auto me-2 text-center">
-        @Model.GetPagesPointer(Localizer["pages-pointer-template"].Value)
+<nav aria-label="Posts pages" class="row g-2">
+    <div class="col d-flex">
+        <span class="m-auto text-center">
+            @Model.GetPagesPointer(Localizer["pages-pointer-template"].Value)
+        </span>
     </div>
-    <ul class="pagination my-auto">
-        <li class="page-item @(Model.Paging.HasPreviousPage ? "" : "disabled")">
-            <a class="page-link"
-               href=@Url.Action("ViewList", "Post", Model.PreviousPageRequest)>
-                @Localizer["previous"]
-            </a>
-        </li>
-        <li class="page-item @(Model.Paging.HasNextPage ? "" : "disabled")">
-            <a class="page-link"
-               href=@Url.Action("ViewList", "Post", Model.NextPageRequest)>
-                @Localizer["next"]
-            </a>
-        </li>
-    </ul>
+    <div class="col d-flex">
+        <ul class="pagination justify-content-center m-auto">
+            <li class="page-item @(Model.Paging.HasPreviousPage ? "" : "disabled")">
+                <a class="page-link"
+                   href=@Url.Action("ViewList", "Post", Model.PreviousPageRequest)>
+                    @Localizer["previous"]
+                </a>
+            </li>
+            <li class="page-item @(Model.Paging.HasNextPage ? "" : "disabled")">
+                <a class="page-link"
+                   href=@Url.Action("ViewList", "Post", Model.NextPageRequest)>
+                    @Localizer["next"]
+                </a>
+            </li>
+        </ul>
+    </div>
 </nav>
