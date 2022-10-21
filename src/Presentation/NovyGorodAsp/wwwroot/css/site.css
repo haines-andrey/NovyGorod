@@ -1,1 +1,6 @@
-﻿
+﻿.card-img-top{
+    margin-top: -1px;
+    margin-left: -1px;
+    margin-right: -1px;
+    width: calc(100% + 2px);
+}
