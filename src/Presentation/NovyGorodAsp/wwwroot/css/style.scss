@@ -1,4 +1,8 @@
-﻿/*.card-img-top {*/
+﻿$primary: #3c2c9a;
+
+@import "../lib/bootstrap/scss/bootstrap";
+
+/*.card-img-top {*/
 /*    margin-top: -1px;*/
 /*    margin-left: -1px;*/
 /*    margin-right: -1px;*/
@@ -6,5 +10,5 @@
 /*}*/
 
 .card {
-    border: 0;
+  border: 0;
 }
