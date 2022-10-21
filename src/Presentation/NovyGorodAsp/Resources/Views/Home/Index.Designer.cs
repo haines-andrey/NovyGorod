@@ -144,6 +144,15 @@ namespace NovyGorodAsp.Resources.Views.Home {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        internal static string theatre {
+            get {
+                return ResourceManager.GetString("theatre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         internal static string theatre_summary {
             get {
                 return ResourceManager.GetString("theatre-summary", resourceCulture);
