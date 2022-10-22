@@ -18,8 +18,12 @@ public class IndexViewModel
     public IReadOnlyCollection<PostListDto> LastSchoolPosts { get; init; }
 
     public PostListContainerViewModel LastProjectsContainer => new() { Posts = LastProjects };
+
     public PostListContainerViewModel LastTheatrePostsContainer => new() { Posts = LastProjects };
+
     public PostListContainerViewModel LastSchoolPostsContainer => new() { Posts = LastProjects };
+
+    public ContactsViewModel Contacts => new();
 
     public SearchPostsRequest SearchProjectsRequest => new()
     {
