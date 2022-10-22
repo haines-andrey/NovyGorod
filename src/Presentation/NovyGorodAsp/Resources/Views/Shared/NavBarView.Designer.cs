@@ -70,6 +70,15 @@ namespace NovyGorodAsp.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to contacts.
+        /// </summary>
+        internal static string contacts {
+            get {
+                return ResourceManager.GetString("contacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         internal static string festivals {

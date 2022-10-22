@@ -88,6 +88,15 @@ namespace NovyGorodAsp.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to contacts.
+        /// </summary>
+        internal static string contacts {
+            get {
+                return ResourceManager.GetString("contacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         internal static string more_about_projects {

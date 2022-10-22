@@ -26,4 +26,8 @@
     <data name="festivals" xml:space="preserve">
         <value>Фестивали</value>
     </data>
+    <data name="contacts" xml:space="preserve">
+        <value>Контакты</value>
+        <comment>contacts</comment>
+    </data>
 </root>

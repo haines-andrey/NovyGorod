@@ -76,6 +76,18 @@
       <EmbeddedResource Update="Resources\Views\Home\Index.ru.resx">
         <DependentUpon>Index.resx</DependentUpon>
       </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Shared\PostListContainerView.en.resx">
+        <DependentUpon>PostListContainerView.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Shared\PostListContainerView.ru.resx">
+        <DependentUpon>PostListContainerView.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Shared\PostListPaginationView.en.resx">
+        <DependentUpon>PostListPaginationView.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Shared\PostListPaginationView.ru.resx">
+        <DependentUpon>PostListPaginationView.resx</DependentUpon>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>

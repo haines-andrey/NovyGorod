@@ -51,4 +51,8 @@
     <data name="more-about-school" xml:space="preserve">
         <value />
     </data>
+    <data name="contacts" xml:space="preserve">
+        <value>contacts</value>
+        <comment>contacts</comment>
+    </data>
 </root>
