@@ -1,6 +1,8 @@
 ﻿# User secrets #
 scripts/UserSecrets.ps1
 src/Presentation/NovyGorodAsp/wwwroot/lib
+src/Presentation/NovyGorodAsp/wwwroot/css/style.css
+src/Presentation/NovyGorodAsp/wwwroot/css/style.css.map
 
 
 /.idea/
