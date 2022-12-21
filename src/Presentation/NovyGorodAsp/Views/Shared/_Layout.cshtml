@@ -9,6 +9,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@(ViewData["Title"]) - @(Localizer["company-name"])</title>
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css"/>
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true"/>
 </head>
 <body class="bg-light d-flex flex-column top" style="height: 100vh">
@@ -22,7 +23,11 @@
         @RenderBody()
     </div>
 </main>
-
+<footer class="mt-auto container-fluid bg-white border-top py-4">
+    <div class="container" style="max-width: 800px">
+        @{ await Html.RenderPartialAsync("FooterView", new FooterViewModel()); }
+    </div>
+</footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>

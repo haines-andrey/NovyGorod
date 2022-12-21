@@ -88,6 +88,10 @@
       <EmbeddedResource Update="Resources\Views\Shared\PostListPaginationView.ru.resx">
         <DependentUpon>PostListPaginationView.resx</DependentUpon>
       </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Shared\FooterView.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>FooterView.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -123,6 +127,11 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>PostListContainerView.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Views\Shared\FooterView.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>FooterView.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 
