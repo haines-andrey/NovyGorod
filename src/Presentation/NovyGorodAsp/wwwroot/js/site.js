@@ -2,3 +2,6 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+let headerHeight = $("header").height()
+$("main").css("margin-top", headerHeight + 25)

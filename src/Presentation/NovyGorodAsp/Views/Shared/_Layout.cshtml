@@ -11,14 +11,13 @@
     <title>@(ViewData["Title"]) - @(Localizer["company-name"])</title>
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true"/>
 </head>
-<body class="bg-light">
-<header class="container-fluid bg-white shadow-sm border-bottom sticky-top">
+<body class="bg-light d-flex flex-column top" style="height: 100vh">
+<header class="container-fluid bg-white shadow-sm border-bottom fixed-top">
     <div class="container" style="max-width: 800px">
         @{ await Html.RenderPartialAsync("NavBarView", new NavBarViewModel()); }
     </div>
 </header>
-
-<main role="main" class="container-fluid my-3">
+<main role="main" class="container-fluid mb-3">
     <div class="container" style="max-width: @ViewData["MaxWidth"]px">
         @RenderBody()
     </div>
