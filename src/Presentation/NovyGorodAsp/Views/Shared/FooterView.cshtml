@@ -2,18 +2,6 @@
 @model NovyGorodAsp.Models.Shared.FooterViewModel
 @inject IViewLocalizer Localizer
 
-<div class="row g-2">
-    <div class="col d-flex">
-        <span class="my-auto">@Model.GetCopyrightString(Localizer.GetString("company-name"))</span>
-    </div>
-    <div class="col d-flex">
-        <div class="d-inline-flex gap-2 ms-auto">
-            <a class="btn btn-outline-secondary my-auto" href=@Localizer["instagram-url"] target="_blank">
-                <span class="bi bi-instagram"></span>
-            </a>
-            <a class="btn btn-outline-secondary my-auto" href=@Localizer["youtube-url"] target="_blank">
-                <span class="bi bi-youtube"></span>
-            </a>
-        </div>
-    </div>
+<div class="d-flex">
+    <span class="m-auto">@Model.GetCopyrightString(Localizer.GetString("company-name"))</span>
 </div>

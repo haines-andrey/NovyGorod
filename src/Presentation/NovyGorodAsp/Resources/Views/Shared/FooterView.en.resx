@@ -11,12 +11,6 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="instagram-url" xml:space="preserve">
-        <value>https://www.instagram.com/novygorod.by/</value>
-    </data>
-    <data name="youtube-url" xml:space="preserve">
-        <value>https://www.youtube.com/channel/UCymwFaBpPJg0OTYRKD3_HPw/videos</value>
-    </data>
     <data name="company-name" xml:space="preserve">
         <value>ООО «Телестудия Новый Город»</value>
     </data>

@@ -68,23 +68,5 @@ namespace NovyGorodAsp.Resources.Views.Shared {
                 return ResourceManager.GetString("company-name", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string instagram_url {
-            get {
-                return ResourceManager.GetString("instagram-url", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string youtube_url {
-            get {
-                return ResourceManager.GetString("youtube-url", resourceCulture);
-            }
-        }
     }
 }

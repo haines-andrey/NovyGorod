@@ -92,6 +92,12 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>FooterView.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Shared\FooterView.en.resx">
+        <DependentUpon>FooterView.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Shared\FooterView.ru.resx">
+        <DependentUpon>FooterView.resx</DependentUpon>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
