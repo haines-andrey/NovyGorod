@@ -1,0 +1,17 @@
+﻿@model NovyGorodAsp.Models.Home.ContactViewModel
+
+<div class="card h-100 shadow-sm">
+    <div class="card-body d-flex flex-column">
+        <div class="d-flex user-select-none">
+            <span class="bi @(Model.IconName) text-primary" style="font-size: 2rem"></span>
+            <span class="ms-2 my-auto">@Model.Title</span>
+            <a href="@Model.Url"
+               target="@(Model.OpenLinkInNewPage ? "_blank" : "_self")"
+               class="bi bi-box-arrow-up-right ms-auto"
+               style="font-size: 1rem">
+            </a>
+        </div>
+        <hr/>
+        <span class="my-auto">@Html.Raw(Model.Info)</span>
+    </div>
+</div>

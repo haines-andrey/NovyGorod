@@ -1,2 +1,16 @@
 ﻿@model NovyGorodAsp.Models.Home.ContactsViewModel
 
+<div class="row row-cols-1 row-cols-sm-2 g-3">
+    <div class="col">
+        @{ await Html.RenderPartialAsync("ContactView", Model.Phone); }
+    </div>
+    <div class="col">
+        @{ await Html.RenderPartialAsync("ContactView", Model.Mail); }
+    </div>
+    <div class="col">
+        @{ await Html.RenderPartialAsync("ContactView", Model.Office); }
+    </div>
+    <div class="col">
+        @{ await Html.RenderPartialAsync("ContactView", Model.Instagram); }
+    </div>
+</div>
