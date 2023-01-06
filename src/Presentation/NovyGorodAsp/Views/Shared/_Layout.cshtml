@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true"/>
 </head>
 <body class="bg-light d-flex flex-column top" style="height: 100vh">
-<header class="container-fluid bg-white shadow-sm border-bottom fixed-top">
+<header class="container-fluid bg-white shadow-sm border-bottom fixed-top user-select-none">
     <div class="container" style="max-width: 800px">
         @{ await Html.RenderPartialAsync("NavBarView", new NavBarViewModel()); }
     </div>
@@ -23,7 +23,7 @@
         @RenderBody()
     </div>
 </main>
-<footer class="mt-auto container-fluid bg-white border-top py-4">
+<footer class="mt-auto container-fluid bg-white border-top py-2 user-select-none">
     <div class="container" style="max-width: 800px">
         @{ await Html.RenderPartialAsync("FooterView", new FooterViewModel()); }
     </div>

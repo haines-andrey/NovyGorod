@@ -7,16 +7,16 @@
     {
         <div class="col">
             <div class="card h-100 shadow-sm">
-                <img src="@post.Preview.Url" class="card-img-top" alt="preview">
+                <img src="@post.Preview.Url" class="card-img-top user-select-none" alt="preview">
                 <div class="card-body d-flex flex-column">
                     <div class="card-title">@post.Title</div>
                     <div class="mt-auto d-flex flex-row">
                         <p class="card-text my-auto">
                             <small class="text-muted">
-                                @post.CreatedAt.Date.ToShortDateString()
+                                @post.CreatedAt.Date.ToString("dd MMM yyyy")
                             </small>
                         </p>
-                        <a class="card-link ms-auto" href="@Url.Action("View", "Post", new {post.Id})">
+                        <a class="card-link ms-auto user-select-none" href="@Url.Action("View", "Post", new {post.Id})">
                             @Localizer["read"]
                         </a>
                     </div>
