@@ -1,4 +1,4 @@
-﻿@model ErrorViewModel
+﻿@model NovyGorodAsp.Models.Error.ErrorViewModel
 @{
     Layout = "_Layout";
     ViewBag.Title = "Ошибка";
@@ -6,11 +6,11 @@
 }
 
 <div class="d-flex flex-column user-select-none">
-    <img src="~/images/emoji/fearful_face_3d.png"
+    <img src="@Model.EmojiPath"
          width="64"
          height="64"
          alt="emoji"
          class="mx-auto"/>
-    <h1 class="text-center fw-normal fs-4">Что-то&nbsp;пошло&nbsp;не&nbsp;так</h1>
-    <p class="text-center lead fs-6">Повторите&nbsp;попытку&nbsp;позже</p>
+    <h1 class="text-center fw-normal fs-4">@Html.Raw(Model.Title)</h1>
+    <p class="text-center lead fs-6">@Html.Raw(Model.SecondaryText)</p>
 </div>

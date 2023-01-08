@@ -34,7 +34,7 @@ public class GetPostRequestHandler : BaseRequestHandler<GetPostRequest, PostDto>
             LanguageId = CurrentLanguageId,
         };
 
-        var post = await _entityAccessService.GetSingleOrDefault(query);
+        var post = await _entityAccessService.GetSingle(query);
 
         return _mapper.MapWithTranslation<PostDto>(post, CurrentLanguageId);
     }

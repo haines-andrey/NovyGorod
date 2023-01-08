@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NovyGorod.Infrastructure.DataAccess.EF;
+using NovyGorodAsp.Middlewares;
 
 namespace NovyGorodAsp;
 
@@ -33,6 +34,8 @@ public class Startup
         });
         services.AddCors(opt => opt.AddDefaultPolicy(builder => builder
             .AllowAnyOrigin()));
+        
+        services.AddTransient<ExceptionHandlingMiddleware>();
     }
 
     public void ConfigureContainer(ContainerBuilder builder)
@@ -51,14 +54,14 @@ public class Startup
         }
         else
         {
-            app.UseExceptionHandler("/error");
+            //app.UseExceptionHandler("/error");
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
-
         app.UseRouting();
             
         var supportedCultures = new[] {new CultureInfo("ru")};
@@ -72,7 +75,6 @@ public class Startup
         });
 
         app.UseCors();
-
         app.UseAuthorization();
 
         app.UseEndpoints(endpoints =>
