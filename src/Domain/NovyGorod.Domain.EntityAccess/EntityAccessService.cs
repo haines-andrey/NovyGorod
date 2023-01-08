@@ -71,6 +71,30 @@ internal class EntityAccessService<TEntity> : IEntityAccessService<TEntity>
         return _unitOfWork.GetFirstOrDefault(queryParameters.ToQuery());
     }
 
+    public Task<TData> GetSingle<TData>(
+        IQueryParameters<TEntity> queryParameters,
+        Expression<Func<TEntity, TData>> selector)
+    {
+        return _unitOfWork.GetSingle(queryParameters.ToQuery(), selector);
+    }
+
+    public Task<TEntity> GetSingle(IQueryParameters<TEntity> queryParameters)
+    {
+        return _unitOfWork.GetSingle(queryParameters.ToQuery());
+    }
+
+    public Task<TResult> GetFirst<TResult>(
+        IQueryParameters<TEntity> queryParameters,
+        Expression<Func<TEntity, TResult>> convertor)
+    {
+        return _unitOfWork.GetFirst(queryParameters.ToQuery(), convertor);
+    }
+
+    public Task<TEntity> GetFirst(IQueryParameters<TEntity> queryParameters)
+    {
+        return _unitOfWork.GetFirst(queryParameters.ToQuery());
+    }
+
     public Task<int> Sum(IQueryParameters<TEntity> queryParameters, Expression<Func<TEntity, int>> selector)
     {
         return _unitOfWork.Sum(queryParameters.ToQuery(), selector);

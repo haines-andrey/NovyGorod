@@ -28,6 +28,10 @@ public interface IRepository<TEntity>
         Query<TEntity> query,
         Expression<Func<TEntity, TResult>> selector,
         CancellationToken cancellationToken = default);
+    
+    Task<TEntity> GetFirst(Query<TEntity> query);
+
+    Task<TResult> GetFirst<TResult>(Query<TEntity> query, Expression<Func<TEntity, TResult>> convertor);
 
     Task<TEntity> GetFirstOrDefault(Query<TEntity> query);
 

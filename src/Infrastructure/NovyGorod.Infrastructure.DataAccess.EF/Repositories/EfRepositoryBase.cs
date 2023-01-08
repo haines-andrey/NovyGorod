@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using NovyGorod.Common.Exceptions;
 using NovyGorod.Domain.EntityAccess;
 using NovyGorod.Domain.EntityAccess.Queries;
 using NovyGorod.Domain.EntityAccess.Queries.Results;
@@ -69,6 +70,30 @@ public abstract class EfRepositoryBase<TEntity> : IRepository<TEntity>
         return items;
     }
 
+    public async Task<TEntity> GetFirst(Query<TEntity> query)
+    {
+        var entity = await Query(query).FirstOrDefaultAsync();
+
+        if (entity is null)
+        {
+            throw new CodedException(ErrorCode.EntityNotFound);
+        }
+
+        return entity;
+    }
+
+    public async Task<TResult> GetFirst<TResult>(Query<TEntity> query, Expression<Func<TEntity, TResult>> convertor)
+    {
+        var entityData = await Query(query).Select(convertor).FirstOrDefaultAsync();
+
+        if (entityData is null)
+        {
+            throw new CodedException(ErrorCode.EntityNotFound);
+        }
+
+        return entityData;
+    }
+
     public Task<TEntity> GetFirstOrDefault(Query<TEntity> query)
     {
         return Query(query).FirstOrDefaultAsync();
@@ -81,14 +106,28 @@ public abstract class EfRepositoryBase<TEntity> : IRepository<TEntity>
         return Query(query).Select(convertor).FirstOrDefaultAsync();
     }
 
-    public Task<TEntity> GetSingle(Query<TEntity> query)
+    public async Task<TEntity> GetSingle(Query<TEntity> query)
     {
-        return Query(query).SingleAsync();
+        var entity = await Query(query).SingleOrDefaultAsync();
+
+        if (entity is null)
+        {
+            throw new CodedException(ErrorCode.EntityNotFound);
+        }
+
+        return entity;
     }
 
-    public Task<TResult> GetSingle<TResult>(Query<TEntity> query, Expression<Func<TEntity, TResult>> convertor)
+    public async Task<TResult> GetSingle<TResult>(Query<TEntity> query, Expression<Func<TEntity, TResult>> convertor)
     {
-        return Query(query).Select(convertor).SingleAsync();
+        var entityData = await Query(query).Select(convertor).SingleOrDefaultAsync();
+
+        if (entityData is null)
+        {
+            throw new CodedException(ErrorCode.EntityNotFound);
+        }
+
+        return entityData;
     }
 
     public Task<TEntity> GetSingleOrDefault(Query<TEntity> query)

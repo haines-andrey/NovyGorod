@@ -34,6 +34,18 @@ public interface IEntityAccessService<TEntity>
 
     Task<TEntity> GetFirstOrDefault(IQueryParameters<TEntity> queryParameters);
 
+    Task<TData> GetSingle<TData>(
+        IQueryParameters<TEntity> queryParameters,
+        Expression<Func<TEntity, TData>> selector);
+
+    Task<TEntity> GetSingle(IQueryParameters<TEntity> queryParameters);
+
+    Task<TResult> GetFirst<TResult>(
+        IQueryParameters<TEntity> queryParameters,
+        Expression<Func<TEntity, TResult>> convertor);
+
+    Task<TEntity> GetFirst(IQueryParameters<TEntity> queryParameters);
+
     Task<int> Sum(IQueryParameters<TEntity> queryParameters, Expression<Func<TEntity, int>> selector);
 
     Task<bool> Any(IQueryParameters<TEntity> queryParameters);

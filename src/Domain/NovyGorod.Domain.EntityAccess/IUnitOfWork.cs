@@ -34,6 +34,12 @@ public interface IUnitOfWork : ICommitter
         Query<TEntity> query,
         Expression<Func<TEntity, TResult>> selector)
         where TEntity : class;
+    
+    Task<TEntity> GetFirst<TEntity>(Query<TEntity> query)
+        where TEntity : class;
+
+    Task<TResult> GetFirst<TEntity, TResult>(Query<TEntity> query, Expression<Func<TEntity, TResult>> convertor)
+        where TEntity : class;
 
     Task<TEntity> GetFirstOrDefault<TEntity>(Query<TEntity> query)
         where TEntity : class;

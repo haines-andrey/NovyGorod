@@ -79,6 +79,18 @@ internal class UnitOfWork : IUnitOfWork
         return GetRepository<TEntity>().Distinct(query, selector);
     }
 
+    public Task<TEntity> GetFirst<TEntity>(Query<TEntity> query)
+        where TEntity : class
+    {
+        return GetRepository<TEntity>().GetFirst(query);
+    }
+
+    public Task<TResult> GetFirst<TEntity, TResult>(Query<TEntity> query, Expression<Func<TEntity, TResult>> convertor)
+        where TEntity : class
+    {
+        return GetRepository<TEntity>().GetFirst(query, convertor);
+    }
+
     public Task<TEntity> GetFirstOrDefault<TEntity>(Query<TEntity> query)
         where TEntity : class
     {
