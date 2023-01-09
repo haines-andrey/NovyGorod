@@ -5,3 +5,7 @@
 
 let headerHeight = $("header").height()
 $("main").css("margin-top", headerHeight + 25)
+
+$('.nav-link').click(function() {
+    $('.navbar-collapse').collapse('hide');
+})
