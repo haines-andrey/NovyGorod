@@ -9,20 +9,12 @@ public class PostListPaginationViewModel
     public PostType Type { get; init; }
 
     public PagingResultDto Paging { get; init; }
+    
+    public string ControllerActionName { get; init; }
 
-    public SearchPostsRequest PreviousPageRequest => new()
-    {
-        Type = Type,
-        PageSize = Paging.PageSize,
-        PageIndex = Paging.PageIndex - 1,
-    };
-
-    public SearchPostsRequest NextPageRequest => new()
-    {
-        Type = Type,
-        PageSize = Paging.PageSize,
-        PageIndex = Paging.PageIndex + 1,
-    };
+    public int PreviousPageIndex => Paging.PageIndex;
+    
+    public int NextPageIndex => Paging.PageIndex + 2;
 
     public string GetPagesPointer(string template)
     {

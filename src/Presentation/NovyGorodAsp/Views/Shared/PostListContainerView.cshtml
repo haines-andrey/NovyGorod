@@ -14,7 +14,7 @@
                     <div class="card-title my-0">@post.Title</div>
                     <div class="mt-auto d-flex flex-row">
                         <a class="card-link ms-auto user-select-none"
-                           href="@Url.Action("View", "Post", new {post.Id})">
+                           href="@Url.Action("Get", "Post", new {post.Id})">
                             @Localizer["more"]
                         </a>
                     </div>

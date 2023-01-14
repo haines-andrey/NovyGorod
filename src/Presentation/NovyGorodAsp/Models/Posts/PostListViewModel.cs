@@ -11,10 +11,13 @@ public class PostsListViewModel
 
     public SearchResultDto<PostListDto> SearchResult { get; init; }
 
+    public string ControllerActionName { get; init; }
+
     public PostListPaginationViewModel PaginationViewModel => new()
     {
         Type = Type,
         Paging = SearchResult.Paging,
+        ControllerActionName = ControllerActionName,
     };
 
     public PostListContainerViewModel ContainerViewModel => new() {Posts = SearchResult.Items};

@@ -12,13 +12,13 @@
         <ul class="pagination justify-content-center m-auto">
             <li class="page-item @(Model.Paging.HasPreviousPage ? "" : "disabled")">
                 <a class="page-link"
-                   href=@Url.Action("ViewList", "Post", Model.PreviousPageRequest)>
+                   href="@Url.Action(Model.ControllerActionName, "Post", new {Page = Model.PreviousPageIndex})">
                     @Localizer["previous"]
                 </a>
             </li>
             <li class="page-item @(Model.Paging.HasNextPage ? "" : "disabled")">
                 <a class="page-link"
-                   href=@Url.Action("ViewList", "Post", Model.NextPageRequest)>
+                   href="@Url.Action(Model.ControllerActionName, "Post", new {Page = Model.NextPageIndex})">
                     @Localizer["next"]
                 </a>
             </li>
