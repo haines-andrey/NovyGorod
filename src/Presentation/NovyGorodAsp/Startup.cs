@@ -26,7 +26,6 @@ public class Startup
 
         Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(configuration)
-            .WriteTo.File("Logs/.log", rollingInterval: RollingInterval.Hour)
             .CreateLogger();
     }
 
