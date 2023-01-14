@@ -4,8 +4,8 @@
 @{
     var post = Model.Post;
     Layout = "_Layout";
-    ViewBag.Title = post.Title;
-    ViewBag.MaxWidth = 720;
+    ViewData["Title"] = post.Title;
+    ViewData["MaxWidth"] = 720;
 }
 
 <h1 class="display-4 text-break">@post.Title</h1>

@@ -9,7 +9,7 @@
 
     string GetTitle()
     {
-        var pageTitle = (ViewData["Title"] as LocalizedHtmlString)?.Value;
+        var pageTitle = ViewData["Title"]?.ToString();
 
         return pageTitle is null ? companyName : $"{pageTitle} - {companyName}";
     }
@@ -28,7 +28,7 @@
     
     <meta property="og:url" content="@Context.Request.GetDisplayUrl()">
     <meta property="og:locale" content="ru-RU"/>
-    <meta property="og:type" content="website"/>
+    <meta property="og:type" content="article"/>
     <meta property="og:title" content="@GetTitle()"/>
     <meta property="og:site_name" content="@companyName"/>
     <meta property="og:description" content="@description"/>

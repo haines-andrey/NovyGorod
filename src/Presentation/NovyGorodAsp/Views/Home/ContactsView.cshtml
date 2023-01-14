@@ -2,8 +2,8 @@
 @model NovyGorodAsp.Models.Home.ContactsViewModel
 @inject IViewLocalizer Localizer;
 @{
-    ViewData["Title"] = Localizer["contacts"];
-    ViewBag.MaxWidth = 720;
+    ViewData["Title"] = Localizer["contacts"].Value;
+    ViewData["MaxWidth"] = 720;
 }
 
 <div class="d-flex flex-column">

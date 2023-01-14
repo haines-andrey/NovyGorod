@@ -3,8 +3,8 @@
 @inject IViewLocalizer Localizer
 @{
     Layout = "_Layout";
-    ViewBag.Title = Localizer[$"ENUM-{Model.Type.ToString()}"];
-    ViewBag.MaxWidth = 900;
+    ViewData["Title"] = Localizer[$"ENUM-{Model.Type.ToString()}"].Value;
+    ViewData["MaxWidth"] = 900;
 }
 
 <h1 class="display-4">@Localizer[$"ENUM-{Model.Type.ToString()}"]</h1>

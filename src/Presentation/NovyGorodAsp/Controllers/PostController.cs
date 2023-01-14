@@ -60,6 +60,6 @@ public class PostController : Controller
             Type = request.Type, ControllerActionName = actionName, SearchResult = result,
         };
 
-        return PartialView("ViewList", viewModel);
+        return PartialView("ListView", viewModel);
     }
 }
