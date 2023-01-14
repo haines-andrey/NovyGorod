@@ -12,9 +12,9 @@ public class ContactsViewModel
 
     public ContactViewModel Mail { get; } = new()
     {
-        Url = "mailto:lud.konopl.work@gmail.com",
+        Url = "mailto:contact@novygorod.by",
         Title = "Почта",
-        Info = "lud.konopl.work@gmail.com",
+        Info = "contact@novygorod.by",
         IconName = "bi-envelope"
     };
 
