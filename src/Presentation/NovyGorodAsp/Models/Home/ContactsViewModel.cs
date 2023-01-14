@@ -29,7 +29,7 @@ public class ContactsViewModel
 
     public ContactViewModel Instagram { get; } = new()
     {
-        Url = "tel:+375(29)652-31-52",
+        Url = "https://www.instagram.com/novygorod.by/",
         Title = "Инстаграм",
         Info = "@novygorod.by",
         IconName = "bi-instagram",
