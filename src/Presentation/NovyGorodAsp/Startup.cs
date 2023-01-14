@@ -1,13 +1,16 @@
 using System.Collections.Generic;
 using System.Globalization;
+using System.Threading.Tasks;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Localization.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NovyGorod.Common.Exceptions;
 using NovyGorod.Infrastructure.DataAccess.EF;
 using NovyGorodAsp.Middlewares;
 using Serilog;
@@ -59,9 +62,7 @@ public class Startup
         }
         else
         {
-            //app.UseExceptionHandler("/error");
             app.UseMiddleware<ExceptionHandlingMiddleware>();
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
 
@@ -86,7 +87,21 @@ public class Startup
         {
             endpoints.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=home}/{action=index}/{id?}");
+                pattern: "",
+                defaults: new { controller = "Home", action = "Index" });
+        });
+        
+        app.UseStatusCodePages(new StatusCodePagesOptions
+        {
+            HandleAsync = ctx =>
+            {
+                if (ctx.HttpContext.Response.StatusCode == StatusCodes.Status404NotFound)
+                {
+                    throw new CodedException(ErrorCode.RouteNotFound);
+                }
+
+                return Task.CompletedTask;
+            }
         });
     }
 }

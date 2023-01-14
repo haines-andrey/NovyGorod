@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Primitives;
 using NovyGorod.Common.Exceptions;
 
 namespace NovyGorodAsp.Middlewares;
@@ -19,6 +18,7 @@ internal class ExceptionHandlingMiddleware : IMiddleware
             {ErrorCode.UnhandledException, StatusCodes.Status500InternalServerError},
             {ErrorCode.ValidationFailed, StatusCodes.Status400BadRequest},
             {ErrorCode.EntityNotFound, StatusCodes.Status404NotFound},
+            {ErrorCode.RouteNotFound, StatusCodes.Status404NotFound},
         };
 
     public ExceptionHandlingMiddleware(ILogger<ExceptionHandlingMiddleware> logger)
