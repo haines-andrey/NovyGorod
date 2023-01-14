@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Primitives;
 using NovyGorod.Common.Exceptions;
 
@@ -10,6 +11,8 @@ namespace NovyGorodAsp.Middlewares;
 
 internal class ExceptionHandlingMiddleware : IMiddleware
 {
+    private readonly ILogger<ExceptionHandlingMiddleware> _logger;
+
     private static readonly IReadOnlyDictionary<ErrorCode, int> ErrorCodesMapping =
         new Dictionary<ErrorCode, int>
         {
@@ -17,6 +20,11 @@ internal class ExceptionHandlingMiddleware : IMiddleware
             {ErrorCode.ValidationFailed, StatusCodes.Status400BadRequest},
             {ErrorCode.EntityNotFound, StatusCodes.Status404NotFound},
         };
+
+    public ExceptionHandlingMiddleware(ILogger<ExceptionHandlingMiddleware> logger)
+    {
+        _logger = logger;
+    }
 
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
@@ -26,6 +34,7 @@ internal class ExceptionHandlingMiddleware : IMiddleware
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, ex.Message);
             await HandleException(context, ex, next);
         }
     }

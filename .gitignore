@@ -8,6 +8,9 @@ src/Presentation/NovyGorodAsp/wwwroot/css/style.css.map
 src/Presentation/NovyGorodAsp/appsettings.Development.json
 src/Presentation/NovyGorodAsp/appsettings.Production.json
 
+# logs #
+src/Presentation/NovyGorodAsp/Logs
+
 
 /.idea/
 *.com

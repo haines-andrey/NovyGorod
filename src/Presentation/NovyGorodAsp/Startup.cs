@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NovyGorod.Infrastructure.DataAccess.EF;
 using NovyGorodAsp.Middlewares;
+using Serilog;
 
 namespace NovyGorodAsp;
 
@@ -18,6 +19,10 @@ public class Startup
     public Startup(IConfiguration configuration)
     {
         Configuration = configuration;
+        
+        Log.Logger = new LoggerConfiguration()
+            .ReadFrom.Configuration(configuration)
+            .CreateLogger();
     }
 
     public IConfiguration Configuration { get; }
