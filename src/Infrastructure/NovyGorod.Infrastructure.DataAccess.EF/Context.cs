@@ -25,15 +25,25 @@ public class Context : DbContext, IDataAccessProvider
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        var connectionString = _configuration.GetConnectionString("MySQL");
-        optionsBuilder.UseMySql(
-                connectionString,
-                MySqlServerVersion.LatestSupportedServerVersion,
-                mySqlDbContextOptionsBuilder =>
-                {
-                    mySqlDbContextOptionsBuilder.EnableRetryOnFailure();
-                })
-            .UseLazyLoadingProxies();
+        var databaseServer = _configuration["DatabaseServer"];
+
+        // if (databaseServer == "MySQL")
+        // {
+        //     optionsBuilder.UseMySql(
+        //         _configuration.GetConnectionString(databaseServer),
+        //         MySqlServerVersion.LatestSupportedServerVersion,
+        //         mySqlDbContextOptionsBuilder =>
+        //         {
+        //             mySqlDbContextOptionsBuilder.EnableRetryOnFailure();
+        //         });
+        // }
+
+        if (databaseServer == "MSSQL")
+        {
+            optionsBuilder.UseSqlServer(_configuration.GetConnectionString(databaseServer));
+        }
+
+        optionsBuilder.UseLazyLoadingProxies();
 
         base.OnConfiguring(optionsBuilder);
     }

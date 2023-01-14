@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NovyGorod.Infrastructure.DataAccess.EF;
@@ -11,21 +12,29 @@ using NovyGorod.Infrastructure.DataAccess.EF;
 namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220723225514_Initial")]
+    [Migration("20230113215834_Initial")]
     partial class Initial
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.7")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("NovyGorod.Domain.Models.Attachments.Attachment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("BlockId")
                         .HasColumnType("int");
@@ -46,6 +55,8 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<int>("EntityId")
                         .HasColumnType("int");
 
@@ -56,7 +67,7 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Summary")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -76,9 +87,11 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<string>("Code")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -94,15 +107,17 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<bool>("IsLocal")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
                     b.Property<string>("Url")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -118,11 +133,13 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("CreatedBy")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Index")
                         .HasColumnType("int");
@@ -131,10 +148,10 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UpdatedBy")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -146,6 +163,8 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Index")
                         .HasColumnType("int");
@@ -166,6 +185,8 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<int>("EntityId")
                         .HasColumnType("int");
 
@@ -173,10 +194,10 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Text")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -194,6 +215,8 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<int>("EntityId")
                         .HasColumnType("int");
 
@@ -204,17 +227,22 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Summary")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("VideoId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("LanguageId");
 
                     b.HasIndex("PreviewId");
+
+                    b.HasIndex("VideoId");
 
                     b.HasIndex("EntityId", "LanguageId")
                         .IsUnique();
@@ -310,11 +338,17 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("NovyGorod.Domain.Models.MediaData", "Video")
+                        .WithMany()
+                        .HasForeignKey("VideoId");
+
                     b.Navigation("Entity");
 
                     b.Navigation("Language");
 
                     b.Navigation("Preview");
+
+                    b.Navigation("Video");
                 });
 
             modelBuilder.Entity("NovyGorod.Domain.Models.Attachments.Attachment", b =>
