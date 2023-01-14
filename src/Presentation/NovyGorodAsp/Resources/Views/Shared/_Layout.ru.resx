@@ -14,4 +14,7 @@
     <data name="company-name" xml:space="preserve">
         <value>Новый Город</value>
     </data>
+    <data name="meta-description" xml:space="preserve">
+        <value>Белорусская частная компания, осуществляющая производство авторских телевизионных программ и видеопродукции различного назначения</value>
+    </data>
 </root>

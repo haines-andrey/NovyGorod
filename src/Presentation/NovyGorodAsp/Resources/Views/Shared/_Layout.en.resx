@@ -14,4 +14,7 @@
     <data name="company-name" xml:space="preserve">
         <value>Novy Gorod</value>
     </data>
+    <data name="meta-description" xml:space="preserve">
+        <value>Belarusian private company engaged in the production of author's television programs and video products for public use</value>
+    </data>
 </root>
