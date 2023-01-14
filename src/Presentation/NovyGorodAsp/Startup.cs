@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
@@ -22,9 +23,10 @@ public class Startup
     public Startup(IConfiguration configuration)
     {
         Configuration = configuration;
-        
+
         Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(configuration)
+            .WriteTo.File("Logs/.log", rollingInterval: RollingInterval.Hour)
             .CreateLogger();
     }
 
