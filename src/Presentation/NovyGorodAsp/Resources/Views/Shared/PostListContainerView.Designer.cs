@@ -63,9 +63,9 @@ namespace NovyGorodAsp.Resources.Views.Shared {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string read {
+        internal static string more {
             get {
-                return ResourceManager.GetString("read", resourceCulture);
+                return ResourceManager.GetString("more", resourceCulture);
             }
         }
     }
