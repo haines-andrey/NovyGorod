@@ -101,6 +101,16 @@
       <EmbeddedResource Update="Resources\Views\Shared\FooterView.ru.resx">
         <DependentUpon>FooterView.resx</DependentUpon>
       </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Home\ContactsView.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>ContactsView.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Home\ContactsView.en.resx">
+        <DependentUpon>ContactsView.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Home\ContactsView.ru.resx">
+        <DependentUpon>ContactsView.resx</DependentUpon>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -141,6 +151,11 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>FooterView.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Views\Home\ContactsView.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>ContactsView.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 

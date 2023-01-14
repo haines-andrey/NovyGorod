@@ -4,8 +4,12 @@
 
 <nav class="navbar navbar-expand-md navbar-light py-1">
     <div class="container-fluid p-0">
-        <a class="navbar-brand p-0 m-0" href="@Url.Action("Index", "Home")">
-            <img class="align-top img-fluid" style="max-height:60px" src="~/images/logo.png" alt="logo"/>
+        <a class="navbar-brand p-0 m-0"
+           href="@Url.Action("Index", "Home")">
+            <img class="align-top img-fluid"
+                 style="max-height:60px"
+                 src="~/images/logo.png"
+                 alt="logo"/>
         </a>
         <button class="navbar-toggler"
                 type="button"
@@ -16,17 +20,18 @@
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse"
+             id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link text-dark"
-                       href="@Url.Action(action: "Index", controller: "Home", values: null, protocol: null, host: null, fragment: "")">
+                       href="@Url.Action("Index", "Home")">
                         @Localizer["about-us"]
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark"
-                       href="@Url.Action(action: "Index", controller: "Home", values: null, protocol: null, host: null, fragment: "contacts")">
+                       href="@Url.Action("ContactsView", "Home")">
                         @Localizer["contacts"]
                     </a>
                 </li>

@@ -1,16 +1,25 @@
-﻿@model NovyGorodAsp.Models.Home.ContactsViewModel
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model NovyGorodAsp.Models.Home.ContactsViewModel
+@inject IViewLocalizer Localizer;
+@{
+    ViewData["Title"] = Localizer["contacts"];
+    ViewBag.MaxWidth = 720;
+}
 
-<div class="row row-cols-1 row-cols-sm-2 g-3">
-    <div class="col">
-        @{ await Html.RenderPartialAsync("ContactView", Model.Phone); }
-    </div>
-    <div class="col">
-        @{ await Html.RenderPartialAsync("ContactView", Model.Mail); }
-    </div>
-    <div class="col">
-        @{ await Html.RenderPartialAsync("ContactView", Model.Office); }
-    </div>
-    <div class="col">
-        @{ await Html.RenderPartialAsync("ContactView", Model.Instagram); }
+<div class="d-flex flex-column">
+    <h1 class="display-5 mb-3 mx-auto">@Localizer["contacts"]</h1>
+    <div class="row row-cols-1 row-cols-sm-2 g-3">
+        <div class="col">
+            @{ await Html.RenderPartialAsync("ContactView", Model.Phone); }
+        </div>
+        <div class="col">
+            @{ await Html.RenderPartialAsync("ContactView", Model.Mail); }
+        </div>
+        <div class="col">
+            @{ await Html.RenderPartialAsync("ContactView", Model.Office); }
+        </div>
+        <div class="col">
+            @{ await Html.RenderPartialAsync("ContactView", Model.Instagram); }
+        </div>
     </div>
 </div>

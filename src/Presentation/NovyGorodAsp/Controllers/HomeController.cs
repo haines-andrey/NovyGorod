@@ -32,9 +32,15 @@ public class HomeController : Controller
 
         return View(viewModel);
     }
-    
-    public IActionResult Translate(string culture, string returnUrl)
+
+    [HttpGet("contacts")]
+    public IActionResult ContactsView()
     {
-        return Ok();
+        return View(new ContactsViewModel());
     }
+    
+    // public IActionResult Translate(string culture, string returnUrl)
+    // {
+    //     return Ok();
+    // }
 }

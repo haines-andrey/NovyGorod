@@ -23,8 +23,6 @@ public class IndexViewModel
 
     public PostListContainerViewModel LastSchoolPostsContainer => new() { Posts = LastProjects };
 
-    public ContactsViewModel Contacts => new();
-
     public SearchPostsRequest SearchProjectsRequest => new()
     {
         Type = PostType.Project, PageIndex = PageIndex, PageSize = PageSize,
