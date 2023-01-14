@@ -2,6 +2,7 @@
 @model NovyGorodAsp.Models.Home.IndexViewModel
 @inject IViewLocalizer Localizer
 @{
+    ViewData["Title"] = Localizer["about-us"].Value;
     ViewData["MaxWidth"] = 720;
 }
 

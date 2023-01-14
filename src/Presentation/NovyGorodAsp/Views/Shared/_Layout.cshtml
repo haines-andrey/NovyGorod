@@ -5,34 +5,33 @@
 @inject IViewLocalizer Localizer
 @{
     var companyName = Localizer["company-name"].Value;
-    var description = Localizer["meta-description"].Value;
+    var companyDescription = Localizer["meta-description"].Value;
 
-    string GetTitle()
-    {
-        var pageTitle = ViewData["Title"]?.ToString();
+    string GetPageTitle() => ViewData["Title"]?.ToString();
 
-        return pageTitle is null ? companyName : $"{pageTitle} - {companyName}";
-    }
+    string GetDocTitle() => GetPageTitle() is null ? companyName : $"{GetPageTitle()} | {companyName}";
+    string GetDocDescription() => ViewData["MetaDescription"]?.ToString() ?? companyDescription;
+    string GetDocImage() => ViewData["MetaImageUrl"]?.ToString() ?? "https://novygorod.by/images/logo.png";
 }
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>@GetTitle()</title>
+    <title>@GetDocTitle()</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="@description"/>
+    <meta name="description" content="@GetDocDescription()"/>
     
-    <meta itemprop="name" content="@GetTitle()">
-    <meta itemprop="description" content="@description">
-    <meta itemprop="image" content="https://novygorod.by/images/logo.png">
+    <meta itemprop="name" content="@GetDocTitle()">
+    <meta itemprop="description" content="@GetDocDescription()">
+    <meta itemprop="image" content="@GetDocImage()">
     
     <meta property="og:url" content="@Context.Request.GetDisplayUrl()">
     <meta property="og:locale" content="ru-RU"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="@GetTitle()"/>
+    <meta property="og:title" content="@GetPageTitle()"/>
     <meta property="og:site_name" content="@companyName"/>
-    <meta property="og:description" content="@description"/>
-    <meta property="og:image" content="https://novygorod.by/images/logo.png"/>
+    <meta property="og:description" content="@GetDocDescription()"/>
+    <meta property="og:image" content="@GetDocImage()"/>
 
     <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css"/>
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true"/>
