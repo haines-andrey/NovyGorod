@@ -9,5 +9,5 @@ public record PostBlockDto : BaseEntityDto
     
     public string Text { get; init; }
 
-    public virtual ICollection<AttachmentDto> Attachments { get; init; }
+    public ICollection<AttachmentDto> Attachments { get; init; }
 }

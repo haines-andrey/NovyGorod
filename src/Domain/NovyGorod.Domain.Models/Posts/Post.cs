@@ -9,8 +9,8 @@ namespace NovyGorod.Domain.Models.Posts;
 public class Post : BaseEntity, ITranslatedEntity<Post, PostTranslation>, IIndexedEntity, ITrackable
 {
     public int Index { get; set; }
-        
-    public PostType Type { get; set; }
+
+    public virtual ICollection<PostTypeLink> TypeLinks { get; set; }
 
     public virtual ICollection<PostBlock> Blocks { get; set; }
 

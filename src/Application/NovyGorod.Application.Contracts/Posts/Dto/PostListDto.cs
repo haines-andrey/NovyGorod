@@ -6,7 +6,7 @@ namespace NovyGorod.Application.Contracts.Posts.Dto;
 
 public record PostListDto : BaseEntityDto
 {
-    public PostType Type { get; init; }
+    public ICollection<PostType> Types { get; init; }
 
     public string Title { get; init; }
         

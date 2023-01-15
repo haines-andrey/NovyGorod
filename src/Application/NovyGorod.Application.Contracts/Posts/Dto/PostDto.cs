@@ -1,5 +1,4 @@
-﻿using NovyGorod.Application.Contracts.Media;
-using NovyGorod.Application.Contracts.Media.Dto;
+﻿using NovyGorod.Application.Contracts.Media.Dto;
 using NovyGorod.Domain.Models.Common;
 using NovyGorod.Domain.Models.Posts;
 
@@ -7,7 +6,7 @@ namespace NovyGorod.Application.Contracts.Posts.Dto;
 
 public record PostDto : BaseEntityDto
 {
-    public PostType Type { get; init; }
+    public ICollection<PostType> Types { get; init; }
 
     public string Title { get; init; }
         
@@ -19,5 +18,5 @@ public record PostDto : BaseEntityDto
 
     public DateTimeOffset CreatedAt { get; init; }
     
-    public virtual ICollection<PostBlockDto> Blocks { get; init; }
+    public ICollection<PostBlockDto> Blocks { get; init; }
 }

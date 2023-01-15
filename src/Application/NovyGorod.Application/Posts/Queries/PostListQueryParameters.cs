@@ -1,4 +1,5 @@
-﻿using NovyGorod.Domain.EntityAccess.Queries;
+﻿using System.Linq;
+using NovyGorod.Domain.EntityAccess.Queries;
 using NovyGorod.Domain.EntityAccess.Queries.Builders;
 using NovyGorod.Domain.Models.Posts;
 
@@ -15,7 +16,7 @@ public class PostListQueryParameters : TranslatedEntityQueryParameters<Post, Pos
     protected override void AddFilters()
     {
         base.AddFilters();
-        FilterIf(Type.HasValue, post => post.Type == Type);
+        FilterIf(Type.HasValue, post => post.TypeLinks.Any(link => link.Type == Type));
     }
 
     protected override void AddSorting()
