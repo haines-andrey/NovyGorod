@@ -3,164 +3,164 @@
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <LangVersion>latestmajor</LangVersion>
-      <UserSecretsId>cda82c92-c4c5-4622-ba4d-d902e2267f50</UserSecretsId>
-  </PropertyGroup>
+        <UserSecretsId>cda82c92-c4c5-4622-ba4d-d902e2267f50</UserSecretsId>
+    </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Application\NovyGorod.Application.Contracts\NovyGorod.Application.Contracts.csproj" />
-      <ProjectReference Include="..\..\Application\NovyGorod.Application\NovyGorod.Application.csproj" />
-      <ProjectReference Include="..\..\Domain\NovyGorod.Domain.EntityAccess\NovyGorod.Domain.EntityAccess.csproj" />
-      <ProjectReference Include="..\..\Infrastructure\NovyGorod.Infrastructure.DataAccess.Core\NovyGorod.Infrastructure.DataAccess.Core.csproj" />
-      <ProjectReference Include="..\..\Infrastructure\NovyGorod.Infrastructure.DataAccess.EF\NovyGorod.Infrastructure.DataAccess.EF.csproj" />
+        <ProjectReference Include="..\..\Application\NovyGorod.Application.Contracts\NovyGorod.Application.Contracts.csproj"/>
+        <ProjectReference Include="..\..\Application\NovyGorod.Application\NovyGorod.Application.csproj"/>
+        <ProjectReference Include="..\..\Domain\NovyGorod.Domain.EntityAccess\NovyGorod.Domain.EntityAccess.csproj"/>
+        <ProjectReference Include="..\..\Infrastructure\NovyGorod.Infrastructure.DataAccess.Core\NovyGorod.Infrastructure.DataAccess.Core.csproj"/>
+        <ProjectReference Include="..\..\Infrastructure\NovyGorod.Infrastructure.DataAccess.EF\NovyGorod.Infrastructure.DataAccess.EF.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.2">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-      <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
-      <PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0" />
-      <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
-      <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+        <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.2">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Serilog.AspNetCore" Version="6.1.0"/>
+        <PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0"/>
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0"/>
+        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <None Include="wwwroot\images\logo.png" />
+        <None Include="wwwroot\images\logo.png"/>
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Update="Resources\Views\Shared\_Layout.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>_Layout.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Shared\NavBarView.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>NavBarView.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Post\ListView.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>ListView.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Home\Index.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Index.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Shared\PostListPaginationView.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>PostListPaginationView.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Post\ListView.en.resx">
-        <DependentUpon>ViewList.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Post\ListView.ru.resx">
-        <DependentUpon>ViewList.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Shared\_Layout.en.resx">
-        <DependentUpon>_Layout.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Shared\_Layout.ru.resx">
-        <DependentUpon>_Layout.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Shared\NavBarView.en.resx">
-        <DependentUpon>NavBarView.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Shared\NavBarView.ru.resx">
-        <DependentUpon>NavBarView.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Shared\PostListContainerView.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>PostListContainerView.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Home\Index.en.resx">
-        <DependentUpon>Index.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Home\Index.ru.resx">
-        <DependentUpon>Index.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Shared\PostListContainerView.en.resx">
-        <DependentUpon>PostListContainerView.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Shared\PostListContainerView.ru.resx">
-        <DependentUpon>PostListContainerView.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Shared\PostListPaginationView.en.resx">
-        <DependentUpon>PostListPaginationView.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Shared\PostListPaginationView.ru.resx">
-        <DependentUpon>PostListPaginationView.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Shared\FooterView.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>FooterView.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Shared\FooterView.en.resx">
-        <DependentUpon>FooterView.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Shared\FooterView.ru.resx">
-        <DependentUpon>FooterView.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Home\ContactsView.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>ContactsView.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Home\ContactsView.en.resx">
-        <DependentUpon>ContactsView.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Views\Home\ContactsView.ru.resx">
-        <DependentUpon>ContactsView.resx</DependentUpon>
-      </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Shared\_Layout.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>_Layout.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Shared\NavBarView.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>NavBarView.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Post\ListView.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>ListView.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Home\Index.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>Index.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Shared\PostListPaginationView.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>PostListPaginationView.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Post\ListView.en.resx">
+            <DependentUpon>ViewList.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Post\ListView.ru.resx">
+            <DependentUpon>ViewList.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Shared\_Layout.en.resx">
+            <DependentUpon>_Layout.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Shared\_Layout.ru.resx">
+            <DependentUpon>_Layout.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Shared\NavBarView.en.resx">
+            <DependentUpon>NavBarView.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Shared\NavBarView.ru.resx">
+            <DependentUpon>NavBarView.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Shared\PostListContainerView.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>PostListContainerView.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Home\Index.en.resx">
+            <DependentUpon>Index.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Home\Index.ru.resx">
+            <DependentUpon>Index.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Shared\PostListContainerView.en.resx">
+            <DependentUpon>PostListContainerView.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Shared\PostListContainerView.ru.resx">
+            <DependentUpon>PostListContainerView.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Shared\PostListPaginationView.en.resx">
+            <DependentUpon>PostListPaginationView.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Shared\PostListPaginationView.ru.resx">
+            <DependentUpon>PostListPaginationView.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Shared\FooterView.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>FooterView.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Shared\FooterView.en.resx">
+            <DependentUpon>FooterView.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Shared\FooterView.ru.resx">
+            <DependentUpon>FooterView.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Home\ContactsView.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>ContactsView.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Home\ContactsView.en.resx">
+            <DependentUpon>ContactsView.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Views\Home\ContactsView.ru.resx">
+            <DependentUpon>ContactsView.resx</DependentUpon>
+        </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Resources\Views\Shared\_Layout.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>_Layout.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\Views\Shared\NavBarView.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>_NavBarView.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\Views\Post\ListView.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>ViewList.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\Views\Home\Index.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>Index.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\Views\Shared\PostListPaginationView.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>PostListpaginationView.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\Views\Shared\PostListPaginationView.Designer.cs">
-        <DependentUpon>PostListPaginationView.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\Views\Shared\PostListContainerView.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>PostListContainerView.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\Views\Shared\FooterView.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>FooterView.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\Views\Home\ContactsView.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>ContactsView.resx</DependentUpon>
-      </Compile>
+        <Compile Update="Resources\Views\Shared\_Layout.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>_Layout.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Resources\Views\Shared\NavBarView.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>_NavBarView.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Resources\Views\Post\ListView.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>ViewList.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Resources\Views\Home\Index.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Index.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Resources\Views\Shared\PostListPaginationView.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>PostListpaginationView.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Resources\Views\Shared\PostListPaginationView.Designer.cs">
+            <DependentUpon>PostListPaginationView.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Resources\Views\Shared\PostListContainerView.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>PostListContainerView.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Resources\Views\Shared\FooterView.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>FooterView.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Resources\Views\Home\ContactsView.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>ContactsView.resx</DependentUpon>
+        </Compile>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Logs" />
+        <Content Update="appsettings*.json" CopyToPublishDirectory="Never"/>
     </ItemGroup>
 
 </Project>
