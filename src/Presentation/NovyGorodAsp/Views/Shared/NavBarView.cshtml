@@ -22,44 +22,51 @@
         </button>
         <div class="collapse navbar-collapse"
              id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-dark"
-                       href="@Url.Action("Index", "Home")">
-                        @Localizer["about-us"]
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark"
-                       href="@Url.Action("ContactsView", "Home")">
-                        @Localizer["contacts"]
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark"
-                       href="@Url.Action("GetProjectsList", "Post")">
-                        @Localizer["projects"]
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark"
-                       href="@Url.Action("GetTheatreList", "Post")">
-                        @Localizer["theatre"]
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark"
-                       href="@Url.Action("GetSchoolList", "Post")">
-                        @Localizer["school"]
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark"
-                       href="@Url.Action("GetFestivalsList", "Post")">
-                        @Localizer["festivals"]
-                    </a>
-                </li>
-            </ul>
+            <div class="navbar-nav ms-auto ">
+                <div class="d-flex py-4 py-md-0">
+                    <div class="d-flex flex-column flex-md-row">
+                        <div class="nav-item">
+                            <a class="nav-link text-dark"
+                               href="@Url.Action("Index", "Home")">
+                                @Localizer["about-us"]
+                            </a>
+                        </div>
+                        <div class="nav-item">
+                            <a class="nav-link text-dark"
+                               href="@Url.Action("ContactsView", "Home")">
+                                @Localizer["contacts"]
+                            </a>
+                        </div>
+                    </div>
+                    <div class="vr mx-4 mx-md-2 d-md-none"></div>
+                    <div class="d-flex flex-column flex-md-row">
+                        <div class="nav-item">
+                            <a class="nav-link text-dark"
+                               href="@Url.Action("GetProjectsList", "Post")">
+                                @Localizer["projects"]
+                            </a>
+                        </div>
+                        <div class="nav-item">
+                            <d class="nav-link text-dark"
+                               href="@Url.Action("GetTheatreList", "Post")">
+                                @Localizer["theatre"]
+                            </d>
+                        </div>
+                        <div class="nav-item">
+                            <a class="nav-link text-dark"
+                               href="@Url.Action("GetSchoolList", "Post")">
+                                @Localizer["school"]
+                            </a>
+                        </div>
+                        <div class="nav-item">
+                            <a class="nav-link text-dark"
+                               href="@Url.Action("GetFestivalsList", "Post")">
+                                @Localizer["festivals"]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @* <div class="dropdown ml-auto"> *@
             @*     <button class="btn btn-sm btn-outline-secondary dropdown-toggle" *@
             @*             type="button" *@
