@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovyGorod.Domain.EntityAcce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovyGorod.Application.Contracts", "src\Application\NovyGorod.Application.Contracts\NovyGorod.Application.Contracts.csproj", "{72C531B2-2243-4DDD-BC2E-435B9272E2C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovyGorod.DbSeeder", "tools\NovyGorod.DbSeeder\NovyGorod.DbSeeder.csproj", "{308CECEB-3092-4F4C-B4DF-6F8B704B5A2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,6 +82,10 @@ Global
 		{72C531B2-2243-4DDD-BC2E-435B9272E2C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72C531B2-2243-4DDD-BC2E-435B9272E2C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72C531B2-2243-4DDD-BC2E-435B9272E2C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{308CECEB-3092-4F4C-B4DF-6F8B704B5A2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{308CECEB-3092-4F4C-B4DF-6F8B704B5A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{308CECEB-3092-4F4C-B4DF-6F8B704B5A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{308CECEB-3092-4F4C-B4DF-6F8B704B5A2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5108CFEB-AC8A-497E-A775-7DDDBEDB1CA6} = {0DE6F7AE-F82E-4870-8B47-34DC9BC7BABA}
@@ -97,5 +103,6 @@ Global
 		{014A5FD5-E6D1-4608-AC49-C4C1DE3F470C} = {5F528C56-FA24-43AE-AC7E-8A80882D2FB5}
 		{CCAC068D-E51E-4A7E-85EB-67890761DC74} = {5F528C56-FA24-43AE-AC7E-8A80882D2FB5}
 		{72C531B2-2243-4DDD-BC2E-435B9272E2C9} = {0DE6F7AE-F82E-4870-8B47-34DC9BC7BABA}
+		{308CECEB-3092-4F4C-B4DF-6F8B704B5A2D} = {505C9592-AF2E-48DD-A631-16D9F0721636}
 	EndGlobalSection
 EndGlobal
