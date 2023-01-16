@@ -7,27 +7,27 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Application\NovyGorod.Application.Contracts\NovyGorod.Application.Contracts.csproj"/>
-        <ProjectReference Include="..\..\Application\NovyGorod.Application\NovyGorod.Application.csproj"/>
-        <ProjectReference Include="..\..\Domain\NovyGorod.Domain.EntityAccess\NovyGorod.Domain.EntityAccess.csproj"/>
-        <ProjectReference Include="..\..\Infrastructure\NovyGorod.Infrastructure.DataAccess.Core\NovyGorod.Infrastructure.DataAccess.Core.csproj"/>
-        <ProjectReference Include="..\..\Infrastructure\NovyGorod.Infrastructure.DataAccess.EF\NovyGorod.Infrastructure.DataAccess.EF.csproj"/>
+        <ProjectReference Include="..\..\Application\NovyGorod.Application.Contracts\NovyGorod.Application.Contracts.csproj" />
+        <ProjectReference Include="..\..\Application\NovyGorod.Application\NovyGorod.Application.csproj" />
+        <ProjectReference Include="..\..\Domain\NovyGorod.Domain.EntityAccess\NovyGorod.Domain.EntityAccess.csproj" />
+        <ProjectReference Include="..\..\Infrastructure\NovyGorod.Infrastructure.DataAccess.Core\NovyGorod.Infrastructure.DataAccess.Core.csproj" />
+        <ProjectReference Include="..\..\Infrastructure\NovyGorod.Infrastructure.DataAccess.EF\NovyGorod.Infrastructure.DataAccess.EF.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0"/>
+        <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.2">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Serilog.AspNetCore" Version="6.1.0"/>
-        <PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0"/>
-        <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0"/>
-        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0"/>
+        <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+        <PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="wwwroot\images\logo.png"/>
+        <None Include="wwwroot\images\logo.png" />
     </ItemGroup>
 
     <ItemGroup>
@@ -160,7 +160,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Content Update="appsettings*.json" CopyToPublishDirectory="Never"/>
+        <Content Update="appsettings*.json" CopyToPublishDirectory="Never" />
     </ItemGroup>
 
 </Project>

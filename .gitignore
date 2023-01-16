@@ -7,9 +7,14 @@ src/Presentation/NovyGorodAsp/wwwroot/css/style.css.map
 # appsettings #
 src/Presentation/NovyGorodAsp/appsettings.Development.json
 src/Presentation/NovyGorodAsp/appsettings.Production.json
+tools/DbSeeder/appsettings.json
 
 # logs #
 src/Presentation/NovyGorodAsp/Logs
+
+# media-data #
+src/Presentation/NovyGorodAsp/media-data
+tools/DbSeeder/data
 
 
 /.idea/
