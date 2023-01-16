@@ -16,10 +16,10 @@
     <p class="lead">@post.Summary</p>
 }
 
-<div class="shadow-sm my-4">
+<div class="shadow my-4">
     @if (post.Video is null)
     {
-        <img src="@post.Preview.Url" alt="preview"/>
+        <img src="@post.Preview.Url" alt="preview" class="img-fluid"/>
     }
     else
     {
