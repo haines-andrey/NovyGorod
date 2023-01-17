@@ -1,4 +1,5 @@
-﻿using NovyGorod.DbSeeder.Dtos;
+﻿using NovyGorod.Common.Extensions;
+using NovyGorod.DbSeeder.Dtos;
 using NovyGorod.DbSeeder.Services;
 using NovyGorod.Domain.Models;
 using NovyGorod.Domain.Models.Posts;
@@ -22,7 +23,7 @@ internal class PostTranslationFactory : IEntityFactory<PostTranslation, PostDto>
             Title = dto.Title,
             Summary = dto.Summary,
             Preview = CreatePreview(dto),
-            Video = CreateVideo(dto),
+            Video = dto.VideoUrl.IsNullOrEmpty() ? null : CreateVideo(dto),
             LanguageId = await _defaultDataService.GetLanguageId(),
         };
 

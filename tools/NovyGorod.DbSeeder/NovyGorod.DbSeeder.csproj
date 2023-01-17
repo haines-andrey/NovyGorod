@@ -20,10 +20,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="data\postDto.template.json">
+      <None Update="appsettings.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="appsettings.template.json">
+      <None Update="data\postDto.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
