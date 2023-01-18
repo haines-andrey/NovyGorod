@@ -5,7 +5,7 @@
     var post = Model.Post;
     Layout = "_Layout";
     ViewData["Title"] = post.Title;
-    ViewData["MetaDescription"] = post.Summary ?? post.Blocks.First(block => !block.Text.IsNullOrEmpty()).Text;
+    ViewData["MetaDescription"] = post.Summary ?? post.Blocks.FirstOrDefault(block => !block.Text.IsNullOrEmpty())?.Text;
     ViewData["MetaImageUrl"] = post.Preview.Url;
     ViewData["MaxWidth"] = 720;
 }
