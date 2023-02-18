@@ -4,6 +4,8 @@ namespace NovyGorod.DbSeeder.Dtos;
 
 internal class PostDto
 {
+    public string CreatedAt { get; set; }
+
     public string Title { get; set; }
 
     public string Summary { get; set; }

@@ -24,6 +24,7 @@ internal class PostFactory : IEntityFactory<Post, PostDto>
     {
         var post = new Post
         {
+            CreatedAt = DateTime.Parse(dto.CreatedAt),
             Index = await _defaultDataService.GetSequenceNumberOfPost(),
             Translations = new[] {await CreateTranslation(dto)},
             Blocks = await CreateBlocks(dto).ToListAsync(),
