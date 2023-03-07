@@ -14,7 +14,7 @@ public class IndexViewModel
 
     public PostListContainerViewModel LastProjectsContainer => new() { Posts = LastProjects };
 
-    public PostListContainerViewModel LastTheatrePostsContainer => new() { Posts = LastProjects };
+    public PostListContainerViewModel LastTheatrePostsContainer => new() { Posts = LastTheatrePosts };
 
-    public PostListContainerViewModel LastSchoolPostsContainer => new() { Posts = LastProjects };
+    public PostListContainerViewModel LastSchoolPostsContainer => new() { Posts = LastSchoolPosts };
 }
