@@ -14,10 +14,14 @@ internal class Module : Autofac.Module
 
         builder.RegisterType<DefaultDataService>().AsImplementedInterfaces().SingleInstance();
         builder.RegisterType<PostParser>().AsImplementedInterfaces().InstancePerLifetimeScope();
+        
 
+        builder.RegisterType<MediaDataFactory>().AsImplementedInterfaces().InstancePerLifetimeScope();
         builder.RegisterType<PostFactory>().AsImplementedInterfaces().InstancePerLifetimeScope();
         builder.RegisterType<PostTranslationFactory>().AsImplementedInterfaces().InstancePerLifetimeScope();
         builder.RegisterType<PostBlockFactory>().AsImplementedInterfaces().InstancePerLifetimeScope();
         builder.RegisterType<PostBlockTranslationFactory>().AsImplementedInterfaces().InstancePerLifetimeScope();
+        builder.RegisterType<AttachmentFactory>().AsImplementedInterfaces().InstancePerLifetimeScope();
+        builder.RegisterType<AttachmentTranslationFactory>().AsImplementedInterfaces().InstancePerLifetimeScope();
     }
 }

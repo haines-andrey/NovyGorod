@@ -10,9 +10,9 @@ internal class PostDto
 
     public string Summary { get; set; }
 
-    public string PreviewImageFilePath { get; set; }
+    public MediaDataDto PreviewImage { get; set; }
 
-    public string VideoUrl { get; set; }
+    public MediaDataDto Video { get; set; }
 
     public List<PostType> Types { get; set; }
 
