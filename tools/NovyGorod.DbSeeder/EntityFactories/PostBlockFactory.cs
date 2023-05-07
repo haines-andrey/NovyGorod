@@ -1,4 +1,5 @@
-﻿using NovyGorod.DbSeeder.Dtos;
+﻿using NovyGorod.Common.Extensions;
+using NovyGorod.DbSeeder.Dtos;
 using NovyGorod.Domain.Models.Attachments;
 using NovyGorod.Domain.Models.Posts;
 
@@ -37,6 +38,11 @@ internal class PostBlockFactory : ISequenceEntityFactory<PostBlock, PostBlockDto
     private async IAsyncEnumerable<Attachment> CreateAttachments(PostBlockDto dto)
     {
         var sequenceNumber = 0;
+
+        if (dto.Attachments.IsNullOrEmpty())
+        {
+            yield break;
+        }
 
         foreach (var attachmentDto in dto.Attachments)
         {
