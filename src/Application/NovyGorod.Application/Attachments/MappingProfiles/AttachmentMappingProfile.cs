@@ -11,6 +11,7 @@ public class AttachmentMappingProfile : Profile
         CreateMap<Attachment, AttachmentDto>()
             .FindTranslationBeforeMap()
             .ForMemberMapFromTranslation(dto => dto.Summary, translation => translation.Summary)
-            .ForMemberMapFromTranslation(dto => dto.Media, translation => translation.Media);
+            .ForMemberMapFromTranslation(dto => dto.PreviewMedia, translation => translation.PreviewMedia)
+            .ForMemberMapFromTranslation(dto => dto.SourceMedia, translation => translation.SourceMedia);
     }
 }

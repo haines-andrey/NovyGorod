@@ -6,9 +6,13 @@ namespace NovyGorod.Domain.Models.Attachments;
 [ExcludeFromCodeCoverage]
 public class AttachmentTranslation : BaseEntity, ITranslationOfEntity<Attachment>
 {
-    public int MediaId { get; set; }
+    public int? PreviewMediaId { get; set; }
 
-    public virtual MediaData Media { get; set; }
+    public virtual MediaData PreviewMedia { get; set; }
+    
+    public int SourceMediaId { get; set; }
+
+    public virtual MediaData SourceMedia { get; set; }
 
     public string Summary { get; set; }
 

@@ -11,6 +11,7 @@ internal class AttachmentTranslationConfig : IEntityTypeConfiguration<Attachment
         builder.ApplyBaseEntityConfig()
             .ApplyTranslationOfEntityConfig<Attachment, AttachmentTranslation>();
 
-        builder.HasOne(x => x.Media).WithMany().HasForeignKey(x => x.MediaId);
+        builder.HasOne(x => x.SourceMedia).WithMany().HasForeignKey(x => x.SourceMediaId);
+        builder.HasOne(x => x.PreviewMedia).WithMany().HasForeignKey(x => x.PreviewMediaId);
     }
 }
