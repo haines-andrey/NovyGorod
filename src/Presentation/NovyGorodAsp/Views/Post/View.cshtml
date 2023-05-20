@@ -1,4 +1,6 @@
 ﻿@using NovyGorod.Common.Extensions
+@using NovyGorodAsp.Models.Posts
+@using NovyGorodAsp.Models.Posts.Attachments
 @model NovyGorodAsp.Models.Posts.PostViewModel
 
 @{
@@ -17,16 +19,9 @@
 }
 
 <div class="shadow my-4">
-    @if (post.Video is null)
-    {
-        <img src="@post.Preview.Url" alt="preview" class="img-fluid"/>
-    }
-    else
-    {
-        <div class="ratio ratio-16x9">
-            <iframe src=@post.Video.Url allowfullscreen></iframe>
-        </div>
-    }
+    @{ await Html.RenderPartialAsync(
+           "Attachments/MediaDataView",
+           new MediaDataViewModel {MediaData = post.Video ?? post.Preview}); }
 </div>
 
 <div>
@@ -35,6 +30,13 @@
         <div>
             <h1 class="display-6">@block.Title</h1>
             <p>@Html.Raw(block.Text)</p>
+
+            @if (!block.Attachments.IsNullOrEmpty())
+            {
+                await Html.RenderPartialAsync(
+                    "Attachments/AttachmentsPreviewCarouselView",
+                    new AttachmentsPreviewCarouselViewModel { PostBlockId = block.Id, Attachments = block.Attachments });
+            }
         </div>
     }
 </div>

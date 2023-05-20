@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using NovyGorod.Domain.EntityAccess;
 using NovyGorod.Domain.Models;
+using NovyGorod.Domain.Models.Attachments;
 using NovyGorod.Domain.Models.Common;
 using NovyGorod.Domain.Models.Posts;
 using NovyGorod.Infrastructure.DataAccess.Core;
@@ -49,6 +50,7 @@ public static class ContainerBuilderExtensions
         builder.AddGenericRepository<Language>();
         builder.AddGenericRepository<Post>();
         builder.AddGenericRepository<MediaData>();
+        builder.AddGenericRepository<Attachment>();
 
         return builder;
     }

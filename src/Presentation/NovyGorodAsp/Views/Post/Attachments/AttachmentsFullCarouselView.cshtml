@@ -1,0 +1,60 @@
+﻿@using NovyGorodAsp.Models.Posts.Attachments
+@using NovyGorodAsp.Models.Shared
+@model AttachmentsFullCarouselViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>title</title>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true"/>
+</head>
+<body class="bg-dark d-flex flex-column top" style="height: 100vh">
+<main class="container-fluid">
+    @if (Model.AttachmentsList.Attachments.Count == 1)
+    {
+        await Html.RenderPartialAsync(
+            "Attachments/MediaDataView",
+            new MediaDataViewModel {MediaData = Model.AttachmentsList.Attachments.Single().SourceMedia});
+
+        return;
+    }
+
+    <div id="attachmentsCarousel" class="carousel slide shadow my-4" data-bs-interval="false">
+        <div class="carousel-inner">
+            @foreach (var attachment in Model.AttachmentsList.Attachments)
+            {
+                <div class="carousel-item @(attachment.Id == Model.FirstAttachmentId ? "active" : null)">
+                    @{
+                        await Html.RenderPartialAsync(
+                            "Attachments/MediaDataView",
+                            new MediaDataViewModel {MediaData = attachment.SourceMedia});
+                    }
+                    <div class="carousel-caption d-none">
+                        <p>@attachment.Summary</p>
+                    </div>
+                </div>
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#attachmentsCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#attachmentsCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+</main>
+<footer>
+    <div class="container" style="max-width: 800px">
+        @{ await Html.RenderPartialAsync("FooterView", new FooterViewModel()); }
+    </div>
+</footer>
+</body>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/carousel-full.js" asp-append-version="true"></script>
+</html>

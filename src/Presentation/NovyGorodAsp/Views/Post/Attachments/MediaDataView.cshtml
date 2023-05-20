@@ -1,0 +1,18 @@
+﻿@using NovyGorod.Domain.Models
+@using NovyGorod.Common.Extensions
+@model NovyGorodAsp.Models.Posts.Attachments.MediaDataViewModel
+@{
+    var mediaData = Model.MediaData;
+    var ratio = Model.Ratio;
+}
+
+<div class="@(!ratio.IsNullOrEmpty() ? $"ratio ratio-x`{ratio}" : null)">
+    @if (mediaData.Type is MediaDataType.Image)
+    {
+        <img src="@mediaData.Url" alt="preview" class="img-fluid"/>
+    }
+    else if (mediaData.Type is MediaDataType.Video)
+    {
+        <iframe src=@mediaData.Url allowfullscreen></iframe>
+    }
+</div>

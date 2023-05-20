@@ -1,0 +1,42 @@
+﻿@using NovyGorodAsp.Models.Posts.Attachments
+@model AttachmentsPreviewCarouselViewModel
+@{
+    var firstAttachmentId = Model.Attachments.FirstOrDefault()?.Id;
+}
+
+@if (Model.Attachments.Count == 1)
+{
+    await Html.RenderPartialAsync(
+        "Attachments/MediaDataView",
+        new MediaDataViewModel {MediaData = Model.Attachments.Single().SourceMedia, Ratio = "16x9"});
+
+    return;
+}
+
+<div id="attachmentsCarousel" class="carousel slide shadow my-4" data-bs-interval="false">
+    <div class="carousel-inner">
+        @foreach (var attachment in Model.Attachments)
+        {
+            <a class="carousel-item @(attachment.Id == firstAttachmentId ? "active" : null)"
+               href="@Url.Action("ViewAttachmentsFullCarousel", "Post", new {Model.PostBlockId, FirstAttachmentId = attachment.Id})">
+                @{
+                    await Html.RenderPartialAsync(
+                        "Attachments/MediaDataView",
+                        new MediaDataViewModel
+                        {
+                            MediaData = attachment.PreviewMedia ?? attachment.SourceMedia, Ratio = "16x9",
+                        });
+                }
+                <div class="carousel-caption d-none">
+                    <p>@attachment.Summary</p>
+                </div>
+            </a>
+        }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#attachmentsCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#attachmentsCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+</div>

@@ -23,7 +23,7 @@ internal class AttachmentTranslationFactory : IEntityFactory<AttachmentTranslati
         var translation = new AttachmentTranslation
         {
             LanguageId = await _defaultDataService.GetLanguageId(),
-            Media = await _mediaDataFactory.Create(dto.MediaData),
+            SourceMedia = await _mediaDataFactory.Create(dto.MediaData),
             Summary = dto.Summary,
         };
 
