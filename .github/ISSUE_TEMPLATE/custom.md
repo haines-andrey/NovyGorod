@@ -1,6 +1,6 @@
 ---
-name: Custom issue template
-about: Describe this issue template's purpose here.
+name: Novy Gorod BY issue template
+about: 
 title: NGB
 labels: ''
 assignees: ''
