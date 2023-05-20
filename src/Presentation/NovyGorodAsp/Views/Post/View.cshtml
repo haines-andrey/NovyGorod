@@ -10,31 +10,33 @@
     ViewData["MaxWidth"] = 720;
 }
 
-<h1 class="display-4 text-break">@post.Title</h1>
-@if (!post.Summary.IsNullOrEmpty())
-{
-    <p class="lead">@post.Summary</p>
-}
+<div class="d-flex flex-column">
+    <h1 class="display-4 text-break">@post.Title</h1>
+    @if (!post.Summary.IsNullOrEmpty())
+    {
+        <p class="lead">@post.Summary</p>
+    }
 
-<div class="shadow my-4">
-    @if (post.Video is null)
-    {
-        <img src="@post.Preview.Url" alt="preview" class="img-fluid"/>
-    }
-    else
-    {
-        <div class="ratio ratio-16x9">
-            <iframe src=@post.Video.Url allowfullscreen></iframe>
-        </div>
-    }
-</div>
+    <div class="shadow my-4 mx-auto">
+        @if (post.Video is null)
+        {
+            <img src="@post.Preview.Url" alt="preview" class="img-fluid"/>
+        }
+        else
+        {
+            <div class="ratio ratio-16x9">
+                <iframe src=@post.Video.Url allowfullscreen></iframe>
+            </div>
+        }
+    </div>
 
-<div>
-    @foreach (var block in post.Blocks)
-    {
-        <div>
-            <h1 class="display-6">@block.Title</h1>
-            <p>@Html.Raw(block.Text)</p>
-        </div>
-    }
+    <div>
+        @foreach (var block in post.Blocks)
+        {
+            <div>
+                <h1 class="display-6">@block.Title</h1>
+                <p>@Html.Raw(block.Text)</p>
+            </div>
+        }
+    </div>
 </div>
