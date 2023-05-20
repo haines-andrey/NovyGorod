@@ -1,6 +1,6 @@
 ---
 name: Novy Gorod BY issue template
-about: 
+about: Novy Gorod BY issue template
 title: NGB
 labels: ''
 assignees: ''
