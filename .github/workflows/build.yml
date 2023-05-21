@@ -2,15 +2,15 @@ name: Build
 
 on:
   workflow_dispatch:
+    inputs:
+      upload_artifacts:
+        description: 'Upload artifacts'
+        required: true
+        default: 'false'
   pull_request:
     branches:
       - master
       - develop
-  inputs:
-    upload_artifacts:
-      description: 'Upload artifacts'
-      required: true
-      default: 'false'
 
 jobs:
   build:
