@@ -20,15 +20,18 @@ jobs:
   Job:
     runs-on: windows-latest
     steps:
+      - name: Get build version
+        run: echo "${ TAG_NAME##*- }"
+
+      - name: Set build version from tag name
+        if: ${{ env.BUILD_VERSION == null }}
+        run: $Env:BUILD_VERSION = "${ TAG_NAME##*- }"
+        
       - name: Checkout
         uses: actions/checkout@v3
       
       - name: Setup node
         uses: actions/setup-node@v3
-      
-      - name: Set build version from tag name
-        if: ${{ env.BUILD_VERSION == null }}
-        run: $Env:BUILD_VERSION = "${ TAG_NAME##*- }"
 
       - name: Build project
         run: dotnet build src/Presentation/NovyGorodAsp --configuration Release -p:Version=${ BUILD_VERSION }
