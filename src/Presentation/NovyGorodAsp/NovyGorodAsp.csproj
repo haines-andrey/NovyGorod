@@ -159,8 +159,4 @@
         </Compile>
     </ItemGroup>
 
-    <ItemGroup>
-        <Content Update="appsettings*.json" CopyToPublishDirectory="Never" />
-    </ItemGroup>
-
 </Project>
