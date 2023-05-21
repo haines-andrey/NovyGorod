@@ -8,6 +8,7 @@ on:
         description: 'Need to upload artifacts'
         required: false
         default: false
+
   pull_request:
     branches:
       - master
@@ -30,12 +31,12 @@ jobs:
         run: .\scripts\NpmInstallAndMove.ps1
 
       - name: publish
-        run: dotnet publish src/Presentation/NovyGorodAsp --output app --no-build --configuration Release
+        run: dotnet publish src/Presentation/NovyGorodAsp --output web-app --no-build --configuration Release
 
       - name: upload artifact
-        if: ${{ github.event.inputs.upload_artifacts }}
+        if: ${{ inputs.upload_artifacts }}
         uses: actions/upload-artifact@v3
         with:
-          name: app
-          path: app/**
+          name: novy-gorod-web-app
+          path: web-app/**
           if-no-files-found: error
