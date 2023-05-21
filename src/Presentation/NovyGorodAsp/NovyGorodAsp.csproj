@@ -4,6 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <LangVersion>latestmajor</LangVersion>
         <UserSecretsId>cda82c92-c4c5-4622-ba4d-d902e2267f50</UserSecretsId>
+        <EnableStaticWebAssets>false</EnableStaticWebAssets>
     </PropertyGroup>
 
     <ItemGroup>
