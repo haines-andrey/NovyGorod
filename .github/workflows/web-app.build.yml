@@ -11,6 +11,9 @@ on:
     tags: release-*
     paths:
       - src
+        
+env:
+  TAG_NAME: ${{ github.ref_name }}
 
 jobs:
   Job:
@@ -20,7 +23,7 @@ jobs:
       - uses: actions/setup-node@v3
 
       - name: Build project
-        run: dotnet build src/Presentation/NovyGorodAsp --configuration Release -p ${{ github.ref_name##*- }}
+        run: dotnet build src/Presentation/NovyGorodAsp --configuration Release -p ${ TAG_NAME##*- }
 
       - name: Invoke NpmInstallAndMove.ps1
         run: .\scripts\NpmInstallAndMove.ps1
