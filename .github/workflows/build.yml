@@ -2,10 +2,6 @@ name: 'Build'
 
 on:
   workflow_dispatch:
-    inputs:
-      upload_artifacts:
-        type: boolean
-        description: 'Upload artifacts'
         
   pull_request:
     branches:
