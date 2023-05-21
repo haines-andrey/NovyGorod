@@ -31,6 +31,7 @@ jobs:
         uses: actions/setup-node@v3
 
       - name: Build project
+        shell: bash
         run: dotnet build src/Presentation/NovyGorodAsp --configuration Release -p:Version=${BUILD_VERSION}
 
       - name: Invoke NpmInstallAndMove.ps1
