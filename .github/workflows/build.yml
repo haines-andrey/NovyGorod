@@ -2,13 +2,19 @@ name: Build
 
 on:
   workflow_dispatch:
+    inputs:
+      upload_artifacts:
+        type: boolean
+        description: 'Set true if need to upload artifacts'
+        required: false
+        default: false
   pull_request:
     branches:
       - master
       - develop
 
 jobs:
-  build:
+  job:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
