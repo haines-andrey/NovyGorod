@@ -11,21 +11,16 @@ on:
     tags: release/v*
     paths:
       - src
-        
-env:
-  TAG_NAME: ${{ github.ref_name }}
-  BUILD_VERSION: ${{ inputs.version }}
 
 jobs:
   Job:
     runs-on: windows-latest
     steps:
       - name: Get build version
-        run: echo "${ $env.TAG_NAME }"
+        run: echo "${{ GITHUB_REF_NAME#v }}"
 
       - name: Set build version from tag name
-        if: ${{ env.BUILD_VERSION == null }}
-        run: $Env:BUILD_VERSION = "${ TAG_NAME#v }"
+        run: BUILD_VERSION = ${ GITHUB_REF_NAME#v }
         
       - name: Checkout
         uses: actions/checkout@v3
