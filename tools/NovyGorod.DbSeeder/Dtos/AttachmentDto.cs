@@ -2,7 +2,7 @@
 
 internal class AttachmentDto
 {
-    public MediaDataDto MediaData { get; set; }
+    public MediaDataDto SourceMediaData { get; set; }
 
     public string Summary { get; set; }
 }
