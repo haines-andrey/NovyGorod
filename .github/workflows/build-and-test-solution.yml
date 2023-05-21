@@ -1,0 +1,17 @@
+name: Build and test solution
+
+on:
+  pull_request:
+    branches:
+      - master
+      - release/*
+      - develop
+
+jobs:
+  Job:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build solution
+        run: dotnet build --configuration Release
