@@ -32,10 +32,10 @@ jobs:
       - name: publish
         run: dotnet publish src/Presentation/NovyGorodAsp --output app --no-build --configuration Release
 
-      - if: github.event.inputs.upload_artifacts == true
-        name: upload artifact
-          uses: actions/upload-artifact@v3
-          with:
-            name: app
-            path: app/**
-            if-no-files-found: error
+      - name: upload artifact
+        if: ${{ github.event.inputs.upload_artifacts }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: app
+          path: app/**
+          if-no-files-found: error
