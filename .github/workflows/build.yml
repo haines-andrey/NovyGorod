@@ -1,11 +1,7 @@
-name: 'Build'
+name: Build
 
 on:
   workflow_dispatch:
-    inputs:
-      upload_artifacts:
-        type: boolean
-        description: 'Upload artifacts'
   pull_request:
     branches:
       - master
@@ -24,11 +20,10 @@ jobs:
       - name: invoke NpmInstallAndMove.ps1
         run: .\scripts\NpmInstallAndMove.ps1
       - name: publish
-        run: dotnet publish src/Presentation/NovyGorodAsp --output novy-gorod-webapp --no-build --configuration Release
-      - if: github.event.inputs.upload_artifacts == true
-        name: upload artifact
-          uses: actions/upload-artifact@v3
-          with:
-            name: novy-gorod-webapp
-            path: novy-gorod-webapp/**
-            if-no-files-found: error
+        run: dotnet publish src/Presentation/NovyGorodAsp --output app --no-build --configuration Release
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: app
+          path: app/**
+          if-no-files-found: error
