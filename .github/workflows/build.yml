@@ -13,14 +13,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
+
       - name: restore packages
         run: dotnet restore
+
       - name: build solution
         run: dotnet build --configuration Release --no-restore
+
       - name: invoke NpmInstallAndMove.ps1
         run: .\scripts\NpmInstallAndMove.ps1
+
       - name: publish
         run: dotnet publish src/Presentation/NovyGorodAsp --output app --no-build --configuration Release
+
       - name: upload artifact
         uses: actions/upload-artifact@v3
         with:
