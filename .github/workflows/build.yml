@@ -5,7 +5,7 @@ on:
     inputs:
       upload_artifacts:
         description: 'Upload artifacts'
-        required: true
+        required: false
         default: 'false'
   pull_request:
     branches:
