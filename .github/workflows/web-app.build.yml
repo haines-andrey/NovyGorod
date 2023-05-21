@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-node@v3
 
       - name: Build project
-        run: dotnet build src/Presentation/NovyGorodAsp --configuration Release -p ${{ github.ref_name }}
+        run: dotnet build src/Presentation/NovyGorodAsp --configuration Release -p ${{ github.ref_name##*- }}
 
       - name: Invoke NpmInstallAndMove.ps1
         run: .\scripts\NpmInstallAndMove.ps1
