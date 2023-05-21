@@ -26,9 +26,9 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
       
-      - name: Get build version from tag name
+      - name: Set build version from tag name
         if: ${{ env.BUILD_VERSION == null }}
-        run: echo "BUILD_VERSION=${ TAG_NAME##*- }" >> $GITHUB_ENV
+        run: BUILD_VERSION=${ TAG_NAME##*- }
 
       - name: Build project
         run: dotnet build src/Presentation/NovyGorodAsp --configuration Release -p:Version=${ BUILD_VERSION }
