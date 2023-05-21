@@ -20,7 +20,7 @@
       "Attachments": [
         {
           "Summary": null,
-          "MediaData": {
+          "SourceMediaData": {
             "Type": 1,
             "IsLocal": true,
             "Url": null
