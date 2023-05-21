@@ -5,7 +5,7 @@ on:
     inputs:
       upload_artifacts:
         type: boolean
-        description: 'Set true if need to upload artifacts'
+        description: 'Need to upload artifacts'
         required: false
         default: false
   pull_request:
@@ -32,9 +32,10 @@ jobs:
       - name: publish
         run: dotnet publish src/Presentation/NovyGorodAsp --output app --no-build --configuration Release
 
-      - name: upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: app
-          path: app/**
-          if-no-files-found: error
+      - if: github.event.inputs.upload_artifacts == true
+        name: upload artifact
+          uses: actions/upload-artifact@v3
+          with:
+            name: app
+            path: app/**
+            if-no-files-found: error
