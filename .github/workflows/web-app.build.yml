@@ -3,7 +3,7 @@
 on:
   workflow_dispatch:
     inputs:
-      version:
+      build_version:
         type: string
         description: 'Version of web application, (major).(minor)'
         required: true
@@ -14,16 +14,24 @@ on:
         
 env:
   TAG_NAME: ${{ github.ref_name }}
+  BUILD_VERSION: ${{ inputs.version }}
 
 jobs:
   Job:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Setup node
+        uses: actions/setup-node@v3
+      
+      - name: Get build version from tag name
+        if: ${ BUILD_VERSION == null }
+        run: echo "BUILD_VERSION=${ TAG_NAME##*- }" >> GITHUB_ENV
 
       - name: Build project
-        run: dotnet build src/Presentation/NovyGorodAsp --configuration Release -p:Version=${ TAG_NAME##*- }
+        run: dotnet build src/Presentation/NovyGorodAsp --configuration Release -p:Version=${ BUILD_VERSION }
 
       - name: Invoke NpmInstallAndMove.ps1
         run: .\scripts\NpmInstallAndMove.ps1
