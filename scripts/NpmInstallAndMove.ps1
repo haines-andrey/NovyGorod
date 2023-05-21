@@ -4,8 +4,13 @@ Set-Location $StartupProject
 echo "npm install..."
 npm install
 
-echo "remove old modules from wwwroot\lib..."
-Remove-Item "$StartupProject\wwwroot\lib\*" -Recurse
+$directory = "$StartupProject\wwwroot\lib"
+echo "remove old modules from $directory ..."
+if (Test-Path $directory) {
+    Remove-Item "$directory\*" -Recurse
+} else {
+    New-Item -ItemType "directory" $directory
+}
 
 echo "move new modules..."
-Move-Item -Path "$StartupProject\node_modules\*" -Destination "$StartupProject\wwwroot\lib"
+Move-Item -Path "$StartupProject\node_modules\*" -Destination $directory
