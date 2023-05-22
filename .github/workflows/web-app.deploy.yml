@@ -17,8 +17,9 @@ jobs:
     environment: prod
     steps:
       - name: Download artifact '${{ env.ARTIFACT_NAME }}'
-        uses: actions/download-artifact@v3
+        uses: dawidd6/action-download-artifact@v2
         with:
+          workflow: web-app.build.yml
           name: ${{ env.ARTIFACT_NAME }}
 
       - name: Create .env file
