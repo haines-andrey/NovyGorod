@@ -16,10 +16,10 @@ jobs:
     runs-on: windows-latest
     environment: prod
     steps:
-      #- name: Download artifact '${{ env.ARTIFACT_NAME }}'
-      #  uses: actions/download-artifact@v3
-      #  with:
-      #    name: ${{ env.ARTIFACT_NAME }}
+      - name: Download artifact '${{ env.ARTIFACT_NAME }}'
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
 
       - name: Create .env file
         shell: bash
