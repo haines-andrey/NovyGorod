@@ -1,4 +1,4 @@
-﻿name: Web App/Build 
+﻿name: Web App / Build 
 
 on:
   workflow_dispatch:

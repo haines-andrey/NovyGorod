@@ -1,0 +1,29 @@
+﻿name: Web App / Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_version:
+        type: string
+        description: 'Version of web application artifact: (major).(minor)'
+        required: true
+
+env:
+  ARTIFACT_NAME: novy-gorod-web-app_${{ inputs.build_version }}
+
+jobs:
+  Job:
+    runs-on: windows-latest
+    environment: prod
+    steps:
+      #- name: Download artifact '${{ env.ARTIFACT_NAME }}'
+      #  uses: actions/download-artifact@v3
+      #  with:
+      #    name: ${{ env.ARTIFACT_NAME }}
+
+      - name: Create .env file
+        shell: bash
+        run: |
+          echo. >> .env
+          echo "CONNECTIONSTRINGS__MSSQL=${CONNECTIONSTRINGS__MSSQL}" >> .env
+      
