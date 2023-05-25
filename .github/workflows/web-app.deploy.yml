@@ -21,9 +21,22 @@ jobs:
         with:
           workflow: web-app.build.yml
           name: ${{ env.ARTIFACT_NAME }}
+          path: artifact
 
-      - name: Create .env file
+      - name: Create file '.env'
         shell: bash
         run: |
-          echo "CONNECTIONSTRINGS__MSSQL=${CONNECTIONSTRINGS__MSSQL}" >> .env
+          echo "CONNECTIONSTRINGS__MSSQL=${CONNECTIONSTRINGS__MSSQL}" >> artifact/.env
+          
+      - name: Create file 'ftp_commands.txt'
+        shell: bash
+        run: |
+          echo "CONNECTIONSTRINGS__MSSQL=${CONNECTIONSTRINGS__MSSQL}" >> ftp_commands.txt
+          
+      - name: Deploy artifact
+        shell: bash
+        run: |
+          ftp
+          open
+          
       
