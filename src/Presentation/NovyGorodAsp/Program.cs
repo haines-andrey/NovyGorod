@@ -1,4 +1,5 @@
 using Autofac.Extensions.DependencyInjection;
+using dotenv.net;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Serilog;
@@ -9,6 +10,7 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        DotEnv.Load();
         CreateHostBuilder(args).Build().Run();
     }
 
