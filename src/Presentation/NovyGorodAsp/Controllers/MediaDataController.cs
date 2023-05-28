@@ -21,6 +21,7 @@ public class MediaDataController : Controller
     }
 
     [HttpGet("{id:int}")]
+    [ResponseCache(Duration = 30 * 60, Location = ResponseCacheLocation.Any)]
     public async Task<IActionResult> View(int id)
     {
         var request = new GetMediaDataRequest {Id = id};
