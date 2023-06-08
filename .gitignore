@@ -17,6 +17,7 @@ tools/NovyGorod.DbSeeder/data
 
 
 /.idea/
+*.env
 *.com
 *.class
 *.dll
