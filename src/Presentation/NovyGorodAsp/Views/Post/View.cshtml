@@ -12,33 +12,33 @@
     ViewData["MaxWidth"] = 720;
 }
 
-<div class="d-flex flex-column">
-    <h1 class="display-4 text-break">@post.Title</h1>
-    @if (!post.Summary.IsNullOrEmpty())
-    {
-        <p class="lead">@post.Summary</p>
-    }
+<h1 class="display-4 text-break">@post.Title</h1>
+@if (!post.Summary.IsNullOrEmpty())
+{
+    <p class="lead">@post.Summary</p>
+}
 
-    <div class="shadow my-4 mx-auto">
+<div class="my-4 d-flex">
+    <div class="mx-auto shadow">
         @{ await Html.RenderPartialAsync(
                "Attachments/MediaDataView",
                new MediaDataViewModel {MediaData = post.Video ?? post.Preview}); }
     </div>
+</div>
 
-    <div>
-        @foreach (var block in post.Blocks)
-        {
-            <div>
-                <h1 class="display-6">@block.Title</h1>
-                <p>@Html.Raw(block.Text)</p>
+<div>
+    @foreach (var block in post.Blocks)
+    {
+        <div>
+            <h1 class="display-6">@block.Title</h1>
+            <p>@Html.Raw(block.Text)</p>
 
-                @if (!block.Attachments.IsNullOrEmpty())
-                {
-                    await Html.RenderPartialAsync(
-                        "Attachments/AttachmentsPreviewCarouselView",
-                        new AttachmentsPreviewCarouselViewModel {PostBlockId = block.Id, Attachments = block.Attachments});
-                }
-            </div>
-        }
-    </div>
+            @if (!block.Attachments.IsNullOrEmpty())
+            {
+                await Html.RenderPartialAsync(
+                    "Attachments/AttachmentsPreviewCarouselView",
+                    new AttachmentsPreviewCarouselViewModel {PostBlockId = block.Id, Attachments = block.Attachments});
+            }
+        </div>
+    }
 </div>
