@@ -1,0 +1,17 @@
+﻿services: 
+  web-app:
+    container_name: novygorod-web-app
+    ports:
+      - ${WEB_APP_PORTS}
+    env_file:
+      - web-app.env
+    build:
+      context: ${WEB_APP_ARTIFACT_PATH}
+      dockerfile: web-app.Dockerfile
+    volumes:
+      - media-data:/app/media-data
+
+volumes:
+  media-data:
+    name: novygorod-media-data
+    driver: local
