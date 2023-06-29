@@ -54,24 +54,6 @@ public class PostController : Controller
         return PartialView("View", viewModel);
     }
 
-    [HttpGet("post-block/{postBlockId}/attachments-full-carousel")]
-    public async Task<IActionResult> ViewAttachmentsFullCarousel(int postBlockId, int? firstAttachmentId)
-    {
-        var request = new GetAttachmentsListRequest
-        {
-            PostBlockId = postBlockId, FirstAttachmentId = firstAttachmentId,
-        };
-        var list = await _mediator.Send(request);
-        firstAttachmentId ??= list.Attachments.FirstOrDefault()?.Id;
-
-        var viewModel = new AttachmentsFullCarouselViewModel
-        {
-            AttachmentsList = list, FirstAttachmentId = firstAttachmentId,
-        };
-
-        return PartialView("Attachments/AttachmentsFullCarouselView", viewModel);
-    }
-
     private async Task<IActionResult> ViewPostsList(PostType type, string actionName, int pageIndex)
     {
         var request = new SearchPostsRequest {Type = type, PageSize = 6, PageIndex = --pageIndex};
