@@ -8,7 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Attachments" />
       <Folder Include="Common" />
     </ItemGroup>
 

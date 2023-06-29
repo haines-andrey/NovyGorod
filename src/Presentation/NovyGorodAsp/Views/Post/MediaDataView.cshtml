@@ -1,0 +1,20 @@
+﻿@using NovyGorod.Domain.Models
+@model NovyGorodAsp.Models.Posts.MediaData.MediaDataViewModel
+@{
+    var mediaData = Model.MediaData;
+}
+
+@switch (mediaData.Type)
+{
+    case MediaDataType.Image:
+        <div class="@Model.ImageSettings.ParentClassString">
+            <img src="@mediaData.Url" alt="preview" class="@Model.ImageSettings.ClassString">
+        </div>
+        break;
+
+    case MediaDataType.Video:
+        <div class="@Model.VideoSettings.ClassString">
+            <iframe src=@mediaData.Url allowfullscreen></iframe>
+        </div>
+        break;
+}
