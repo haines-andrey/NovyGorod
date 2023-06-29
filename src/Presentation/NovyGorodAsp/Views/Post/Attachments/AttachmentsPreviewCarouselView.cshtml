@@ -1,0 +1,61 @@
+﻿@using NovyGorodAsp.Models.Posts.MediaData
+@model NovyGorodAsp.Models.Posts.Attachments.AttachmentsPreviewCarouselViewModel
+@{
+    const int indexOfActiveAttachment = 0;
+    var firstAttachmentId = Model.Attachments.ElementAt(indexOfActiveAttachment).Id;
+
+    string GetActiveStatusOfAttachment(int attachmentId)
+    {
+        return firstAttachmentId == attachmentId ? "active" : null;
+    }
+}
+
+@if (Model.Attachments.Count == 1)
+{
+    await Html.RenderPartialAsync(
+        "MediaDataView",
+        MediaDataViewModelFactory
+            .Create(Model.Attachments.Single().SourceMedia)
+            .WithImageSettings(settings => settings.WithFluid().WithDefaultRatio().WithNonSelectable())
+            .WithVideoSettings(settings => settings.WithDefaultRatio().WithNonSelectable()));
+
+    return;
+}
+
+<div id="attachmentsCarousel" class="carousel slide shadow my-4" data-bs-interval="false">
+    <div class="carousel-indicators">
+        @for (var index = 0; index < Model.Attachments.Count; index++)
+        {
+            <button type="button"
+                    data-bs-target="#attachmentsCarousel"
+                    data-bs-slide-to="@index"
+                    @(index == indexOfActiveAttachment ? "class=active" : null)>
+            </button>
+        }
+    </div>
+    <div class="carousel-inner">
+        @foreach (var attachment in Model.Attachments)
+        {
+            <a class="carousel-item @GetActiveStatusOfAttachment(attachment.Id)"
+               href=@attachment.SourceMedia.Url>
+                @{
+                    await Html.RenderPartialAsync(
+                        "MediaDataView",
+                        MediaDataViewModelFactory
+                            .Create(attachment.PreviewMedia ?? attachment.SourceMedia)
+                            .WithImageSettings(settings => settings.WithFluid().WithDefaultRatio().WithNonSelectable())
+                            .WithVideoSettings(settings => settings.WithDefaultRatio().WithNonSelectable()));
+                }
+                <div class="carousel-caption d-none d-sm-block">
+                    <p>@attachment.Summary</p>
+                </div>
+            </a>
+        }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#attachmentsCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#attachmentsCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+</div>
