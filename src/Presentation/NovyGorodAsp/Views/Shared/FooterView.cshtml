@@ -3,5 +3,7 @@
 @inject IViewLocalizer Localizer
 
 <div class="d-flex">
-    <span class="m-auto">@Model.GetCopyrightString(Localizer.GetString("company-name"))</span>
+    <span class="m-auto">
+        @($"{Model.GetCopyrightString(Localizer.GetString("company-name"))}, {Model.GetApplicationVersionString()}")
+    </span>
 </div>
