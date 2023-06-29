@@ -1,33 +1,52 @@
-﻿@using NovyGorodAsp.Models.Posts.Attachments
-@model AttachmentsPreviewCarouselViewModel
+﻿@using NovyGorodAsp.Models.Posts.MediaData
+@model NovyGorodAsp.Models.Posts.Attachments.AttachmentsPreviewCarouselViewModel
 @{
-    var firstAttachmentId = Model.Attachments.FirstOrDefault()?.Id;
+    const int indexOfActiveAttachment = 0;
+    var firstAttachmentId = Model.Attachments.ElementAt(indexOfActiveAttachment).Id;
+
+    string GetActiveStatusOfAttachment(int attachmentId)
+    {
+        return firstAttachmentId == attachmentId ? "active" : null;
+    }
 }
 
 @if (Model.Attachments.Count == 1)
 {
     await Html.RenderPartialAsync(
-        "Attachments/MediaDataView",
-        new MediaDataViewModel {MediaData = Model.Attachments.Single().SourceMedia, Ratio = "16x9"});
+        "MediaDataView",
+        MediaDataViewModelFactory
+            .Create(Model.Attachments.Single().SourceMedia)
+            .WithImageSettings(settings => settings.WithFluid().WithDefaultRatio().WithNonSelectable())
+            .WithVideoSettings(settings => settings.WithDefaultRatio().WithNonSelectable()));
 
     return;
 }
 
 <div id="attachmentsCarousel" class="carousel slide shadow my-4" data-bs-interval="false">
+    <div class="carousel-indicators">
+        @for (var index = 0; index < Model.Attachments.Count; index++)
+        {
+            <button type="button"
+                    data-bs-target="#attachmentsCarousel"
+                    data-bs-slide-to="@index"
+                    @(index == indexOfActiveAttachment ? "class=active" : null)>
+            </button>
+        }
+    </div>
     <div class="carousel-inner">
         @foreach (var attachment in Model.Attachments)
         {
-            <a class="carousel-item @(attachment.Id == firstAttachmentId ? "active" : null)"
-               href="@Url.Action("ViewAttachmentsFullCarousel", "Post", new {Model.PostBlockId, FirstAttachmentId = attachment.Id})">
+            <a class="carousel-item @GetActiveStatusOfAttachment(attachment.Id)"
+               href=@attachment.SourceMedia.Url>
                 @{
                     await Html.RenderPartialAsync(
-                        "Attachments/MediaDataView",
-                        new MediaDataViewModel
-                        {
-                            MediaData = attachment.PreviewMedia ?? attachment.SourceMedia, Ratio = "16x9",
-                        });
+                        "MediaDataView",
+                        MediaDataViewModelFactory
+                            .Create(attachment.PreviewMedia ?? attachment.SourceMedia)
+                            .WithImageSettings(settings => settings.WithFluid().WithDefaultRatio().WithNonSelectable())
+                            .WithVideoSettings(settings => settings.WithDefaultRatio().WithNonSelectable()));
                 }
-                <div class="carousel-caption d-none">
+                <div class="carousel-caption d-none d-sm-block">
                     <p>@attachment.Summary</p>
                 </div>
             </a>

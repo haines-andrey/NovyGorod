@@ -1,6 +1,7 @@
 ﻿@using NovyGorod.Common.Extensions
-@using NovyGorodAsp.Models.Posts
 @using NovyGorodAsp.Models.Posts.Attachments
+@using NovyGorodAsp.Models.Posts.MediaData
+@using Microsoft.AspNetCore.Mvc.Rendering
 @model NovyGorodAsp.Models.Posts.PostViewModel
 
 @{
@@ -18,13 +19,12 @@
     <p class="lead">@post.Summary</p>
 }
 
-<div class="my-4 d-flex">
-    <div class="mx-auto shadow">
-        @{ await Html.RenderPartialAsync(
-               "Attachments/MediaDataView",
-               new MediaDataViewModel {MediaData = post.Video ?? post.Preview}); }
-    </div>
-</div>
+@{ await Html.RenderPartialAsync(
+           "MediaDataView",
+           MediaDataViewModelFactory
+               .Create(post.Video ?? post.Preview)
+               .WithImageSettings(settings => settings.WithShadow().WithFluid().WithCentering().WithNonSelectable())
+               .WithVideoSettings(settings => settings.WithShadow().WithDefaultRatio().WithNonSelectable())); }
 
 <div>
     @foreach (var block in post.Blocks)
