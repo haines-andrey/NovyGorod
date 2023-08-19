@@ -6,29 +6,29 @@ using MediatR;
 using Microsoft.Extensions.Configuration;
 using NovyGorod.Application.Contracts.Media;
 using NovyGorod.Application.Contracts.Media.Requests;
-using NovyGorod.Domain.EntityAccess;
+using NovyGorod.Domain.ModelAccess;
 using NovyGorod.Domain.Models;
 using NovyGorod.Domain.Models.Common;
 
 namespace NovyGorod.Application.Media;
 
-public class CreateLocalMediaDataRequestHandler : IRequestHandler<CreateLocalMediaDataRequest, BaseEntityDto>
+public class CreateLocalMediaDataRequestHandler : IRequestHandler<CreateLocalMediaDataRequest, BaseModelDto>
 {
-    private readonly IEntityModificationService<MediaData> _entityModificationService;
+    private readonly IRepository<MediaData> _repository;
     private readonly IConfiguration _configuration;
     private readonly ICommitter _committer;
 
     public CreateLocalMediaDataRequestHandler(
-        IEntityModificationService<MediaData> entityModificationService,
+        IRepository<MediaData> repository,
         IConfiguration configuration,
         ICommitter committer)
     {
-        _entityModificationService = entityModificationService;
+        _repository = repository;
         _configuration = configuration;
         _committer = committer;
     }
     
-    public async Task<BaseEntityDto> Handle(CreateLocalMediaDataRequest request, CancellationToken cancellationToken)
+    public async Task<BaseModelDto> Handle(CreateLocalMediaDataRequest request, CancellationToken cancellationToken)
     {
         var fileName = GetFileName(request);
         var fileDirectory = GetFileDirectory(fileName);
@@ -37,7 +37,7 @@ public class CreateLocalMediaDataRequestHandler : IRequestHandler<CreateLocalMed
 
         var entity = await CreateAndSaveEntity(fileName, request);
 
-        return new BaseEntityDto { Id = entity.Id };
+        return new BaseModelDto { Id = entity.Id };
     }
 
     private string GetFileName(CreateLocalMediaDataRequest request)
@@ -74,7 +74,7 @@ public class CreateLocalMediaDataRequestHandler : IRequestHandler<CreateLocalMed
     private async Task<MediaData> CreateAndSaveEntity(string fileName, CreateLocalMediaDataRequest request)
     {
         var entity = new MediaData { Url = fileName, Type = request.Type, IsLocal = true };
-        entity = await _entityModificationService.Add(entity);
+        entity = await _repository.Add(entity);
         await _committer.Commit();
 
         return entity;

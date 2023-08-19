@@ -8,9 +8,9 @@ internal class PostConfig : IEntityTypeConfiguration<Post>
 {
     public void Configure(EntityTypeBuilder<Post> builder)
     {
-        builder.ApplyBaseEntityConfig()
-            .ApplyIndexedEntityConfig()
-            .ApplyTranslatedEntityConfig<Post, PostTranslation>();
+        builder.ApplyBaseModelConfig()
+            .ApplySequencedModelConfig()
+            .ApplyTranslatedEntityConfig<Post, int, PostTranslation>();
 
         builder.HasMany(x => x.Blocks).WithOne(x => x.Post)
             .HasForeignKey(x => x.PostId).IsRequired();

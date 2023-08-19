@@ -8,9 +8,9 @@ internal class AttachmentConfig : IEntityTypeConfiguration<Attachment>
 {
     public void Configure(EntityTypeBuilder<Attachment> builder)
     {
-        builder.ApplyBaseEntityConfig()
-            .ApplyIndexedEntityConfig()
-            .ApplyTranslatedEntityConfig<Attachment, AttachmentTranslation>();
+        builder.ApplyBaseModelConfig()
+            .ApplySequencedModelConfig()
+            .ApplyTranslatedEntityConfig<Attachment, int, AttachmentTranslation>();
 
         builder.HasOne(x => x.Block).WithMany(x => x.Attachments)
             .IsRequired();

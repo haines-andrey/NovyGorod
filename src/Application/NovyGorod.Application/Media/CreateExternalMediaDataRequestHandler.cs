@@ -2,32 +2,35 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using NovyGorod.Application.Contracts.Media;
 using NovyGorod.Application.Contracts.Media.Requests;
-using NovyGorod.Domain.EntityAccess;
+using NovyGorod.Domain.ModelAccess;
 using NovyGorod.Domain.Models;
 using NovyGorod.Domain.Models.Common;
 
 namespace NovyGorod.Application.Media;
 
-public class CreateExternalMediaDataRequestHandler : IRequestHandler<CreateExternalMediaDataRequest, BaseEntityDto>
+public class CreateExternalMediaDataRequestHandler : IRequestHandler<CreateExternalMediaDataRequest, BaseModelDto>
 {
     private readonly IMapper _mapper;
-    private readonly IEntityModificationService<MediaData> _entityModificationService;
+    private readonly IRepository<MediaData> _repository;
+    private readonly ICommitter _committer;
 
     public CreateExternalMediaDataRequestHandler(
         IMapper mapper,
-        IEntityModificationService<MediaData> entityModificationService)
+        IRepository<MediaData> repository,
+        ICommitter committer)
     {
         _mapper = mapper;
-        _entityModificationService = entityModificationService;
+        _repository = repository;
+        _committer = committer;
     }
 
-    public async Task<BaseEntityDto> Handle(CreateExternalMediaDataRequest request, CancellationToken cancellationToken)
+    public async Task<BaseModelDto> Handle(CreateExternalMediaDataRequest request, CancellationToken cancellationToken)
     {
-        var entity = _mapper.Map<MediaData>(request);
-        entity = await _entityModificationService.Add(entity);
+        var model = _mapper.Map<MediaData>(request);
+        model = await _repository.Add(model, cancellationToken);
+        await _committer.Commit(cancellationToken);
 
-        return new BaseEntityDto {Id = entity.Id};
+        return new BaseModelDto {Id = model.Id};
     }
 }

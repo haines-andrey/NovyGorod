@@ -8,7 +8,6 @@ internal class PostBlockTranslationConfig : IEntityTypeConfiguration<PostBlockTr
 {
     public void Configure(EntityTypeBuilder<PostBlockTranslation> builder)
     {
-        builder.ApplyBaseEntityConfig()
-            .ApplyTranslationOfEntityConfig<PostBlock, PostBlockTranslation>();
+        builder.ApplyTranslationOfModelConfig<PostBlock, int, PostBlockTranslation>();
     }
 }

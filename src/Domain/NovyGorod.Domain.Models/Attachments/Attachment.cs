@@ -6,7 +6,7 @@ using NovyGorod.Domain.Models.Posts;
 namespace NovyGorod.Domain.Models.Attachments;
 
 [ExcludeFromCodeCoverage]
-public class Attachment : BaseEntity, ITranslatedEntity<Attachment, AttachmentTranslation>, IIndexedEntity
+public class Attachment : BaseModel, ITranslatedModel<Attachment, int, AttachmentTranslation>, ISequencedModel
 {
     public int Index { get; set; }
 

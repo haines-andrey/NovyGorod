@@ -4,7 +4,7 @@ using NovyGorod.Domain.Models.Common;
 namespace NovyGorod.Domain.Models;
 
 [ExcludeFromCodeCoverage]
-public class MediaData : BaseEntity
+public class MediaData : BaseModel
 {
     public MediaDataType Type { get; set; }
     

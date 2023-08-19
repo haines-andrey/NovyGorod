@@ -3,7 +3,7 @@
 namespace NovyGorod.Domain.Models.Common;
 
 [ExcludeFromCodeCoverage]
-public class Language : BaseEntity
+public class Language : BaseModel
 {
     public string Code { get; set; }
 }

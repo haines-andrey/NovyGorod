@@ -1,5 +1,4 @@
-﻿using NovyGorod.Domain.EntityAccess;
-using NovyGorod.Domain.Models.Common;
+﻿using NovyGorod.Domain.Models.Common;
 using NovyGorod.Domain.Services;
 
 namespace NovyGorod.Infrastructure.DataAccess.Core.BeforeCommitHandlers;
@@ -13,7 +12,7 @@ public class TrackableDateBeforeCommitHandler : IBeforeCommitHandler
         _dateTimeProvider = dateTimeProvider;
     }
 
-    public Task OnBeforeCommitAsync(IUnitOfWork unitOfWork, IDataAccessProvider dataAccessProvider)
+    public Task Handle(IDataAccessProvider dataAccessProvider)
     {
         var now = _dateTimeProvider.UtcNow.DateTime;
 

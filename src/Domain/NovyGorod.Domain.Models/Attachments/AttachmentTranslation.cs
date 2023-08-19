@@ -4,7 +4,7 @@ using NovyGorod.Domain.Models.Common;
 namespace NovyGorod.Domain.Models.Attachments;
 
 [ExcludeFromCodeCoverage]
-public class AttachmentTranslation : BaseEntity, ITranslationOfEntity<Attachment>
+public class AttachmentTranslation : ITranslationOfModel<Attachment, int>
 {
     public int? PreviewMediaId { get; set; }
 
@@ -20,7 +20,7 @@ public class AttachmentTranslation : BaseEntity, ITranslationOfEntity<Attachment
 
     public virtual Language Language { get; set; }
 
-    public int EntityId { get; set; }
+    public int ModelId { get; set; }
 
-    public virtual Attachment Entity { get; set; }
+    public virtual Attachment Model { get; set; }
 }

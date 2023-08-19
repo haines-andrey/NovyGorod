@@ -5,43 +5,43 @@ namespace NovyGorod.Infrastructure.ModelConfigs;
 
 public static class EntityTypeBuilderExtensions
 {
-    public static EntityTypeBuilder<TEntity> ApplyBaseEntityConfig<TEntity>(
+    public static EntityTypeBuilder<TEntity> ApplyBaseModelConfig<TEntity>(
         this EntityTypeBuilder<TEntity> builder)
-        where TEntity : class, IBaseEntity
+        where TEntity : BaseModel
     {
         builder.HasKey(x => x.Id);
 
         return builder;
     }
 
-    public static EntityTypeBuilder<TEntity> ApplyIndexedEntityConfig<TEntity>(
+    public static EntityTypeBuilder<TEntity> ApplySequencedModelConfig<TEntity>(
         this EntityTypeBuilder<TEntity> builder)
-        where TEntity : class, IIndexedEntity
+        where TEntity : class, ISequencedModel
     {
         builder.Property(x => x.Index).IsRequired();
 
         return builder;
     }
 
-    public static EntityTypeBuilder<TTranslation> ApplyTranslationOfEntityConfig<TEntity, TTranslation>(
+    public static EntityTypeBuilder<TTranslation> ApplyTranslationOfModelConfig<TModel, TId, TTranslation>(
         this EntityTypeBuilder<TTranslation> builder)
-        where TEntity : class, IBaseEntity
-        where TTranslation : class, ITranslationOfEntity<TEntity>
+        where TModel : class, IHasId<TId>
+        where TTranslation : class, ITranslationOfModel<TModel, TId>
     {
         builder.HasOne(x => x.Language).WithMany()
             .HasForeignKey(x => x.LanguageId).IsRequired();
 
-        builder.HasIndex(x => new {x.EntityId, x.LanguageId}).IsUnique();
+        builder.HasKey(x => new {x.ModelId, x.LanguageId});
 
         return builder;
     }
 
-    public static EntityTypeBuilder<TEntity> ApplyTranslatedEntityConfig<TEntity, TTranslation>(
-        this EntityTypeBuilder<TEntity> builder)
-        where TEntity : class, ITranslatedEntity<TEntity, TTranslation>
-        where TTranslation : class, ITranslationOfEntity<TEntity>
+    public static EntityTypeBuilder<TModel> ApplyTranslatedEntityConfig<TModel, TId, TTranslation>(
+        this EntityTypeBuilder<TModel> builder)
+        where TModel : class, ITranslatedModel<TModel, TId, TTranslation>
+        where TTranslation : class, ITranslationOfModel<TModel, TId>
     {
-        builder.HasMany(x => x.Translations).WithOne(x => x.Entity).HasForeignKey(x => x.EntityId);
+        builder.HasMany(x => x.Translations).WithOne(x => x.Model).HasForeignKey(x => x.ModelId);
 
         return builder;
     }

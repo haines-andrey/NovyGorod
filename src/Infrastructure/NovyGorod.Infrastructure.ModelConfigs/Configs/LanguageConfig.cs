@@ -8,7 +8,7 @@ public class LanguageConfig : IEntityTypeConfiguration<Language>
 {
     public void Configure(EntityTypeBuilder<Language> builder)
     {
-        builder.ApplyBaseEntityConfig();
+        builder.ApplyBaseModelConfig();
         builder.Property(x => x.Code).IsRequired();
         builder.HasIndex(x => x.Code).IsUnique();
     }

@@ -30,7 +30,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovyGorod.Common", "src\Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovyGorod.Domain.Services", "src\Domain\NovyGorod.Domain.Services\NovyGorod.Domain.Services.csproj", "{014A5FD5-E6D1-4608-AC49-C4C1DE3F470C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovyGorod.Domain.EntityAccess", "src\Domain\NovyGorod.Domain.EntityAccess\NovyGorod.Domain.EntityAccess.csproj", "{CCAC068D-E51E-4A7E-85EB-67890761DC74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovyGorod.Domain.ModelAccess", "src\Domain\NovyGorod.Domain.ModelAccess\NovyGorod.Domain.ModelAccess.csproj", "{CCAC068D-E51E-4A7E-85EB-67890761DC74}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovyGorod.Application.Contracts", "src\Application\NovyGorod.Application.Contracts\NovyGorod.Application.Contracts.csproj", "{72C531B2-2243-4DDD-BC2E-435B9272E2C9}"
 EndProject

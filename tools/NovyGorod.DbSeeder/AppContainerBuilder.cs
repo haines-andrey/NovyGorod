@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using Microsoft.Extensions.Configuration;
 using NovyGorod.Infrastructure.DataAccess.EF;
-using EntityAccessModule = NovyGorod.Domain.EntityAccess.Module;
 using DbSeederModule = NovyGorod.DbSeeder.Module;
 
 namespace NovyGorod.DbSeeder;
@@ -21,7 +20,6 @@ internal static class AppContainerBuilder
         var config = BuildConfig();
         builder.Register(_ => config);
         builder.AddDataAccessEf<Context>();
-        builder.RegisterModule<EntityAccessModule>();
         builder.RegisterModule<Module>();
     }
 

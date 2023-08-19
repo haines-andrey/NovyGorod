@@ -9,10 +9,10 @@ namespace NovyGorod.Application.Common.Extensions;
 public static class MappingExpressionExtension
 {
     public static IMappingExpression<TSource, TDestination> FindTranslationBeforeMap<
-        TSource, TTranslation, TDestination>(
+        TSource, TSourceId, TTranslation, TDestination>(
         this IMappingExpression<TSource, TDestination> expression)
-        where TSource : IBaseEntity, ITranslatedEntity<TSource, TTranslation>
-        where TTranslation : ITranslationOfEntity<TSource>
+        where TSource : IHasId<TSourceId>, ITranslatedModel<TSource, TSourceId, TTranslation>
+        where TTranslation : ITranslationOfModel<TSource, TSourceId>
     {
         return expression.BeforeMap((source, _, context) =>
         {
@@ -28,12 +28,12 @@ public static class MappingExpressionExtension
     }
 
     public static IMappingExpression<TSource, TDestination> ForMemberMapFromTranslation<
-        TSource, TTranslation, TDestination, TMember, TResult>(
+        TSource, TSourceId, TTranslation, TDestination, TMember, TResult>(
         this IMappingExpression<TSource, TDestination> expression,
         Expression<Func<TDestination, TMember>> destinationMember,
         Expression<Func<TTranslation, TResult>> mapFrom)
-        where TSource : IBaseEntity, ITranslatedEntity<TSource, TTranslation>
-        where TTranslation : ITranslationOfEntity<TSource>
+        where TSource : IHasId<TSourceId>, ITranslatedModel<TSource, TSourceId, TTranslation>
+        where TTranslation : ITranslationOfModel<TSource, TSourceId>
     {
         return expression.ForMember(destinationMember, opt => opt.MapFrom((_, _, _, context) =>
         {

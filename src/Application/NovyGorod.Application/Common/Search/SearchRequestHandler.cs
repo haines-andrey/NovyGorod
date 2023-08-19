@@ -5,28 +5,29 @@ using AutoMapper;
 using NovyGorod.Application.Common.Extensions;
 using NovyGorod.Application.Common.RequestHandlers;
 using NovyGorod.Application.Contracts.Common.Search;
-using NovyGorod.Domain.EntityAccess;
-using NovyGorod.Domain.EntityAccess.Queries;
+using NovyGorod.Domain.ModelAccess;
+using NovyGorod.Domain.ModelAccess.Queries;
 using NovyGorod.Domain.Services;
 
 namespace NovyGorod.Application.Common.Search;
 
 [ExcludeFromCodeCoverage]
-public abstract class SearchRequestHandler<TRequest, TEntity, TDto>
+public abstract class SearchRequestHandler<TRequest, TModel, TDto>
     : BaseRequestHandler<TRequest, SearchResultDto<TDto>>
     where TRequest : SearchRequest<TDto>
+    where TModel : class
 {
     private readonly IMapper _mapper;
-    private readonly IEntityAccessService<TEntity> _entityAccessService;
+    private readonly IReadOnlyRepository<TModel> _modelRepository;
 
     protected SearchRequestHandler(
         IExecutionContextService executionContextService,
         IMapper mapper,
-        IEntityAccessService<TEntity> entityAccessService)
+        IReadOnlyRepository<TModel> modelRepository)
         : base(executionContextService)
     {
         _mapper = mapper;
-        _entityAccessService = entityAccessService;
+        _modelRepository = modelRepository;
     }
 
     protected sealed override async Task<SearchResultDto<TDto>> HandleInternal(
@@ -34,7 +35,7 @@ public abstract class SearchRequestHandler<TRequest, TEntity, TDto>
         CancellationToken cancellationToken)
     {
         var query = CreateQuery(request);
-        var result = await _entityAccessService.Search(query);
+        var result = await _modelRepository.Paginate(query, cancellationToken);
 
         var itemsDto = _mapper.MapWithTranslation<TDto[]>(result.Items, CurrentLanguageId);
         var pagingDto = _mapper.Map<PagingResultDto>(result.Paging);
@@ -44,5 +45,5 @@ public abstract class SearchRequestHandler<TRequest, TEntity, TDto>
         return resultDto;
     }
 
-    protected abstract IQueryParameters<TEntity> CreateQuery(TRequest request);
+    protected abstract IQuery<TModel> CreateQuery(TRequest request);
 }

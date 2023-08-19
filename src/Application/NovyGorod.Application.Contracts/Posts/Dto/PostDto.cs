@@ -4,7 +4,7 @@ using NovyGorod.Domain.Models.Posts;
 
 namespace NovyGorod.Application.Contracts.Posts.Dto;
 
-public record PostDto : BaseEntityDto
+public record PostDto : BaseModelDto
 {
     public ICollection<PostType> Types { get; init; }
 

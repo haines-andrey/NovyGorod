@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Domain\NovyGorod.Domain.EntityAccess\NovyGorod.Domain.EntityAccess.csproj" />
+      <ProjectReference Include="..\..\src\Domain\NovyGorod.Domain.ModelAccess\NovyGorod.Domain.ModelAccess.csproj" />
       <ProjectReference Include="..\..\src\Domain\NovyGorod.Domain.Models\NovyGorod.Domain.Models.csproj" />
       <ProjectReference Include="..\..\src\Infrastructure\NovyGorod.Infrastructure.DataAccess.EF\NovyGorod.Infrastructure.DataAccess.EF.csproj" />
     </ItemGroup>
@@ -20,10 +20,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="appsettings.Development.json">
+      <None Update="data\postDto.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="data\postDto.json">
+      <None Update="appsettings.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

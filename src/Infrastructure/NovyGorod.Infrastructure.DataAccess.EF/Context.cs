@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -48,22 +48,9 @@ public class Context : DbContext, IDataAccessProvider
         base.OnConfiguring(optionsBuilder);
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    public async Task<int> Commit(CancellationToken cancellationToken = default)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(EntityConfig<>).Assembly);
-
-        base.OnModelCreating(modelBuilder);
-    }
-
-    public async Task<int> Commit()
-    {
-        return await SaveChangesAsync();
-    }
-
-    public IEnumerable<T> GetModified<T>()
-        where T : class
-    {
-        return GetChangeTrackedEntities<T>(state => state == EntityState.Modified);
+        return await SaveChangesAsync(cancellationToken);
     }
 
     public IEnumerable<T> GetModels<T>(ModelState state)
@@ -78,11 +65,16 @@ public class Context : DbContext, IDataAccessProvider
         return GetChangeTrackedEntities<T>(state => state == EntityState.Added);
     }
 
+    public IEnumerable<T> GetModified<T>()
+        where T : class
+    {
+        return GetChangeTrackedEntities<T>(state => state == EntityState.Modified);
+    }
+
     public IEnumerable<T> GetAddedOrModified<T>()
         where T : class
     {
-        return GetChangeTrackedEntities<T>(state =>
-            state is EntityState.Modified or EntityState.Added);
+        return GetChangeTrackedEntities<T>(state => state is EntityState.Modified or EntityState.Added);
     }
 
     public IEnumerable<T> GetDeleted<T>()
@@ -91,12 +83,18 @@ public class Context : DbContext, IDataAccessProvider
         return GetChangeTrackedEntities<T>(state => state == EntityState.Deleted);
     }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(EntityConfig<>).Assembly);
+
+        base.OnModelCreating(modelBuilder);
+    }
+
     private IEnumerable<T> GetChangeTrackedEntities<T>(Func<EntityState, bool> stateFunc)
         where T : class
     {
         return ChangeTracker.Entries<T>()
             .Where(e => stateFunc(e.State))
-            .Select(e => e.Entity)
-            .ToArray();
+            .Select(e => e.Entity);
     }
 }
