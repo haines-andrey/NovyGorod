@@ -50,7 +50,6 @@ public class Startup
     public void ConfigureContainer(ContainerBuilder builder)
     {
         builder.AddDataAccessEf<Context>();
-        builder.RegisterModule<NovyGorod.Domain.EntityAccess.Module>();
         builder.RegisterModule<NovyGorod.Application.Module>();
         builder.RegisterModule<Module>();
     }

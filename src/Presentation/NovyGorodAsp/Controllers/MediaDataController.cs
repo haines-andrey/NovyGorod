@@ -32,7 +32,7 @@ public class MediaDataController : Controller
     }
 
     [HttpPost]
-    public async Task<BaseEntityDto> Upload(IFormFile file)
+    public async Task<BaseModelDto> Upload(IFormFile file)
     {
         var stream = file.OpenReadStream();
         var extension = Path.GetExtension(file.FileName);

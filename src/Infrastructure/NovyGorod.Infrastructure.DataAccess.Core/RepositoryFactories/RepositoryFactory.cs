@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using NovyGorod.Domain.EntityAccess;
+using NovyGorod.Domain.ModelAccess;
 
 namespace NovyGorod.Infrastructure.DataAccess.Core.RepositoryFactories;
 

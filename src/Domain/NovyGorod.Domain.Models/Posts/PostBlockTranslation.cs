@@ -4,7 +4,7 @@ using NovyGorod.Domain.Models.Common;
 namespace NovyGorod.Domain.Models.Posts;
 
 [ExcludeFromCodeCoverage]
-public class PostBlockTranslation : BaseEntity, ITranslationOfEntity<PostBlock>
+public class PostBlockTranslation : ITranslationOfModel<PostBlock, int>
 {
     public string Title { get; set; }
     
@@ -14,7 +14,7 @@ public class PostBlockTranslation : BaseEntity, ITranslationOfEntity<PostBlock>
 
     public virtual Language Language { get; set; }
 
-    public int EntityId { get; set; }
+    public int ModelId { get; set; }
 
-    public virtual PostBlock Entity { get; set; }
+    public virtual PostBlock Model { get; set; }
 }

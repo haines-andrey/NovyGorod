@@ -4,7 +4,7 @@ using NovyGorod.Domain.Models.Common;
 namespace NovyGorod.Domain.Models.Posts;
 
 [ExcludeFromCodeCoverage]
-public class PostTranslation : BaseEntity, ITranslationOfEntity<Post>
+public class PostTranslation : ITranslationOfModel<Post, int>
 {
     public string Title { get; set; }
         
@@ -22,7 +22,7 @@ public class PostTranslation : BaseEntity, ITranslationOfEntity<Post>
 
     public virtual Language Language { get; set; }
 
-    public int EntityId { get; set; }
+    public int ModelId { get; set; }
 
-    public virtual Post Entity { get; set; }
+    public virtual Post Model { get; set; }
 }

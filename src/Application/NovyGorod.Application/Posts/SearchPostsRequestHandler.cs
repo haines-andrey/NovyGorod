@@ -1,10 +1,11 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
 using NovyGorod.Application.Common.Search;
 using NovyGorod.Application.Contracts.Posts.Dto;
 using NovyGorod.Application.Contracts.Posts.Requests;
-using NovyGorod.Application.Posts.Queries;
-using NovyGorod.Domain.EntityAccess;
-using NovyGorod.Domain.EntityAccess.Queries;
+using NovyGorod.Domain.ModelAccess;
+using NovyGorod.Domain.ModelAccess.Queries;
+using NovyGorod.Domain.ModelAccess.Queries.Builders;
 using NovyGorod.Domain.Models.Posts;
 using NovyGorod.Domain.Services;
 
@@ -15,19 +16,19 @@ public class SearchPostsRequestHandler : SearchRequestHandler<SearchPostsRequest
     public SearchPostsRequestHandler(
         IMapper mapper,
         IExecutionContextService executionContextService,
-        IEntityAccessService<Post> entityAccessService)
-        : base(executionContextService, mapper, entityAccessService)
+        IReadOnlyRepository<Post> modelRepository)
+        : base(executionContextService, mapper, modelRepository)
     {
     }
 
-    protected override IQueryParameters<Post> CreateQuery(SearchPostsRequest request)
+    protected override IQuery<Post> CreateQuery(SearchPostsRequest request)
     {
-        return new PostListQueryParameters
-        {
-            Type = request.Type,
-            LanguageId = CurrentLanguageId,
-            PageIndex = request.PageIndex,
-            PageSize = request.PageSize
-        };
+        return QueryBuilder<Post>
+            .CreateWithFilter(
+                post => post.TypeLinks.Any(link => link.Type == request.Type) &&
+                        post.Translations.Any(translation => translation.LanguageId == CurrentLanguageId))
+            .Skip(request.PageIndex * request.PageSize)
+            .Take(request.PageSize)
+            .Build();
     }
 }

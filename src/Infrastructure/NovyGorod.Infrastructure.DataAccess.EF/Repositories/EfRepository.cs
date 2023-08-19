@@ -1,69 +1,61 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using NovyGorod.Domain.ModelAccess;
 
 namespace NovyGorod.Infrastructure.DataAccess.EF.Repositories;
 
-public class EfRepository<TEntity> : EfRepositoryBase<TEntity>
+public class EfRepository<TEntity> : EfReadOnlyRepository<TEntity>, IRepository<TEntity>
     where TEntity : class
 {
     public EfRepository(DbContext dbContext)
         : base(dbContext)
     {
-        DbSet = DbContext.Set<TEntity>();
     }
-    
-    protected DbSet<TEntity> DbSet { get; set; }
-    
-    public override async Task<TEntity> Add(
-        TEntity entity,
-        CancellationToken cancellationToken = default)
+
+    protected DbSet<TEntity> DbSet => DbContext.Set<TEntity>();
+
+    public async Task<TEntity> Add(TEntity model, CancellationToken cancellationToken = default)
     {
-        var result = await DbSet.AddAsync(entity, cancellationToken);
+        var result = await DbSet.AddAsync(model, cancellationToken);
 
         return result.Entity;
     }
     
-    public override Task AddRange(
-        IEnumerable<TEntity> entities,
-        CancellationToken cancellationToken = default)
+    public Task Add(IEnumerable<TEntity> models, CancellationToken cancellationToken = default)
     {
-        return DbSet.AddRangeAsync(entities, cancellationToken);
+        return DbSet.AddRangeAsync(models, cancellationToken);
     }
     
-    public override Task<TEntity> Update(TEntity entity, CancellationToken cancellationToken = default)
+    public Task<TEntity> Update(TEntity model, CancellationToken cancellationToken = default)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
-        return Task.FromResult(DbSet.Update(entity).Entity);
+        return Task.FromResult(DbSet.Update(model).Entity);
     }
-    
-    public override Task UpdateRange(IEnumerable<TEntity> entities)
-    {
-        DbSet.UpdateRange(entities);
 
-        return Task.CompletedTask;
-    }
-    
-    public override Task Delete(TEntity entity, CancellationToken cancellationToken = default)
+    public Task Update(IEnumerable<TEntity> models, CancellationToken cancellationToken = default)
     {
         cancellationToken.ThrowIfCancellationRequested();
-        DbSet.Remove(entity);
-
-        return Task.CompletedTask;
-    }
-    
-    public override Task DeleteRange(IEnumerable<TEntity> entities)
-    {
-        DbSet.RemoveRange(entities);
+        DbSet.UpdateRange(models);
 
         return Task.CompletedTask;
     }
 
-    protected override IQueryable<TEntity> GetQueryable()
+    public Task Delete(TEntity model, CancellationToken cancellationToken = default)
     {
-        return DbSet.AsQueryable();
+        cancellationToken.ThrowIfCancellationRequested();
+        DbSet.Remove(model);
+
+        return Task.CompletedTask;
+    }
+
+    public Task Delete(IEnumerable<TEntity> models, CancellationToken cancellationToken = default)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        DbSet.RemoveRange(models);
+
+        return Task.CompletedTask;
     }
 }

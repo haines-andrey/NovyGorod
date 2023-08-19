@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Domain\NovyGorod.Domain.EntityAccess\NovyGorod.Domain.EntityAccess.csproj" />
+      <ProjectReference Include="..\..\Domain\NovyGorod.Domain.ModelAccess\NovyGorod.Domain.ModelAccess.csproj" />
       <ProjectReference Include="..\..\Domain\NovyGorod.Domain.Models\NovyGorod.Domain.Models.csproj" />
       <ProjectReference Include="..\..\Domain\NovyGorod.Domain.Services\NovyGorod.Domain.Services.csproj" />
       <ProjectReference Include="..\NovyGorod.Application.Contracts\NovyGorod.Application.Contracts.csproj" />

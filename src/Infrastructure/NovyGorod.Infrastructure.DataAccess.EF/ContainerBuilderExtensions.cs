@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Microsoft.EntityFrameworkCore;
-using NovyGorod.Domain.EntityAccess;
 using NovyGorod.Domain.Models;
 using NovyGorod.Domain.Models.Attachments;
 using NovyGorod.Domain.Models.Common;

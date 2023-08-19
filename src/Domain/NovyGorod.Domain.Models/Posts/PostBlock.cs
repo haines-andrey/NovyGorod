@@ -6,7 +6,7 @@ using NovyGorod.Domain.Models.Common;
 namespace NovyGorod.Domain.Models.Posts;
 
 [ExcludeFromCodeCoverage]
-public class PostBlock : BaseEntity, ITranslatedEntity<PostBlock, PostBlockTranslation>, IIndexedEntity
+public class PostBlock : BaseModel, ITranslatedModel<PostBlock, int, PostBlockTranslation>, ISequencedModel
 {
     public int Index { get; set; }
         

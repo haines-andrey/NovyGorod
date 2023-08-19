@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
-using NovyGorod.Domain.EntityAccess;
-using NovyGorod.Domain.EntityAccess.Queries;
-using NovyGorod.Domain.EntityAccess.Queries.Builders;
+using NovyGorod.Domain.ModelAccess;
+using NovyGorod.Domain.ModelAccess.Queries;
+using NovyGorod.Domain.ModelAccess.Queries.Builders;
 using NovyGorod.Domain.Models.Posts;
 
 namespace NovyGorod.DbSeeder.Services;
@@ -9,14 +9,14 @@ namespace NovyGorod.DbSeeder.Services;
 internal class DefaultDataService : IDefaultDataService
 {
     private readonly IConfiguration _configuration;
-    private readonly IEntityAccessService<Post> _postAccessService;
+    private readonly IReadOnlyRepository<Post> _repository;
 
     public DefaultDataService(
         IConfiguration configuration,
-        IEntityAccessService<Post> postAccessService)
+        IReadOnlyRepository<Post> repository)
     {
         _configuration = configuration;
-        _postAccessService = postAccessService;
+        _repository = repository;
     }
 
     public Task<int> GetLanguageId()
@@ -26,16 +26,12 @@ internal class DefaultDataService : IDefaultDataService
 
     public async Task<int> GetSequenceNumberOfPost()
     {
-        var lastNumber = await _postAccessService.GetFirst(new PostQueryParams(), post => post.Index);
+        var query = QueryBuilder<Post>.CreateEmpty()
+            .Order(orderable => orderable.OrderByDesc(post => post.Index))
+            .Build();
+
+        var lastNumber = await _repository.GetFirst(query, post => post.Index);
 
         return ++lastNumber;
-    }
-
-    private class PostQueryParams : BaseQueryParameters<Post>
-    {
-        protected override void AddSorting()
-        {
-            Sort(OrderType.Desc, post => post.Index);
-        }
     }
 }

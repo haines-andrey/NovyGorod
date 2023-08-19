@@ -11,7 +11,7 @@ public static class PostMappingProfileExtension
     public static IMappingExpression<Post, TDestination> FindTranslationBeforeMap<TDestination>(
         this IMappingExpression<Post, TDestination> expression)
     {
-        return expression.FindTranslationBeforeMap<Post, PostTranslation, TDestination>();
+        return expression.FindTranslationBeforeMap<Post, int, PostTranslation, TDestination>();
     }
 
     public static IMappingExpression<Post, TDestination> ForMemberMapFromTranslation<TDestination, TMember, TResult>(
@@ -19,7 +19,7 @@ public static class PostMappingProfileExtension
         Expression<Func<TDestination, TMember>> destinationMember,
         Expression<Func<PostTranslation, TResult>> mapFrom)
     {
-        return expression.ForMemberMapFromTranslation<Post, PostTranslation, TDestination, TMember, TResult>(
+        return expression.ForMemberMapFromTranslation<Post, int, PostTranslation, TDestination, TMember, TResult>(
             destinationMember, mapFrom);
         
     }
