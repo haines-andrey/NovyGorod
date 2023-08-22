@@ -37,7 +37,7 @@ internal class GetAttachmentsListRequestHandler : BaseRequestHandler<GetAttachme
             .CreateWithFilter(
                 attachment =>
                     attachment.BlockId == request.PostBlockId &&
-                    attachment.Translations.Any(translation => translation.LanguageId == CurrentLanguageId))
+                    attachment.Translations.Any(translation => translation.Id.LanguageId == CurrentLanguageId))
             .Order(orderable => orderable.OrderBy(attachment => attachment.Index))
             .Build();
 

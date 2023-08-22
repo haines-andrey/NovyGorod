@@ -26,7 +26,8 @@ public class SearchPostsRequestHandler : SearchRequestHandler<SearchPostsRequest
         return QueryBuilder<Post>
             .CreateWithFilter(
                 post => post.TypeLinks.Any(link => link.Type == request.Type) &&
-                        post.Translations.Any(translation => translation.LanguageId == CurrentLanguageId))
+                        post.Translations.Any(translation => translation.Id.LanguageId == CurrentLanguageId))
+            .Order(orderable => orderable.OrderByDesc(post => post.Index))
             .Skip(request.PageIndex * request.PageSize)
             .Take(request.PageSize)
             .Build();

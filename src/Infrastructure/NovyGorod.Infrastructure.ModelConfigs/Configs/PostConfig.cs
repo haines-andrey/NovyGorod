@@ -1,16 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NovyGorod.Domain.Models.Posts;
 
 namespace NovyGorod.Infrastructure.ModelConfigs.Configs;
 
-internal class PostConfig : IEntityTypeConfiguration<Post>
+internal class PostConfig : EntityConfig<Post>
 {
-    public void Configure(EntityTypeBuilder<Post> builder)
+    public override void Configure(EntityTypeBuilder<Post> builder)
     {
         builder.ApplyBaseModelConfig()
-            .ApplySequencedModelConfig()
-            .ApplyTranslatedEntityConfig<Post, int, PostTranslation>();
+            .ApplySequencedModelConfig();
 
         builder.HasMany(x => x.Blocks).WithOne(x => x.Post)
             .HasForeignKey(x => x.PostId).IsRequired();

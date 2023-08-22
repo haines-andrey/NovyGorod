@@ -1,12 +1,9 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using NovyGorod.Application.Contracts.Attachments.Requests;
 using NovyGorod.Application.Contracts.Posts.Requests;
 using NovyGorod.Domain.Models.Posts;
 using NovyGorodAsp.Models.Posts;
-using NovyGorodAsp.Models.Posts.Attachments;
 
 namespace NovyGorodAsp.Controllers;
 

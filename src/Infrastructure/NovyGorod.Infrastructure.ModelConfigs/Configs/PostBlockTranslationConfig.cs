@@ -1,13 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NovyGorod.Domain.Models.Posts;
 
 namespace NovyGorod.Infrastructure.ModelConfigs.Configs;
 
-internal class PostBlockTranslationConfig : IEntityTypeConfiguration<PostBlockTranslation>
+internal class PostBlockTranslationConfig : EntityConfig<PostBlockTranslation>
 {
-    public void Configure(EntityTypeBuilder<PostBlockTranslation> builder)
+    public override void Configure(EntityTypeBuilder<PostBlockTranslation> builder)
     {
-        builder.ApplyTranslationOfModelConfig<PostBlock, int, PostBlockTranslation>();
+        builder.ApplyTranslationOfBaseModelConfig<PostBlock, PostBlockTranslation>();
     }
 }

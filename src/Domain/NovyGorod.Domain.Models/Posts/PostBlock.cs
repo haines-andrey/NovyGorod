@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using NovyGorod.Domain.Models.Attachments;
 using NovyGorod.Domain.Models.Common;
+using NovyGorod.Domain.Models.Common.Translations;
 
 namespace NovyGorod.Domain.Models.Posts;
 

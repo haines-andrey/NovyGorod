@@ -1,20 +1,12 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using NovyGorod.Domain.Models.Common;
+using NovyGorod.Domain.Models.Common.Translations;
 
 namespace NovyGorod.Domain.Models.Posts;
 
 [ExcludeFromCodeCoverage]
-public class PostBlockTranslation : ITranslationOfModel<PostBlock, int>
+public class PostBlockTranslation : TranslationOfBaseModel<PostBlock>
 {
     public string Title { get; set; }
     
     public string Text { get; set; }
-
-    public int LanguageId { get; set; }
-
-    public virtual Language Language { get; set; }
-
-    public int ModelId { get; set; }
-
-    public virtual PostBlock Model { get; set; }
 }

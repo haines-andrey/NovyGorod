@@ -35,7 +35,7 @@ public class GetPostRequestHandler : BaseRequestHandler<GetPostRequest, PostDto>
             .CreateWithFilter(
                 post =>
                     post.Id == request.Id &&
-                    post.Translations.Any(translation => translation.LanguageId == CurrentLanguageId))
+                    post.Translations.Any(translation => translation.Id.LanguageId == CurrentLanguageId))
             .Build();
 
         var post = await _repository.GetSingle(query, cancellationToken);
