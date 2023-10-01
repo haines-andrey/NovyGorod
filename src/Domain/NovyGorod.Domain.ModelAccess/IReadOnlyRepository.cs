@@ -7,6 +7,14 @@ namespace NovyGorod.Domain.ModelAccess;
 public interface IReadOnlyRepository<TModel>
     where TModel : class
 {
+    Task<TModel> GetById(
+        Func<object[]> idValueSelector,
+        CancellationToken cancellationToken = default);
+
+    Task<IReadOnlyCollection<TModel>> GetCollectionByIds(
+        Func<IEnumerable<object[]>> idValuesSelector,
+        CancellationToken cancellationToken = default);
+
     Task<Pagination<TModel>> Paginate(
         IQuery<TModel> query,
         CancellationToken cancellationToken = default);
