@@ -9,7 +9,7 @@ public class PostsListViewModel
 {
     public PostType Type { get; init; }
 
-    public SearchResultDto<PostListDto> SearchResult { get; init; }
+    public SearchModelsResultDto<PostListDto> SearchResult { get; init; }
 
     public string ControllerActionName { get; init; }
 

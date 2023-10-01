@@ -1,35 +1,28 @@
-﻿using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using NovyGorod.Application.Common.Search;
 using NovyGorod.Application.Contracts.Posts.Dto;
 using NovyGorod.Application.Contracts.Posts.Requests;
 using NovyGorod.Domain.ModelAccess;
-using NovyGorod.Domain.ModelAccess.Queries;
 using NovyGorod.Domain.ModelAccess.Queries.Builders;
 using NovyGorod.Domain.Models.Posts;
-using NovyGorod.Domain.Services;
 
 namespace NovyGorod.Application.Posts;
 
-public class SearchPostsRequestHandler : SearchRequestHandler<SearchPostsRequest, Post, PostListDto>
+public class SearchPostsRequestHandler : SearchModelsRequestHandler<SearchPostsRequest, Post, PostListDto>
 {
     public SearchPostsRequestHandler(
         IMapper mapper,
-        IExecutionContextService executionContextService,
         IReadOnlyRepository<Post> modelRepository)
-        : base(executionContextService, mapper, modelRepository)
+        : base(mapper, modelRepository)
     {
     }
 
-    protected override IQuery<Post> CreateQuery(SearchPostsRequest request)
+    protected override IQueryBuilder<Post> GetQueryBuilder(SearchPostsRequest request)
     {
-        return QueryBuilder<Post>
-            .CreateWithFilter(
-                post => post.TypeLinks.Any(link => link.Type == request.Type) &&
-                        post.Translations.Any(translation => translation.Id.LanguageId == CurrentLanguageId))
-            .Order(orderable => orderable.OrderByDesc(post => post.Index))
-            .Skip(request.PageIndex * request.PageSize)
-            .Take(request.PageSize)
-            .Build();
+        return base.GetQueryBuilder(request)
+            .Where(
+                Filters.Post.TypeIs(request.Type) &
+                Filters.Post.IsTranslatedInto(request.LanguageId))
+            .Order(orderable => orderable.OrderByDesc(post => post.Index));
     }
 }

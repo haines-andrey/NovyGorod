@@ -2,44 +2,42 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using MediatR;
 using NovyGorod.Application.Common.Extensions;
-using NovyGorod.Application.Common.RequestHandlers;
 using NovyGorod.Application.Contracts.Posts.Dto;
 using NovyGorod.Application.Contracts.Posts.Requests;
 using NovyGorod.Domain.ModelAccess;
-using NovyGorod.Domain.ModelAccess.Queries;
 using NovyGorod.Domain.ModelAccess.Queries.Builders;
 using NovyGorod.Domain.Models.Posts;
-using NovyGorod.Domain.Services;
 
 namespace NovyGorod.Application.Posts;
 
-public class GetPostRequestHandler : BaseRequestHandler<GetPostRequest, PostDto>
+public class GetPostRequestHandler : IRequestHandler<GetPostRequest, PostDto>
 {
     private readonly IReadOnlyRepository<Post> _repository;
     private readonly IMapper _mapper;
 
     public GetPostRequestHandler(
-        IExecutionContextService executionContextService,
         IReadOnlyRepository<Post> repository,
         IMapper mapper)
-        : base(executionContextService)
     {
         _repository = repository;
         _mapper = mapper;
     }
 
-    protected override async Task<PostDto> HandleInternal(GetPostRequest request, CancellationToken cancellationToken)
+    public async Task<PostDto> Handle(GetPostRequest request, CancellationToken cancellationToken)
     {
         var query = QueryBuilder<Post>
             .CreateWithFilter(
-                post =>
-                    post.Id == request.Id &&
-                    post.Translations.Any(translation => translation.Id.LanguageId == CurrentLanguageId))
+                Filters.Post.IdIs(request.Id) &
+                Filters.Post.IsTranslatedInto(request.LanguageId))
+            .Include(includable =>
+                includable.IncludeMany(post => post.Translations
+                    .Where(translation => translation.Id.LanguageId == request.LanguageId)))
             .Build();
 
         var post = await _repository.GetSingle(query, cancellationToken);
 
-        return _mapper.MapWithTranslation<PostDto>(post, CurrentLanguageId);
+        return _mapper.MapWithTranslation<PostDto>(post, request.LanguageId);
     }
 }

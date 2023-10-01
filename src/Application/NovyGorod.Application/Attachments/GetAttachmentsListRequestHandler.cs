@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using MediatR;
 using NovyGorod.Application.Common.Extensions;
-using NovyGorod.Application.Common.RequestHandlers;
 using NovyGorod.Application.Contracts.Attachments.Dto;
 using NovyGorod.Application.Contracts.Attachments.Requests;
 using NovyGorod.Domain.ModelAccess;
@@ -14,8 +13,9 @@ using NovyGorod.Domain.Services;
 
 namespace NovyGorod.Application.Attachments;
 
-internal class GetAttachmentsListRequestHandler : BaseRequestHandler<GetAttachmentsListRequest, AttachmentsListDto>
+internal class GetAttachmentsListRequestHandler : IRequestHandler<GetAttachmentsListRequest, AttachmentsListDto>
 {
+    private readonly IExecutionContextService _executionContextService;
     private readonly IMapper _mapper;
     private readonly IReadOnlyRepository<Attachment> _repository;
 
@@ -23,21 +23,22 @@ internal class GetAttachmentsListRequestHandler : BaseRequestHandler<GetAttachme
         IExecutionContextService executionContextService,
         IMapper mapper,
         IReadOnlyRepository<Attachment> repository)
-        : base(executionContextService)
     {
+        _executionContextService = executionContextService;
         _mapper = mapper;
         _repository = repository;
     }
 
-    protected override async Task<AttachmentsListDto> HandleInternal(
+    public async Task<AttachmentsListDto> Handle(
         GetAttachmentsListRequest request,
         CancellationToken cancellationToken)
     {
+        var currentLanguageId = await _executionContextService.GetCurrentLanguageId();
+
+        var queryFilter = Filters.Attachment.BlockIdIs(request.PostBlockId) &
+                          Filters.Attachment.IsTranslatedInto(currentLanguageId); 
         var query = QueryBuilder<Attachment>
-            .CreateWithFilter(
-                attachment =>
-                    attachment.BlockId == request.PostBlockId &&
-                    attachment.Translations.Any(translation => translation.Id.LanguageId == CurrentLanguageId))
+            .CreateWithFilter(queryFilter)
             .Order(orderable => orderable.OrderBy(attachment => attachment.Index))
             .Build();
 
@@ -45,7 +46,7 @@ internal class GetAttachmentsListRequestHandler : BaseRequestHandler<GetAttachme
 
         var attachmentsList = new AttachmentsListDto
         {
-            Attachments = _mapper.MapWithTranslation<List<AttachmentDto>>(attachments, CurrentLanguageId),
+            Attachments = _mapper.MapWithTranslation<List<AttachmentDto>>(attachments, currentLanguageId),
         };
 
         return attachmentsList;
