@@ -11,7 +11,7 @@ public static class AttachmentMappingProfileExtension
     public static IMappingExpression<Attachment, TDestination> FindTranslationBeforeMap<TDestination>(
         this IMappingExpression<Attachment, TDestination> expression)
     {
-        return expression.FindTranslationBeforeMap<Attachment, int, AttachmentTranslation, TDestination>();
+        return expression.FindTranslationBeforeMap<Attachment, AttachmentTranslation, TDestination>();
     }
 
     public static IMappingExpression<Attachment, TDestination> ForMemberMapFromTranslation<
@@ -21,7 +21,7 @@ public static class AttachmentMappingProfileExtension
         Expression<Func<AttachmentTranslation, TResult>> mapFrom)
     {
         return expression
-            .ForMemberMapFromTranslation<Attachment, int, AttachmentTranslation, TDestination, TMember, TResult>(
+            .ForMemberMapFromTranslation<Attachment, AttachmentTranslation, TDestination, TMember, TResult>(
                 destinationMember, mapFrom);
     }
 }

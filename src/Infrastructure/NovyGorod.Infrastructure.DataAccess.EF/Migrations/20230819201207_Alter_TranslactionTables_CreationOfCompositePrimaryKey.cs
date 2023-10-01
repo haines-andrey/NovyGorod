@@ -5,7 +5,7 @@
 namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
 {
     /// <inheritdoc />
-    public partial class Alter_TranslactionTables_CreationOfCompositePrimaryKey : Migration
+    public partial class Alter_TranslationTables_CreationOfCompositePrimaryKey : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

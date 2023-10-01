@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using NovyGorod.Application.Contracts.Media;
 using NovyGorod.Application.Contracts.Media.Requests;
 using NovyGorod.Domain.ModelAccess;
-using NovyGorod.Domain.ModelAccess.Queries;
 using NovyGorod.Domain.ModelAccess.Queries.Builders;
 using NovyGorod.Domain.Models;
 
@@ -25,7 +24,7 @@ public class GetMediaDataRequestHandler : IRequestHandler<GetMediaDataRequest, F
 
     public async Task<FileStream> Handle(GetMediaDataRequest request, CancellationToken cancellationToken)
     {
-        var query = QueryBuilder<MediaData>.CreateWithFilter(mediaData => mediaData.Id == request.Id).Build();
+        var query = QueryBuilder<MediaData>.CreateWithFilter(Filters.MediaData.IdIs(request.Id)).Build();
         var mediaData = await _repository.GetSingleOrDefault(query, cancellationToken);
 
         if (mediaData is null || !mediaData.IsLocal)

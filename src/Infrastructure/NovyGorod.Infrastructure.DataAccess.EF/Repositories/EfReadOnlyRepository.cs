@@ -25,6 +25,34 @@ public class EfReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity>
 
     protected virtual IQueryable<TEntity> GetQueryable() => DbContext.Set<TEntity>();
 
+    public async Task<TEntity> GetById(
+        Func<object[]> idValueSelector,
+        CancellationToken cancellationToken = default)
+    {
+        var id = idValueSelector();
+        var entity = await DbContext.FindAsync<TEntity>(id, cancellationToken);
+        
+        Contract.IsNotNull<CodedException>(entity, ErrorCode.EntityNotFound);
+
+        return entity;
+    }
+
+    public async Task<IReadOnlyCollection<TEntity>> GetCollectionByIds(
+        Func<IEnumerable<object[]>> idValuesSelector,
+        CancellationToken cancellationToken = default)
+    {
+        var ids = idValuesSelector();
+        var list = new List<TEntity>();
+
+        foreach (var id in ids)
+        {
+            var entity = await GetById(() => id, cancellationToken);
+            list.Add(entity);
+        }
+
+        return list;
+    }
+
     public Task<Pagination<TEntity>> Paginate(
         IQuery<TEntity> query,
         CancellationToken cancellationToken = default)

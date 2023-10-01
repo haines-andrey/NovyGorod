@@ -2,7 +2,7 @@
 
 namespace NovyGorod.Application.Contracts.Common.Search;
 
-public record SearchRequest<TDto> : IRequest<SearchResultDto<TDto>>
+public record SearchModelsRequest<TModelDto> : IRequest<SearchModelsResultDto<TModelDto>>
 {
     public int PageIndex { get; init; }
 

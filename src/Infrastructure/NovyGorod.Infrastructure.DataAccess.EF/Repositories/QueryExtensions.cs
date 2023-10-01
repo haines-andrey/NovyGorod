@@ -22,7 +22,7 @@ internal static class QueryExtensions
     {
         if (query.Filter is not null)
         {
-            source = source.Where(query.Filter.Expression);
+            source = source.Where(query.Filter.Predicate);
         }
 
         if (query.Orderable is not null)

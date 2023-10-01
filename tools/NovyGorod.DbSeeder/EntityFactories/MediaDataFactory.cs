@@ -23,7 +23,8 @@ internal class MediaDataFactory : IEntityFactory<MediaData, MediaDataDto>
 
     private Task<MediaData> GetExisingMediaData(string url)
     {
-        var query = QueryBuilder<MediaData>.CreateWithFilter(mediaData => mediaData.Url == url).Build();
+        var queryFilter = Filters.MediaData.UrlIs(url);
+        var query = QueryBuilder<MediaData>.CreateWithFilter(queryFilter).Build();
 
         return _repository.GetSingleOrDefault(query);
     }

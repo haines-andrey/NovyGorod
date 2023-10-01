@@ -1,5 +1,4 @@
 ﻿using System.Linq.Expressions;
-using NovyGorod.Domain.ModelAccess.Queries.Filters;
 using NovyGorod.Domain.ModelAccess.Queries.Includable;
 using NovyGorod.Domain.ModelAccess.Queries.Orderable;
 
@@ -10,7 +9,7 @@ public interface IQueryBuilder<TModel>
 {
     IQuery<TModel> Build();
 
-    IQueryBuilder<TModel> Where(IQueryFilter<TModel> filter);
+    IQueryBuilder<TModel> Where(QueryFilter<TModel> filter);
 
     IQueryBuilder<TModel> Order(Expression<Func<IOrderable<TModel>, IThenOrderable<TModel>>> orderable);
 

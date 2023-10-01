@@ -6,7 +6,6 @@ using NovyGorod.Domain.ModelAccess.Queries.Orderable;
 namespace NovyGorod.Infrastructure.DataAccess.EF.Queries.Order;
 
 internal class ThenOrderableQueryableAdapter<T> : IThenOrderable<T>, IQueryableConvertible<T>
-    where T : class
 {
     private readonly IOrderedQueryable<T> _queryable;
 

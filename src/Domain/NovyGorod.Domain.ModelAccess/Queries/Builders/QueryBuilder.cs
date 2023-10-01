@@ -1,7 +1,6 @@
 ﻿using System.Linq.Expressions;
 using NovyGorod.Common.Utils;
 using NovyGorod.Domain.ModelAccess.Exceptions;
-using NovyGorod.Domain.ModelAccess.Queries.Filters;
 using NovyGorod.Domain.ModelAccess.Queries.Includable;
 using NovyGorod.Domain.ModelAccess.Queries.Orderable;
 
@@ -22,7 +21,7 @@ public sealed class QueryBuilder<TModel> : IQueryBuilder<TModel>
         return new QueryBuilder<TModel>(Query<TModel>.Empty);
     }
 
-    public static IQueryBuilder<TModel> CreateWithFilter(IQueryFilter<TModel> filter)
+    public static IQueryBuilder<TModel> CreateWithFilter(QueryFilter<TModel> filter)
     {
         var query = Query<TModel>.Empty;
         query.Filter = filter;
@@ -43,7 +42,7 @@ public sealed class QueryBuilder<TModel> : IQueryBuilder<TModel>
         return _query;
     }
 
-    public IQueryBuilder<TModel> Where(IQueryFilter<TModel> filter)
+    public IQueryBuilder<TModel> Where(QueryFilter<TModel> filter)
     {
         Contract.IsNotNull<ModelQueryBuildException>(filter);
         Contract.IsNull<ModelQueryBuildException>(_query.Filter);

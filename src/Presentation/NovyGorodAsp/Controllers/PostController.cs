@@ -1,21 +1,23 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using NovyGorod.Application.Contracts.Attachments.Requests;
 using NovyGorod.Application.Contracts.Posts.Requests;
 using NovyGorod.Domain.Models.Posts;
+using NovyGorod.Domain.Services;
 using NovyGorodAsp.Models.Posts;
-using NovyGorodAsp.Models.Posts.Attachments;
 
 namespace NovyGorodAsp.Controllers;
 
 public class PostController : Controller
 {
+    private readonly IExecutionContextService _executionContextService;
     private readonly IMediator _mediator;
 
-    public PostController(IMediator mediator)
+    public PostController(
+        IExecutionContextService executionContextService,
+        IMediator mediator)
     {
+        _executionContextService = executionContextService;
         _mediator = mediator;
     }
 
@@ -46,7 +48,8 @@ public class PostController : Controller
     [HttpGet("post/{id}")]
     public async Task<IActionResult> View(int id)
     {
-        var request = new GetPostRequest { Id = id };
+        var currentLanguageId = await _executionContextService.GetCurrentLanguageId();
+        var request = new GetPostRequest { Id = id, LanguageId = currentLanguageId };
         var post = await _mediator.Send(request);
 
         var viewModel = new PostViewModel { Post = post};
@@ -56,7 +59,11 @@ public class PostController : Controller
 
     private async Task<IActionResult> ViewPostsList(PostType type, string actionName, int pageIndex)
     {
-        var request = new SearchPostsRequest {Type = type, PageSize = 6, PageIndex = --pageIndex};
+        var currentLanguageId = await _executionContextService.GetCurrentLanguageId();
+        var request = new SearchPostsRequest
+        {
+            Type = type, LanguageId = currentLanguageId, PageSize = 6, PageIndex = --pageIndex,
+        };
         var result = await _mediator.Send(request);
         var viewModel = new PostsListViewModel
         {
