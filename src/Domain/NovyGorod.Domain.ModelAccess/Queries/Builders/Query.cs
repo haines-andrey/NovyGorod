@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
-using NovyGorod.Domain.ModelAccess.Queries.Filters;
 using NovyGorod.Domain.ModelAccess.Queries.Includable;
 using NovyGorod.Domain.ModelAccess.Queries.Orderable;
 
@@ -12,7 +11,7 @@ internal sealed record Query<TModel> : IQuery<TModel>
 {
     public static Query<TModel> Empty => new();
 
-    public IQueryFilter<TModel> Filter { get; set; }
+    public QueryFilter<TModel> Filter { get; set; }
 
     public Expression<Func<IOrderable<TModel>, IThenOrderable<TModel>>> Orderable { get; set; }
 
