@@ -1,47 +1,46 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NovyGorod.Domain.Models.Common;
+using NovyGorod.Domain.Models.Common.Translations;
 
 namespace NovyGorod.Infrastructure.ModelConfigs;
 
-public static class EntityTypeBuilderExtensions
+internal static class EntityTypeBuilderExtensions
 {
-    public static EntityTypeBuilder<TEntity> ApplyBaseEntityConfig<TEntity>(
+    public static EntityTypeBuilder<TEntity> HasId<TEntity>(
         this EntityTypeBuilder<TEntity> builder)
-        where TEntity : class, IBaseEntity
+        where TEntity : class, IHasId<int>
     {
-        builder.HasKey(x => x.Id);
+        builder.HasKey(entity => entity.Id);
 
         return builder;
     }
 
-    public static EntityTypeBuilder<TEntity> ApplyIndexedEntityConfig<TEntity>(
-        this EntityTypeBuilder<TEntity> builder)
-        where TEntity : class, IIndexedEntity
-    {
-        builder.Property(x => x.Index).IsRequired();
-
-        return builder;
-    }
-
-    public static EntityTypeBuilder<TTranslation> ApplyTranslationOfEntityConfig<TEntity, TTranslation>(
+    public static EntityTypeBuilder<TTranslation> ApplyTranslationOfModelConfig<TTranslation, TModel>(
         this EntityTypeBuilder<TTranslation> builder)
-        where TEntity : class, IBaseEntity
-        where TTranslation : class, ITranslationOfEntity<TEntity>
+        where TTranslation : TranslationOfModel<TModel>
+        where TModel : class, ITranslatedModel<TModel, TTranslation>
     {
-        builder.HasOne(x => x.Language).WithMany()
-            .HasForeignKey(x => x.LanguageId).IsRequired();
+        builder
+            .HasOne(translation => translation.Language)
+            .WithMany()
+            .HasForeignKey(translation => translation.LanguageId);
 
-        builder.HasIndex(x => new {x.EntityId, x.LanguageId}).IsUnique();
+        builder
+            .HasOne(translation => translation.Model)
+            .WithMany(entity => entity.Translations)
+            .HasForeignKey(translation => translation.ModelId);
+
+        builder.HasKey(translation => new {translation.ModelId, translation.LanguageId});
 
         return builder;
     }
 
-    public static EntityTypeBuilder<TEntity> ApplyTranslatedEntityConfig<TEntity, TTranslation>(
+    public static EntityTypeBuilder<TEntity> ApplySequencedModelConfig<TEntity>(
         this EntityTypeBuilder<TEntity> builder)
-        where TEntity : class, ITranslatedEntity<TEntity, TTranslation>
-        where TTranslation : class, ITranslationOfEntity<TEntity>
+        where TEntity : class, ISequencedModel
     {
-        builder.HasMany(x => x.Translations).WithOne(x => x.Entity).HasForeignKey(x => x.EntityId);
+        builder.Property(entity => entity.Index).IsRequired();
+        builder.HasIndex(entity => entity.Index).IsDescending();
 
         return builder;
     }

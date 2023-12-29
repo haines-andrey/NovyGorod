@@ -1,9 +1,9 @@
-﻿using NovyGorod.Application.Contracts.Media.Dto;
-using NovyGorod.Domain.Models.Common;
+﻿using NovyGorod.Application.Contracts.Common.Dto;
+using NovyGorod.Application.Contracts.Media.Dto;
 
 namespace NovyGorod.Application.Contracts.Attachments.Dto;
 
-public record AttachmentDto : BaseEntityDto
+public record AttachmentDto : BaseModelDto
 {
     public string Summary { get; init; }
 

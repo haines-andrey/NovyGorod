@@ -4,9 +4,8 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
-using NovyGorod.Application.Contracts.Media;
+using NovyGorod.Application.Contracts.Common.Dto;
 using NovyGorod.Application.Contracts.Media.Requests;
-using NovyGorod.Domain.Models.Common;
 
 namespace NovyGorodAsp.Controllers;
 
@@ -33,7 +32,7 @@ public class MediaDataController : Controller
     }
 
     [HttpPost]
-    public async Task<BaseEntityDto> Upload(IFormFile file)
+    public async Task<BaseModelDto> Upload(IFormFile file)
     {
         var stream = file.OpenReadStream();
         var extension = Path.GetExtension(file.FileName);

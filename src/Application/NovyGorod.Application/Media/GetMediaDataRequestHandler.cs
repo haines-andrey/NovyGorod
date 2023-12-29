@@ -5,8 +5,8 @@ using MediatR;
 using Microsoft.Extensions.Configuration;
 using NovyGorod.Application.Contracts.Media;
 using NovyGorod.Application.Contracts.Media.Requests;
-using NovyGorod.Domain.EntityAccess;
-using NovyGorod.Domain.EntityAccess.Queries;
+using NovyGorod.Domain.ModelAccess;
+using NovyGorod.Domain.ModelAccess.Queries.Builders;
 using NovyGorod.Domain.Models;
 
 namespace NovyGorod.Application.Media;
@@ -14,18 +14,20 @@ namespace NovyGorod.Application.Media;
 public class GetMediaDataRequestHandler : IRequestHandler<GetMediaDataRequest, FileStream>
 {
     private readonly IConfiguration _configuration;
-    private readonly IEntityAccessService<MediaData> _entityAccessService;
+    private readonly IReadOnlyRepository<MediaData> _repository;
 
-    public GetMediaDataRequestHandler(IConfiguration configuration, IEntityAccessService<MediaData> entityAccessService)
+    public GetMediaDataRequestHandler(IConfiguration configuration, IReadOnlyRepository<MediaData> repository)
     {
         _configuration = configuration;
-        _entityAccessService = entityAccessService;
+        _repository = repository;
     }
 
     public async Task<FileStream> Handle(GetMediaDataRequest request, CancellationToken cancellationToken)
     {
-        var query = new BaseEntityQueryParameters<MediaData> { Id = request.Id };
-        var mediaData = await _entityAccessService.GetSingleOrDefault(query);
+        var query = QueryBuilder<MediaData>.CreateNew()
+            .Where(Filters.MediaData.IdIs(request.Id))
+            .Build();
+        var mediaData = await _repository.GetSingleOrDefault(query, cancellationToken);
 
         if (mediaData is null || !mediaData.IsLocal)
         {

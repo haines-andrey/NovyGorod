@@ -20,6 +20,7 @@ internal class PostBlockTranslationFactory : IEntityFactory<PostBlockTranslation
             Title = dto.Title,
             Text = dto.Text,
             LanguageId = await _defaultDataService.GetLanguageId(),
+            ModelId = 0,
         };
 
         return translation;

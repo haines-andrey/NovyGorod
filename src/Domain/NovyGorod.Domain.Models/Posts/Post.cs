@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using NovyGorod.Domain.Models.Common;
+using NovyGorod.Domain.Models.Common.Translations;
 
 namespace NovyGorod.Domain.Models.Posts;
 
 [ExcludeFromCodeCoverage]
-public class Post : BaseEntity, ITranslatedEntity<Post, PostTranslation>, IIndexedEntity, ITrackable
+public class Post : ITranslatedModel<Post, PostTranslation>, ISequencedModel, ITrackable
 {
+    public int Id { get; set; }
+
     public int Index { get; set; }
 
     public virtual ICollection<PostTypeLink> TypeLinks { get; set; }

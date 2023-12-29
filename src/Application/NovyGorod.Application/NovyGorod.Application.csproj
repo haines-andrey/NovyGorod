@@ -1,23 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <LangVersion>latestmajor</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Domain\NovyGorod.Domain.EntityAccess\NovyGorod.Domain.EntityAccess.csproj" />
+      <ProjectReference Include="..\..\Domain\NovyGorod.Domain.ModelAccess\NovyGorod.Domain.ModelAccess.csproj" />
       <ProjectReference Include="..\..\Domain\NovyGorod.Domain.Models\NovyGorod.Domain.Models.csproj" />
       <ProjectReference Include="..\..\Domain\NovyGorod.Domain.Services\NovyGorod.Domain.Services.csproj" />
       <ProjectReference Include="..\NovyGorod.Application.Contracts\NovyGorod.Application.Contracts.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="AutoMapper" Version="12.0.0" />
-      <PackageReference Include="AutoMapper.Contrib.Autofac.DependencyInjection" Version="7.1.0" />
-      <PackageReference Include="MediatR" Version="11.1.0" />
-      <PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="9.1.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+      <PackageReference Include="AutoMapper" Version="12.0.1" />
+      <PackageReference Include="AutoMapper.Contrib.Autofac.DependencyInjection" Version="7.2.0" />
+      <PackageReference Include="MediatR" Version="12.2.0" />
+      <PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="11.2.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
     </ItemGroup>
 
 </Project>

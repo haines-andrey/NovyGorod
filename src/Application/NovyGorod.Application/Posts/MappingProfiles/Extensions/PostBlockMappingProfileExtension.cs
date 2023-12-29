@@ -20,7 +20,9 @@ public static class PostBlockMappingProfileExtension
         Expression<Func<TDestination, TMember>> destinationMember,
         Expression<Func<PostBlockTranslation, TResult>> mapFrom)
     {
-        return expression.ForMemberMapFromTranslation<PostBlock, PostBlockTranslation, TDestination, TMember, TResult>(
-            destinationMember, mapFrom);
+        return expression
+            .ForMemberMapFromTranslation<PostBlock, PostBlockTranslation, TDestination, TMember, TResult>(
+                destinationMember,
+                mapFrom);
     }
 }

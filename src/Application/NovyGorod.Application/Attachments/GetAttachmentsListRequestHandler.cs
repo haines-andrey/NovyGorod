@@ -1,45 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using NovyGorod.Application.Attachments.Queries;
 using NovyGorod.Application.Common.Extensions;
-using NovyGorod.Application.Common.RequestHandlers;
 using NovyGorod.Application.Contracts.Attachments.Dto;
 using NovyGorod.Application.Contracts.Attachments.Requests;
-using NovyGorod.Domain.EntityAccess;
+using NovyGorod.Domain.ModelAccess;
+using NovyGorod.Domain.ModelAccess.Queries.Builders;
 using NovyGorod.Domain.Models.Attachments;
 using NovyGorod.Domain.Services;
 
 namespace NovyGorod.Application.Attachments;
 
-internal class GetAttachmentsListRequestHandler : BaseRequestHandler<GetAttachmentsListRequest, AttachmentsListDto>
+internal class GetAttachmentsListRequestHandler : IRequestHandler<GetAttachmentsListRequest, AttachmentsListDto>
 {
+    private readonly IExecutionContextService _executionContextService;
     private readonly IMapper _mapper;
-    private readonly IEntityAccessService<Attachment> _attachmentAccessService;
+    private readonly IReadOnlyRepository<Attachment> _repository;
 
     public GetAttachmentsListRequestHandler(
         IExecutionContextService executionContextService,
         IMapper mapper,
-        IEntityAccessService<Attachment> attachmentAccessService)
-        : base(executionContextService)
+        IReadOnlyRepository<Attachment> repository)
     {
+        _executionContextService = executionContextService;
         _mapper = mapper;
-        _attachmentAccessService = attachmentAccessService;
+        _repository = repository;
     }
 
-    protected override async Task<AttachmentsListDto> HandleInternal(
+    public async Task<AttachmentsListDto> Handle(
         GetAttachmentsListRequest request,
         CancellationToken cancellationToken)
     {
-        var query = new AttachmentQueryParameters {PostBlockId = request.PostBlockId, LanguageId = CurrentLanguageId};
-        var attachments = await _attachmentAccessService.GetCollection(query);
+        var currentLanguageId = await _executionContextService.GetCurrentLanguageId();
+
+        var queryFilter = Filters.Attachment.BlockIdIs(request.PostBlockId) &
+                          Filters.Attachment.IsTranslatedInto(currentLanguageId); 
+        var query = QueryBuilder<Attachment>.CreateNew()
+            .Where(queryFilter)
+            .Order(orderable => orderable.OrderBy(attachment => attachment.Index))
+            .Build();
+
+        var attachments = await _repository.GetCollection(query, cancellationToken);
 
         var attachmentsList = new AttachmentsListDto
         {
-            Attachments = _mapper.MapWithTranslation<List<AttachmentDto>>(attachments, CurrentLanguageId),
+            Attachments = _mapper.MapWithTranslation<List<AttachmentDto>>(attachments, currentLanguageId),
         };
 
         return attachmentsList;

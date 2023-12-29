@@ -11,7 +11,7 @@ internal class AttachmentTranslationFactory : IEntityFactory<AttachmentTranslati
     private readonly IDefaultDataService _defaultDataService;
 
     public AttachmentTranslationFactory(
-        IEntityFactory<MediaData, MediaDataDto> mediaDataFactory, 
+        IEntityFactory<MediaData, MediaDataDto> mediaDataFactory,
         IDefaultDataService defaultDataService)
     {
         _mediaDataFactory = mediaDataFactory;
@@ -23,6 +23,7 @@ internal class AttachmentTranslationFactory : IEntityFactory<AttachmentTranslati
         var translation = new AttachmentTranslation
         {
             LanguageId = await _defaultDataService.GetLanguageId(),
+            ModelId = 0,
             SourceMedia = await _mediaDataFactory.Create(dto.SourceMediaData),
             Summary = dto.Summary,
         };

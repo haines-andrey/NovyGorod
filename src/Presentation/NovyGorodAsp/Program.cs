@@ -1,26 +1,16 @@
 using Autofac.Extensions.DependencyInjection;
-using dotenv.net;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using NovyGorodAsp;
 using Serilog;
 
-namespace NovyGorodAsp;
+CreateHostBuilder(args).Build().Run();
 
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        DotEnv.Load();
-        CreateHostBuilder(args).Build().Run();
-    }
-
-    private static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-            .ConfigureWebHostDefaults(
-                webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                })
-            .UseSerilog();
-}
+IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureAppConfiguration(config => config.AddIniFile("appsettings.ini"))
+        .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+        .ConfigureWebHostDefaults(
+            webBuilder => { webBuilder.UseStartup<Startup>(); })
+        .UseSerilog();

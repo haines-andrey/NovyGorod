@@ -1,17 +1,17 @@
 ﻿using NovyGorod.DbSeeder.Dtos;
-using NovyGorod.DbSeeder.Queries;
-using NovyGorod.Domain.EntityAccess;
+using NovyGorod.Domain.ModelAccess;
+using NovyGorod.Domain.ModelAccess.Queries.Builders;
 using NovyGorod.Domain.Models;
 
 namespace NovyGorod.DbSeeder.EntityFactories;
 
 internal class MediaDataFactory : IEntityFactory<MediaData, MediaDataDto>
 {
-    private readonly IEntityAccessService<MediaData> _mediaDataAccessService;
+    private readonly IReadOnlyRepository<MediaData> _repository;
 
-    public MediaDataFactory(IEntityAccessService<MediaData> mediaDataAccessService)
+    public MediaDataFactory(IReadOnlyRepository<MediaData> repository)
     {
-        _mediaDataAccessService = mediaDataAccessService;
+        _repository = repository;
     }
 
     public async Task<MediaData> Create(MediaDataDto dto)
@@ -23,8 +23,9 @@ internal class MediaDataFactory : IEntityFactory<MediaData, MediaDataDto>
 
     private Task<MediaData> GetExisingMediaData(string url)
     {
-        var query = new MediaDataQueryParams {Url = url};
+        var queryFilter = Filters.MediaData.UrlIs(url);
+        var query = QueryBuilder<MediaData>.CreateNew().Where(queryFilter).Build();
 
-        return _mediaDataAccessService.GetSingleOrDefault(query);
+        return _repository.GetSingleOrDefault(query);
     }
 }

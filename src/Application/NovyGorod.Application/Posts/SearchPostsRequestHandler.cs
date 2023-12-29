@@ -2,32 +2,27 @@
 using NovyGorod.Application.Common.Search;
 using NovyGorod.Application.Contracts.Posts.Dto;
 using NovyGorod.Application.Contracts.Posts.Requests;
-using NovyGorod.Application.Posts.Queries;
-using NovyGorod.Domain.EntityAccess;
-using NovyGorod.Domain.EntityAccess.Queries;
+using NovyGorod.Domain.ModelAccess;
+using NovyGorod.Domain.ModelAccess.Queries.Builders;
 using NovyGorod.Domain.Models.Posts;
-using NovyGorod.Domain.Services;
 
 namespace NovyGorod.Application.Posts;
 
-public class SearchPostsRequestHandler : SearchRequestHandler<SearchPostsRequest, Post, PostListDto>
+public class SearchPostsRequestHandler : SearchModelsRequestHandler<SearchPostsRequest, Post, PostListDto>
 {
     public SearchPostsRequestHandler(
         IMapper mapper,
-        IExecutionContextService executionContextService,
-        IEntityAccessService<Post> entityAccessService)
-        : base(executionContextService, mapper, entityAccessService)
+        IReadOnlyRepository<Post> modelRepository)
+        : base(mapper, modelRepository)
     {
     }
 
-    protected override IQueryParameters<Post> CreateQuery(SearchPostsRequest request)
+    protected override IQueryBuilder<Post> GetQueryBuilder(SearchPostsRequest request)
     {
-        return new PostListQueryParameters
-        {
-            Type = request.Type,
-            LanguageId = CurrentLanguageId,
-            PageIndex = request.PageIndex,
-            PageSize = request.PageSize
-        };
+        return base.GetQueryBuilder(request)
+            .Where(
+                Filters.Post.TypeIs(request.Type) &
+                Filters.Post.IsTranslatedInto(request.LanguageId))
+            .Order(orderable => orderable.OrderByDesc(post => post.Index));
     }
 }

@@ -17,7 +17,7 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Proxies:ChangeTracking", false)
                 .HasAnnotation("Proxies:CheckEquality", false)
                 .HasAnnotation("Proxies:LazyLoading", true)
@@ -43,18 +43,15 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
 
                     b.HasIndex("BlockId");
 
+                    b.HasIndex("Index")
+                        .IsDescending();
+
                     b.ToTable("Attachment");
                 });
 
             modelBuilder.Entity("NovyGorod.Domain.Models.Attachments.AttachmentTranslation", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("EntityId")
+                    b.Property<int>("ModelId")
                         .HasColumnType("int");
 
                     b.Property<int>("LanguageId")
@@ -69,16 +66,13 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                     b.Property<string>("Summary")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ModelId", "LanguageId");
 
                     b.HasIndex("LanguageId");
 
                     b.HasIndex("PreviewMediaId");
 
                     b.HasIndex("SourceMediaId");
-
-                    b.HasIndex("EntityId", "LanguageId")
-                        .IsUnique();
 
                     b.ToTable("AttachmentTranslation");
                 });
@@ -154,6 +148,9 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Index")
+                        .IsDescending();
+
                     b.ToTable("Post");
                 });
 
@@ -173,6 +170,9 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Index")
+                        .IsDescending();
+
                     b.HasIndex("PostId");
 
                     b.ToTable("PostBlock");
@@ -180,13 +180,7 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
 
             modelBuilder.Entity("NovyGorod.Domain.Models.Posts.PostBlockTranslation", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("EntityId")
+                    b.Property<int>("ModelId")
                         .HasColumnType("int");
 
                     b.Property<int>("LanguageId")
@@ -198,25 +192,16 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ModelId", "LanguageId");
 
                     b.HasIndex("LanguageId");
-
-                    b.HasIndex("EntityId", "LanguageId")
-                        .IsUnique();
 
                     b.ToTable("PostBlockTranslation");
                 });
 
             modelBuilder.Entity("NovyGorod.Domain.Models.Posts.PostTranslation", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("EntityId")
+                    b.Property<int>("ModelId")
                         .HasColumnType("int");
 
                     b.Property<int>("LanguageId")
@@ -235,16 +220,13 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                     b.Property<int?>("VideoId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ModelId", "LanguageId");
 
                     b.HasIndex("LanguageId");
 
                     b.HasIndex("PreviewId");
 
                     b.HasIndex("VideoId");
-
-                    b.HasIndex("EntityId", "LanguageId")
-                        .IsUnique();
 
                     b.ToTable("PostTranslation");
                 });
@@ -279,15 +261,15 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
 
             modelBuilder.Entity("NovyGorod.Domain.Models.Attachments.AttachmentTranslation", b =>
                 {
-                    b.HasOne("NovyGorod.Domain.Models.Attachments.Attachment", "Entity")
-                        .WithMany("Translations")
-                        .HasForeignKey("EntityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("NovyGorod.Domain.Models.Common.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NovyGorod.Domain.Models.Attachments.Attachment", "Model")
+                        .WithMany("Translations")
+                        .HasForeignKey("ModelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -301,9 +283,9 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Entity");
-
                     b.Navigation("Language");
+
+                    b.Navigation("Model");
 
                     b.Navigation("PreviewMedia");
 
@@ -323,34 +305,34 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
 
             modelBuilder.Entity("NovyGorod.Domain.Models.Posts.PostBlockTranslation", b =>
                 {
-                    b.HasOne("NovyGorod.Domain.Models.Posts.PostBlock", "Entity")
-                        .WithMany("Translations")
-                        .HasForeignKey("EntityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("NovyGorod.Domain.Models.Common.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Entity");
+                    b.HasOne("NovyGorod.Domain.Models.Posts.PostBlock", "Model")
+                        .WithMany("Translations")
+                        .HasForeignKey("ModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Language");
+
+                    b.Navigation("Model");
                 });
 
             modelBuilder.Entity("NovyGorod.Domain.Models.Posts.PostTranslation", b =>
                 {
-                    b.HasOne("NovyGorod.Domain.Models.Posts.Post", "Entity")
-                        .WithMany("Translations")
-                        .HasForeignKey("EntityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("NovyGorod.Domain.Models.Common.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NovyGorod.Domain.Models.Posts.Post", "Model")
+                        .WithMany("Translations")
+                        .HasForeignKey("ModelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -364,9 +346,9 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                         .WithMany()
                         .HasForeignKey("VideoId");
 
-                    b.Navigation("Entity");
-
                     b.Navigation("Language");
+
+                    b.Navigation("Model");
 
                     b.Navigation("Preview");
 

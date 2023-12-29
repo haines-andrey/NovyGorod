@@ -1,14 +1,14 @@
 ﻿using Autofac;
-using NovyGorod.Infrastructure.DataAccess.Core.RepositoryFactories;
+using NovyGorod.Infrastructure.DataAccess.Core.BeforeCommitHandlers;
 
 namespace NovyGorod.Infrastructure.DataAccess.Core;
 
 public static class ContainerBuilderExtensions
 {
-    public static ContainerBuilder AddDataAccessCore(this ContainerBuilder builder)
+    public static ContainerBuilder RegisterModelsAccessCore(this ContainerBuilder builder)
     {
-        builder.RegisterType<UnitOfWork>().AsImplementedInterfaces().InstancePerLifetimeScope();
-        builder.RegisterType<RepositoryFactory>().AsImplementedInterfaces().InstancePerLifetimeScope();
+        builder.RegisterType<Committer>().AsImplementedInterfaces().InstancePerLifetimeScope();
+        builder.RegisterType<TrackableModelsBeforeCommitHandler>().AsImplementedInterfaces().InstancePerLifetimeScope();
 
         return builder;
     }

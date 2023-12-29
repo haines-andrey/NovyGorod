@@ -27,6 +27,7 @@ internal class PostTranslationFactory : IEntityFactory<PostTranslation, PostDto>
             Preview = await _mediaDataFactory.Create(dto.PreviewImage),
             Video = !HasVideo(dto) ? null : await _mediaDataFactory.Create(dto.Video),
             LanguageId = await _defaultDataService.GetLanguageId(),
+            ModelId = 0,
         };
 
         return translation;

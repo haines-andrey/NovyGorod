@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
@@ -12,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NovyGorod.Common.Exceptions;
+using NovyGorod.Infrastructure.DataAccess.Core;
 using NovyGorod.Infrastructure.DataAccess.EF;
 using NovyGorodAsp.Middlewares;
 using Serilog;
@@ -49,10 +49,12 @@ public class Startup
 
     public void ConfigureContainer(ContainerBuilder builder)
     {
-        builder.AddDataAccessEf<Context>();
-        builder.RegisterModule<NovyGorod.Domain.EntityAccess.Module>();
-        builder.RegisterModule<NovyGorod.Application.Module>();
-        builder.RegisterModule<Module>();
+        builder
+            .RegisterModelsAccessCore()
+            .RegisterDbContext<Context>()
+            .RegisterModelsRepositories()
+            .RegisterModule<NovyGorod.Application.Module>()
+            .RegisterModule<Module>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
