@@ -1,6 +1,5 @@
 ﻿using NovyGorod.DbSeeder.Dtos;
 using NovyGorod.DbSeeder.Services;
-using NovyGorod.Domain.Models.Common.Translations;
 using NovyGorod.Domain.Models.Posts;
 
 namespace NovyGorod.DbSeeder.EntityFactories;
@@ -20,7 +19,8 @@ internal class PostBlockTranslationFactory : IEntityFactory<PostBlockTranslation
         {
             Title = dto.Title,
             Text = dto.Text,
-            Id = new TranslationOfModelId<int> {LanguageId = await _defaultDataService.GetLanguageId()},
+            LanguageId = await _defaultDataService.GetLanguageId(),
+            ModelId = 0,
         };
 
         return translation;

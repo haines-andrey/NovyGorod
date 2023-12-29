@@ -7,6 +7,6 @@ internal class PostBlockTranslationConfig : EntityConfig<PostBlockTranslation>
 {
     public override void Configure(EntityTypeBuilder<PostBlockTranslation> builder)
     {
-        builder.ApplyTranslationOfBaseModelConfig<PostBlock, PostBlockTranslation>();
+        builder.ApplyTranslationOfModelConfig<PostBlockTranslation, PostBlock>();
     }
 }

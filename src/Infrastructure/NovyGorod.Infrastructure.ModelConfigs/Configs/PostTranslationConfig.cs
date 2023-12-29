@@ -7,7 +7,7 @@ internal class PostTranslationConfig : EntityConfig<PostTranslation>
 {
     public override void Configure(EntityTypeBuilder<PostTranslation> builder)
     {
-        builder.ApplyTranslationOfBaseModelConfig<Post, PostTranslation>();
+        builder.ApplyTranslationOfModelConfig<PostTranslation, Post>();
 
         builder.HasOne(x => x.Preview).WithMany().HasForeignKey(x => x.PreviewId);
         builder.HasOne(x => x.Video).WithMany().HasForeignKey(x => x.VideoId).IsRequired(false);

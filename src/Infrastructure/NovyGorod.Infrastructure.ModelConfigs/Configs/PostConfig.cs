@@ -7,7 +7,7 @@ internal class PostConfig : EntityConfig<Post>
 {
     public override void Configure(EntityTypeBuilder<Post> builder)
     {
-        builder.ApplyBaseModelConfig()
+        builder.HasId()
             .ApplySequencedModelConfig();
 
         builder.HasMany(x => x.Blocks).WithOne(x => x.Post)

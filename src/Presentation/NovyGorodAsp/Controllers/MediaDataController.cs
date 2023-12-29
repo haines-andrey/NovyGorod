@@ -4,9 +4,8 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
-using NovyGorod.Application.Contracts.Media;
+using NovyGorod.Application.Contracts.Common.Dto;
 using NovyGorod.Application.Contracts.Media.Requests;
-using NovyGorod.Domain.Models.Common;
 
 namespace NovyGorodAsp.Controllers;
 

@@ -1,32 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using NovyGorod.Infrastructure.DataAccess.Core;
 
 namespace NovyGorod.Infrastructure.DataAccess.EF;
 
 internal static class ModelStateExtensions
 {
-    public static Func<EntityEntry<T>, bool> ToEfEntityStateFilter<T>(this ModelState modelState)
-        where T : class
+    private static readonly IReadOnlyDictionary<ModelState, EntityState> Mapping =
+        new Dictionary<ModelState, EntityState>
+        {
+            {ModelState.Added, EntityState.Added},
+            {ModelState.Modified, EntityState.Modified},
+            {ModelState.Deleted, EntityState.Deleted},
+        };
+
+    public static EntityState ToEntityState(this ModelState modelState)
     {
-        ISet<EntityState> converted = new HashSet<EntityState>();
-        if (modelState.HasFlag(ModelState.Added))
-        {
-            converted.Add(EntityState.Added);
-        }
-
-        if (modelState.HasFlag(ModelState.Deleted))
-        {
-            converted.Add(EntityState.Deleted);
-        }
-
-        if (modelState.HasFlag(ModelState.Modified))
-        {
-            converted.Add(EntityState.Modified);
-        }
-
-        return entityState => converted.Contains(entityState.State);
+        return Mapping[modelState];
     }
 }

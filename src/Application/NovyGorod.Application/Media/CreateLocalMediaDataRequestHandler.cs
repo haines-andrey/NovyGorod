@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.Extensions.Configuration;
+using NovyGorod.Application.Contracts.Common.Dto;
 using NovyGorod.Application.Contracts.Media;
 using NovyGorod.Application.Contracts.Media.Requests;
 using NovyGorod.Domain.ModelAccess;

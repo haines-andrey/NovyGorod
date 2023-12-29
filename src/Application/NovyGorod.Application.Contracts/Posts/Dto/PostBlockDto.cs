@@ -1,4 +1,5 @@
 ﻿using NovyGorod.Application.Contracts.Attachments.Dto;
+using NovyGorod.Application.Contracts.Common.Dto;
 using NovyGorod.Domain.Models.Common;
 
 namespace NovyGorod.Application.Contracts.Posts.Dto;

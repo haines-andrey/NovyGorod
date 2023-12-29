@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using NovyGorod.Application.Contracts.Common.Dto;
 using NovyGorod.Domain.Models;
 using NovyGorod.Domain.Models.Common;
 

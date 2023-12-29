@@ -37,8 +37,8 @@ internal class GetAttachmentsListRequestHandler : IRequestHandler<GetAttachments
 
         var queryFilter = Filters.Attachment.BlockIdIs(request.PostBlockId) &
                           Filters.Attachment.IsTranslatedInto(currentLanguageId); 
-        var query = QueryBuilder<Attachment>
-            .CreateWithFilter(queryFilter)
+        var query = QueryBuilder<Attachment>.CreateNew()
+            .Where(queryFilter)
             .Order(orderable => orderable.OrderBy(attachment => attachment.Index))
             .Build();
 

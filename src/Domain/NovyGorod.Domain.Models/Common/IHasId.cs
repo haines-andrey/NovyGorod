@@ -2,10 +2,8 @@
 
 namespace NovyGorod.Domain.Models.Common;
 
-public interface IHasId<T>
-    where T : IEquatable<T>
+public interface IHasId<TId>
+    where TId : IEquatable<TId>
 {
-    T Id { get; set; }
-
-    bool IsNew => Id.Equals(default);
+    TId Id { get; set; }
 }

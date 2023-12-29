@@ -13,7 +13,7 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
 {
     [DbContext(typeof(Context))]
     [Migration("20230822004258_Create_SequencedModels_Indexes")]
-    partial class Test
+    partial class Create_SequencedModels_Indexes
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

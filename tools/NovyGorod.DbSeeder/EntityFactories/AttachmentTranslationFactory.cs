@@ -2,7 +2,6 @@
 using NovyGorod.DbSeeder.Services;
 using NovyGorod.Domain.Models;
 using NovyGorod.Domain.Models.Attachments;
-using NovyGorod.Domain.Models.Common.Translations;
 
 namespace NovyGorod.DbSeeder.EntityFactories;
 
@@ -23,7 +22,8 @@ internal class AttachmentTranslationFactory : IEntityFactory<AttachmentTranslati
     {
         var translation = new AttachmentTranslation
         {
-            Id = new TranslationOfModelId<int> {LanguageId = await _defaultDataService.GetLanguageId()},
+            LanguageId = await _defaultDataService.GetLanguageId(),
+            ModelId = 0,
             SourceMedia = await _mediaDataFactory.Create(dto.SourceMediaData),
             Summary = dto.Summary,
         };

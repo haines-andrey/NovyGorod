@@ -23,9 +23,9 @@ public class ExecutionContextService : IExecutionContextService
     public Task<int> GetCurrentLanguageId()
     {
         var code = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-        var query = QueryBuilder<Language>.CreateWithFilter(Filters.Language.CodeIs(code)).Build();
+        var query = QueryBuilder<Language>.CreateNew().Where(Filters.Language.CodeIs(code)).Build();
 
-        return LanguageRepository.GetSingleOrDefault(query, x => x.Id);
+        return LanguageRepository.GetSingleOrDefault(query, lang => lang.Id);
     }
 
     public string GetCurrentUrl()

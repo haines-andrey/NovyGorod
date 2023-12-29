@@ -4,7 +4,7 @@ using NovyGorod.Domain.Models.Common.Translations;
 namespace NovyGorod.Domain.Models.Attachments;
 
 [ExcludeFromCodeCoverage]
-public class AttachmentTranslation : TranslationOfBaseModel<Attachment>
+public class AttachmentTranslation : TranslationOfModel<Attachment>
 {
     public int? PreviewMediaId { get; set; }
 

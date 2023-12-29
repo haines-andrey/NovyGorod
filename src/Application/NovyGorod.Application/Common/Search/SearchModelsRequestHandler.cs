@@ -43,7 +43,7 @@ public abstract class SearchModelsRequestHandler<TRequest, TModel, TModelDto>
 
     protected virtual IQueryBuilder<TModel> GetQueryBuilder(TRequest request)
     {
-        return QueryBuilder<TModel>.CreateEmpty()
+        return QueryBuilder<TModel>.CreateNew()
             .Skip(request.PageIndex * request.PageSize)
             .Take(request.PageSize);
     }

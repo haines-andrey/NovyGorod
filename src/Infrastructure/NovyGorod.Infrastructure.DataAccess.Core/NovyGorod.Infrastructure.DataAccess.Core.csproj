@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>latestmajor</LangVersion>
@@ -12,6 +12,16 @@
       <ProjectReference Include="..\..\Domain\NovyGorod.Domain.ModelAccess\NovyGorod.Domain.ModelAccess.csproj" />
       <ProjectReference Include="..\..\Domain\NovyGorod.Domain.Models\NovyGorod.Domain.Models.csproj" />
       <ProjectReference Include="..\..\Domain\NovyGorod.Domain.Services\NovyGorod.Domain.Services.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="IDataAccessProvider.cs" />
+      <Compile Remove="RepositoryFactories\IRepositoryFactory.cs" />
+      <Compile Remove="BeforeCommitHandlers\TrackableDateBeforeCommitHandler.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="RepositoryFactories" />
     </ItemGroup>
 
 </Project>

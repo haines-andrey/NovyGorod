@@ -16,25 +16,9 @@ public sealed class QueryBuilder<TModel> : IQueryBuilder<TModel>
         _query = query;
     }
 
-    public static IQueryBuilder<TModel> CreateEmpty()
+    public static IQueryBuilder<TModel> CreateNew()
     {
         return new QueryBuilder<TModel>(Query<TModel>.Empty);
-    }
-
-    public static IQueryBuilder<TModel> CreateWithFilter(QueryFilter<TModel> filter)
-    {
-        var query = Query<TModel>.Empty;
-        query.Filter = filter;
-
-        return new QueryBuilder<TModel>(query);
-    }
-
-    public static IQueryBuilder<TModel> CreateWithFilter(Expression<Func<TModel, bool>> filter)
-    {
-        var query = Query<TModel>.Empty;
-        query.Filter = QueryFilter<TModel>.Create(filter);
-
-        return new QueryBuilder<TModel>(query);
     }
 
     public IQuery<TModel> Build()
@@ -46,7 +30,6 @@ public sealed class QueryBuilder<TModel> : IQueryBuilder<TModel>
     {
         Contract.IsNotNull<ModelQueryBuildException>(filter);
         Contract.IsNull<ModelQueryBuildException>(_query.Filter);
-
         _query.Filter = filter;
 
         return this;
@@ -56,7 +39,6 @@ public sealed class QueryBuilder<TModel> : IQueryBuilder<TModel>
     {
         Contract.IsNotNull<ModelQueryBuildException>(orderable);
         Contract.IsNull<ModelQueryBuildException>(_query.Orderable);
-
         _query.Orderable = orderable;
 
         return this;
@@ -65,7 +47,6 @@ public sealed class QueryBuilder<TModel> : IQueryBuilder<TModel>
     public IQueryBuilder<TModel> Skip(int count)
     {
         Contract.IsTrue<ModelQueryBuildException>(_query.Skip == 0);
-
         _query.Skip = count;
 
         return this;
@@ -74,7 +55,6 @@ public sealed class QueryBuilder<TModel> : IQueryBuilder<TModel>
     public IQueryBuilder<TModel> Take(int count)
     {
         Contract.IsTrue<ModelQueryBuildException>(_query.Take == 0);
-
         _query.Take = count;
 
         return this;
@@ -84,7 +64,6 @@ public sealed class QueryBuilder<TModel> : IQueryBuilder<TModel>
     {
         Contract.IsNotNull<ModelQueryBuildException>(includable);
         Contract.IsNull<ModelQueryBuildException>(_query.Orderable);
-
         _query.Includable = includable;
 
         return this;
@@ -93,7 +72,6 @@ public sealed class QueryBuilder<TModel> : IQueryBuilder<TModel>
     public IQueryBuilder<TModel> AsReadOnly()
     {
         Contract.IsFalse<ModelQueryBuildException>(_query.IsReadOnly);
-
         _query.IsReadOnly = true;
 
         return this;

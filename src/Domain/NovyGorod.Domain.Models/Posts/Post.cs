@@ -7,8 +7,10 @@ using NovyGorod.Domain.Models.Common.Translations;
 namespace NovyGorod.Domain.Models.Posts;
 
 [ExcludeFromCodeCoverage]
-public class Post : BaseModel, ITranslatedModel<Post, int, PostTranslation>, ISequencedModel, ITrackable
+public class Post : ITranslatedModel<Post, PostTranslation>, ISequencedModel, ITrackable
 {
+    public int Id { get; set; }
+
     public int Index { get; set; }
 
     public virtual ICollection<PostTypeLink> TypeLinks { get; set; }

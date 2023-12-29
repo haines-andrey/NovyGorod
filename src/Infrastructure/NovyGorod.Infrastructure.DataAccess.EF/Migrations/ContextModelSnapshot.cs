@@ -17,7 +17,7 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Proxies:ChangeTracking", false)
                 .HasAnnotation("Proxies:CheckEquality", false)
                 .HasAnnotation("Proxies:LazyLoading", true)
@@ -52,12 +52,10 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
             modelBuilder.Entity("NovyGorod.Domain.Models.Attachments.AttachmentTranslation", b =>
                 {
                     b.Property<int>("ModelId")
-                        .HasColumnType("int")
-                        .HasColumnName("ModelId");
+                        .HasColumnType("int");
 
                     b.Property<int>("LanguageId")
-                        .HasColumnType("int")
-                        .HasColumnName("LanguageId");
+                        .HasColumnType("int");
 
                     b.Property<int?>("PreviewMediaId")
                         .HasColumnType("int");
@@ -183,12 +181,10 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
             modelBuilder.Entity("NovyGorod.Domain.Models.Posts.PostBlockTranslation", b =>
                 {
                     b.Property<int>("ModelId")
-                        .HasColumnType("int")
-                        .HasColumnName("ModelId");
+                        .HasColumnType("int");
 
                     b.Property<int>("LanguageId")
-                        .HasColumnType("int")
-                        .HasColumnName("LanguageId");
+                        .HasColumnType("int");
 
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
@@ -206,12 +202,10 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
             modelBuilder.Entity("NovyGorod.Domain.Models.Posts.PostTranslation", b =>
                 {
                     b.Property<int>("ModelId")
-                        .HasColumnType("int")
-                        .HasColumnName("ModelId");
+                        .HasColumnType("int");
 
                     b.Property<int>("LanguageId")
-                        .HasColumnType("int")
-                        .HasColumnName("LanguageId");
+                        .HasColumnType("int");
 
                     b.Property<int>("PreviewId")
                         .HasColumnType("int");
@@ -289,33 +283,6 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("NovyGorod.Domain.Models.Attachments.AttachmentTranslation.Id#TranslationOfModelId", "Id", b1 =>
-                        {
-                            b1.Property<int>("AttachmentTranslationModelId")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("AttachmentTranslationLanguageId")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("LanguageId")
-                                .HasColumnType("int")
-                                .HasColumnName("LanguageId");
-
-                            b1.Property<int>("ModelId")
-                                .HasColumnType("int")
-                                .HasColumnName("ModelId");
-
-                            b1.HasKey("AttachmentTranslationModelId", "AttachmentTranslationLanguageId");
-
-                            b1.ToTable("AttachmentTranslation");
-
-                            b1.WithOwner()
-                                .HasForeignKey("AttachmentTranslationModelId", "AttachmentTranslationLanguageId");
-                        });
-
-                    b.Navigation("Id")
-                        .IsRequired();
-
                     b.Navigation("Language");
 
                     b.Navigation("Model");
@@ -350,33 +317,6 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("NovyGorod.Domain.Models.Common.Translations.TranslationOfModelId<int>", "Id", b1 =>
-                        {
-                            b1.Property<int>("PostBlockTranslationModelId")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("PostBlockTranslationLanguageId")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("LanguageId")
-                                .HasColumnType("int")
-                                .HasColumnName("LanguageId");
-
-                            b1.Property<int>("ModelId")
-                                .HasColumnType("int")
-                                .HasColumnName("ModelId");
-
-                            b1.HasKey("PostBlockTranslationModelId", "PostBlockTranslationLanguageId");
-
-                            b1.ToTable("PostBlockTranslation");
-
-                            b1.WithOwner()
-                                .HasForeignKey("PostBlockTranslationModelId", "PostBlockTranslationLanguageId");
-                        });
-
-                    b.Navigation("Id")
-                        .IsRequired();
-
                     b.Navigation("Language");
 
                     b.Navigation("Model");
@@ -405,33 +345,6 @@ namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
                     b.HasOne("NovyGorod.Domain.Models.MediaData", "Video")
                         .WithMany()
                         .HasForeignKey("VideoId");
-
-                    b.OwnsOne("NovyGorod.Domain.Models.Common.Translations.TranslationOfModelId<int>", "Id", b1 =>
-                        {
-                            b1.Property<int>("PostTranslationModelId")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("PostTranslationLanguageId")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("LanguageId")
-                                .HasColumnType("int")
-                                .HasColumnName("LanguageId");
-
-                            b1.Property<int>("ModelId")
-                                .HasColumnType("int")
-                                .HasColumnName("ModelId");
-
-                            b1.HasKey("PostTranslationModelId", "PostTranslationLanguageId");
-
-                            b1.ToTable("PostTranslation");
-
-                            b1.WithOwner()
-                                .HasForeignKey("PostTranslationModelId", "PostTranslationLanguageId");
-                        });
-
-                    b.Navigation("Id")
-                        .IsRequired();
 
                     b.Navigation("Language");
 

@@ -7,18 +7,20 @@ namespace NovyGorod.Domain.ModelAccess.Filters;
 
 public static class Post
 {
-    public static QueryFilter<PostModel> IdIs(int id) => Common.IdIs<PostModel>(id);
+    public static QueryFilter<PostModel> IdIs(int id) =>
+        Common.IdIs<PostModel>(id);
 
-    public static QueryFilter<PostModel> IdIsIn(IEnumerable<int> ids) => Common.IdIsIn<PostModel>(ids);
+    public static QueryFilter<PostModel> IdIsIn(IEnumerable<int> ids) =>
+        Common.IdIsIn<PostModel>(ids);
 
     public static QueryFilter<PostModel> IsTranslatedInto(int languageId) =>
-        Common.IsTranslatedInto<PostModel, int, PostTranslation>(languageId);
+        Common.IsTranslatedInto<PostModel, PostTranslation>(languageId);
     
     public static QueryFilter<PostModel> IsTranslatedInto(IEnumerable<int> languageIds) =>
-        Common.IsTranslatedInto<PostModel, int, PostTranslation>(languageIds);
+        Common.IsTranslatedInto<PostModel, PostTranslation>(languageIds);
 
     public static QueryFilter<PostModel> TypeIs(PostType type) =>
-        Create(post => post.TypeLinks.Any(link => link.Type == type));
+        Create(post => post.TypeLinks.Any(link => link.Type.Equals(type)));
 
     public static QueryFilter<PostModel> TypeIsIn(IEnumerable<PostType> types)
     {
