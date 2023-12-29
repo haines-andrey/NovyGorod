@@ -11,8 +11,6 @@ internal sealed record Query<TModel> : IQuery<TModel>
 {
     public static Query<TModel> Empty => new();
 
-    public IReadOnlyCollection<int> ModelIds { get; set; }
-
     public QueryFilter<TModel> Filter { get; set; }
 
     public Expression<Func<IOrderable<TModel>, IThenOrderable<TModel>>> Orderable { get; set; }

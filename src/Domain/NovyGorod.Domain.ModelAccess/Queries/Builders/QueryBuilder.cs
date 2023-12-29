@@ -26,36 +26,6 @@ public sealed class QueryBuilder<TModel> : IQueryBuilder<TModel>
         return _query;
     }
 
-    public IQuery<TModel> Build(int modelId)
-    {
-        Contract.IsNotNull<ModelQueryBuildException>(modelId);
-        Contract.IsNull<ModelQueryBuildException>(_query.ModelIds);
-        Contract.IsNull<ModelQueryBuildException>(_query.Filter);
-        Contract.IsNull<ModelQueryBuildException>(_query.Orderable);
-        Contract.IsTrue<ModelQueryBuildException>(_query.Skip == 0);
-        Contract.IsTrue<ModelQueryBuildException>(_query.Take == 0);
-        Contract.IsFalse<ModelQueryBuildException>(_query.IsReadOnly);
-        _query.ModelIds = new[] {modelId};
-
-        return _query;
-    }
-
-    public IQuery<TModel> Build(IEnumerable<int> modelIds)
-    {
-        var idsList = modelIds?.ToList();
-        Contract.IsNotNull<ModelQueryBuildException>(idsList);
-        Contract.IsTrue<ModelQueryBuildException>(idsList.Count > 0);
-        Contract.IsNull<ModelQueryBuildException>(_query.ModelIds);
-        Contract.IsNull<ModelQueryBuildException>(_query.Filter);
-        Contract.IsNull<ModelQueryBuildException>(_query.Orderable);
-        Contract.IsTrue<ModelQueryBuildException>(_query.Skip == 0);
-        Contract.IsTrue<ModelQueryBuildException>(_query.Take == 0);
-        Contract.IsFalse<ModelQueryBuildException>(_query.IsReadOnly);
-        _query.ModelIds = idsList;
-
-        return _query;
-    }
-
     public IQueryBuilder<TModel> Where(QueryFilter<TModel> filter)
     {
         Contract.IsNotNull<ModelQueryBuildException>(filter);

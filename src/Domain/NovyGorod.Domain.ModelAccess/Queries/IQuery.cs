@@ -7,8 +7,6 @@ namespace NovyGorod.Domain.ModelAccess.Queries;
 public interface IQuery<TModel>
     where TModel : class
 {
-    IReadOnlyCollection<int> ModelIds { get; }
-
     QueryFilter<TModel> Filter { get; }
 
     Expression<Func<IOrderable<TModel>, IThenOrderable<TModel>>> Orderable { get; }
