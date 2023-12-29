@@ -7,7 +7,7 @@ internal class MediaDataConfig : EntityConfig<MediaData>
 {
     public override void Configure(EntityTypeBuilder<MediaData> builder)
     {
-        builder.ApplyBaseModelConfig();
+        builder.HasId();
         builder.Property(x => x.Type).IsRequired();
         builder.Property(x => x.Url).IsRequired();
         builder.HasIndex(x => x.Url).IsUnique();

@@ -19,7 +19,7 @@ internal static class AppContainerBuilder
     {
         var config = BuildConfig();
         builder.Register(_ => config);
-        builder.AddDataAccessEf<Context>();
+        builder.RegisterDbContext<Context>();
         builder.RegisterModule<Module>();
     }
 

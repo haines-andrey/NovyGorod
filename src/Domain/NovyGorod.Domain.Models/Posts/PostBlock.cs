@@ -7,8 +7,10 @@ using NovyGorod.Domain.Models.Common.Translations;
 namespace NovyGorod.Domain.Models.Posts;
 
 [ExcludeFromCodeCoverage]
-public class PostBlock : BaseModel, ITranslatedModel<PostBlock, int, PostBlockTranslation>, ISequencedModel
+public class PostBlock : ITranslatedModel<PostBlock, PostBlockTranslation>, ISequencedModel
 {
+    public int Id { get; set; }
+
     public int Index { get; set; }
         
     public virtual ICollection<Attachment> Attachments { get; set; }

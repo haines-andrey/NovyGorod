@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace NovyGorod.Domain.Models.Common.Translations;
 
-public interface ITranslatedModel<TModel, TModelId, TTranslation> : IHasId<TModelId>
-    where TModel : ITranslatedModel<TModel, TModelId, TTranslation>
-    where TModelId : IEquatable<TModelId>
-    where TTranslation : TranslationOfModel<TModel, TModelId, TranslationOfModelId<TModelId>>
+public interface ITranslatedModel<TModel, TTranslation> : IHasId<int>
+    where TModel : class, ITranslatedModel<TModel, TTranslation>
+    where TTranslation : TranslationOfModel<TModel>
 {
     ICollection<TTranslation> Translations { get; set; }
 }

@@ -5,7 +5,7 @@
 namespace NovyGorod.Infrastructure.DataAccess.EF.Migrations
 {
     /// <inheritdoc />
-    public partial class Test : Migration
+    public partial class Create_SequencedModels_Indexes : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

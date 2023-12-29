@@ -14,4 +14,14 @@
       <ProjectReference Include="..\..\Domain\NovyGorod.Domain.Services\NovyGorod.Domain.Services.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="IDataAccessProvider.cs" />
+      <Compile Remove="RepositoryFactories\IRepositoryFactory.cs" />
+      <Compile Remove="BeforeCommitHandlers\TrackableDateBeforeCommitHandler.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="RepositoryFactories" />
+    </ItemGroup>
+
 </Project>

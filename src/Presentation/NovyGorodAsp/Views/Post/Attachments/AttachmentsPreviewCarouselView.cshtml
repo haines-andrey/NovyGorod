@@ -6,7 +6,7 @@
 
     string GetActiveStatusOfAttachment(int attachmentId)
     {
-        return firstAttachmentId == attachmentId ? "active" : null;
+        return firstAttachmentId.Equals(attachmentId) ? "active" : null;
     }
 }
 

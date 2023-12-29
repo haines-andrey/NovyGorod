@@ -24,7 +24,7 @@ public class GetMediaDataRequestHandler : IRequestHandler<GetMediaDataRequest, F
 
     public async Task<FileStream> Handle(GetMediaDataRequest request, CancellationToken cancellationToken)
     {
-        var query = QueryBuilder<MediaData>.CreateWithFilter(Filters.MediaData.IdIs(request.Id)).Build();
+        var query = QueryBuilder<MediaData>.CreateNew().Build(request.Id);
         var mediaData = await _repository.GetSingleOrDefault(query, cancellationToken);
 
         if (mediaData is null || !mediaData.IsLocal)

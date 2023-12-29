@@ -1,59 +1,41 @@
 ﻿using NovyGorod.Domain.ModelAccess.Queries;
+using NovyGorod.Domain.Models.Common;
 using NovyGorod.Domain.Models.Common.Translations;
 
 namespace NovyGorod.Domain.ModelAccess.Filters;
 
-public static class Common
+internal static class Common
 {
     public static QueryFilter<TModel> IdIs<TModel>(int id)
-        where TModel : Models.Common.BaseModel
-    {
-        return QueryFilter<TModel>.Create(model => model.Id.Equals(id));
-    }
-
-    public static QueryFilter<TModel> IdIs<TModel, TId>(TId id)
-        where TModel : Models.Common.IHasId<TId>
-        where TId : IEquatable<TId>
+        where TModel : IHasId<int>
     {
         return QueryFilter<TModel>.Create(model => model.Id.Equals(id));
     }
 
     public static QueryFilter<TModel> IdIsIn<TModel>(IEnumerable<int> ids)
-        where TModel : Models.Common.BaseModel
+        where TModel : IHasId<int>
     {
         var idsList = ids.Distinct().ToList();
 
         return QueryFilter<TModel>.Create(model => idsList.Contains(model.Id));
     }
 
-    public static QueryFilter<TModel> IdIsIn<TModel, TId>(IEnumerable<TId> ids)
-        where TModel : Models.Common.IHasId<TId>
-        where TId : IEquatable<TId>
-    {
-        var idsList = ids.Distinct().ToList();
-
-        return QueryFilter<TModel>.Create(model => idsList.Contains(model.Id));
-    }
-
-    public static QueryFilter<TModel> IsTranslatedInto<TModel, TModelId, TTranslation>(
-        int languageId)
-        where TModel : ITranslatedModel<TModel, TModelId, TTranslation>
-        where TModelId : IEquatable<TModelId>
-        where TTranslation : TranslationOfModel<TModel, TModelId, TranslationOfModelId<TModelId>>
+    public static QueryFilter<TModel> IsTranslatedInto<TModel, TTranslation>(int languageId)
+        where TModel : class, ITranslatedModel<TModel, TTranslation>
+        where TTranslation : TranslationOfModel<TModel>
     {
         return QueryFilter<TModel>.Create(
-            model => model.Translations.Any(translation => translation.Id.LanguageId == languageId));
+            model => model.Translations.Any(translation => translation.LanguageId.Equals(languageId)));
     }
-    
-    public static QueryFilter<TModel> IsTranslatedInto<TModel, TModelId, TTranslation>(
+
+    public static QueryFilter<TModel> IsTranslatedInto<TModel, TTranslation>(
         IEnumerable<int> languageIds)
-        where TModel : ITranslatedModel<TModel, TModelId, TTranslation>
-        where TModelId : IEquatable<TModelId>
-        where TTranslation : TranslationOfModel<TModel, TModelId, TranslationOfModelId<TModelId>>
+        where TModel : class, ITranslatedModel<TModel, TTranslation>
+        where TTranslation : TranslationOfModel<TModel>
     {
         var languagesIdsList = languageIds.Distinct().ToList();
 
         return QueryFilter<TModel>.Create(
-            model => model.Translations.Any(translation => languagesIdsList.Contains(translation.Id.LanguageId)));
+            model => model.Translations.Any(translation => languagesIdsList.Contains(translation.LanguageId)));
     }
 }

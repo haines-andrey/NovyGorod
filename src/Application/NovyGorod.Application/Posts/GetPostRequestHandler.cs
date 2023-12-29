@@ -27,13 +27,13 @@ public class GetPostRequestHandler : IRequestHandler<GetPostRequest, PostDto>
 
     public async Task<PostDto> Handle(GetPostRequest request, CancellationToken cancellationToken)
     {
-        var query = QueryBuilder<Post>
-            .CreateWithFilter(
+        var query = QueryBuilder<Post>.CreateNew()
+            .Where(
                 Filters.Post.IdIs(request.Id) &
                 Filters.Post.IsTranslatedInto(request.LanguageId))
             .Include(includable =>
                 includable.IncludeMany(post => post.Translations
-                    .Where(translation => translation.Id.LanguageId == request.LanguageId)))
+                    .Where(translation => translation.LanguageId.Equals(request.LanguageId))))
             .Build();
 
         var post = await _repository.GetSingle(query, cancellationToken);

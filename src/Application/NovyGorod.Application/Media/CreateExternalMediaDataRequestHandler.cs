@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
+using NovyGorod.Application.Contracts.Common.Dto;
 using NovyGorod.Application.Contracts.Media.Requests;
 using NovyGorod.Domain.ModelAccess;
 using NovyGorod.Domain.Models;

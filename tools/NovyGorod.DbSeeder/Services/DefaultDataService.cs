@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using NovyGorod.Domain.ModelAccess;
-using NovyGorod.Domain.ModelAccess.Queries;
 using NovyGorod.Domain.ModelAccess.Queries.Builders;
 using NovyGorod.Domain.Models.Posts;
 
@@ -21,12 +20,14 @@ internal class DefaultDataService : IDefaultDataService
 
     public Task<int> GetLanguageId()
     {
-        return Task.FromResult(int.Parse(_configuration["languageId"]));
+        var langId = int.Parse(_configuration["languageId"]);
+
+        return Task.FromResult(langId);
     }
 
     public async Task<int> GetSequenceNumberOfPost()
     {
-        var query = QueryBuilder<Post>.CreateEmpty()
+        var query = QueryBuilder<Post>.CreateNew()
             .Order(orderable => orderable.OrderByDesc(post => post.Index))
             .Build();
 

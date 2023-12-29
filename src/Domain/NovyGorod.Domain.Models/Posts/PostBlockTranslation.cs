@@ -4,7 +4,7 @@ using NovyGorod.Domain.Models.Common.Translations;
 namespace NovyGorod.Domain.Models.Posts;
 
 [ExcludeFromCodeCoverage]
-public class PostBlockTranslation : TranslationOfBaseModel<PostBlock>
+public class PostBlockTranslation : TranslationOfModel<PostBlock>
 {
     public string Title { get; set; }
     

@@ -1,4 +1,5 @@
-﻿using NovyGorod.Domain.Models;
+﻿using NovyGorod.Application.Contracts.Common.Dto;
+using NovyGorod.Domain.Models;
 using NovyGorod.Domain.Models.Common;
 
 namespace NovyGorod.Application.Contracts.Media.Dto;

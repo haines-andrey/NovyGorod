@@ -7,7 +7,7 @@ internal class PostBlockConfig : EntityConfig<PostBlock>
 {
     public override void Configure(EntityTypeBuilder<PostBlock> builder)
     {
-        builder.ApplyBaseModelConfig()
+        builder.HasId()
             .ApplySequencedModelConfig();
 
         builder.HasMany(x => x.Attachments).WithOne(x => x.Block)

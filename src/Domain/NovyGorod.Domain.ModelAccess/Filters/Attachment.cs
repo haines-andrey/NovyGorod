@@ -7,18 +7,20 @@ namespace NovyGorod.Domain.ModelAccess.Filters;
 
 public static class Attachment
 {
-    public static QueryFilter<AttachmentModel> IdIs(int id) => Common.IdIs<AttachmentModel>(id);
+    public static QueryFilter<AttachmentModel> IdIs(int id) =>
+        Common.IdIs<AttachmentModel>(id);
 
-    public static QueryFilter<AttachmentModel> IdIsIn(IEnumerable<int> ids) => Common.IdIsIn<AttachmentModel>(ids);
+    public static QueryFilter<AttachmentModel> IdIsIn(IEnumerable<int> ids) =>
+        Common.IdIsIn<AttachmentModel>(ids);
 
     public static QueryFilter<AttachmentModel> IsTranslatedInto(int languageId) =>
-        Common.IsTranslatedInto<AttachmentModel, int, AttachmentTranslation>(languageId);
+        Common.IsTranslatedInto<AttachmentModel, AttachmentTranslation>(languageId);
 
     public static QueryFilter<AttachmentModel> IsTranslatedInto(IEnumerable<int> languageIds) =>
-        Common.IsTranslatedInto<AttachmentModel, int, AttachmentTranslation>(languageIds);
+        Common.IsTranslatedInto<AttachmentModel, AttachmentTranslation>(languageIds);
 
     public static QueryFilter<AttachmentModel> BlockIdIs(int blockId) =>
-        Create(attachment => attachment.BlockId == blockId);
+        Create(attachment => attachment.BlockId.Equals(blockId));
 
     private static QueryFilter<AttachmentModel> Create(Expression<Func<AttachmentModel, bool>> expression) =>
         QueryFilter<AttachmentModel>.Create(expression);

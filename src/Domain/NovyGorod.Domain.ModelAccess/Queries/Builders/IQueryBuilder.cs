@@ -9,6 +9,10 @@ public interface IQueryBuilder<TModel>
 {
     IQuery<TModel> Build();
 
+    IQuery<TModel> Build(int modelId);
+
+    IQuery<TModel> Build(IEnumerable<int> modelIds);
+
     IQueryBuilder<TModel> Where(QueryFilter<TModel> filter);
 
     IQueryBuilder<TModel> Order(Expression<Func<IOrderable<TModel>, IThenOrderable<TModel>>> orderable);
