@@ -8,16 +8,8 @@ using NovyGorod.Domain.Services;
 
 namespace NovyGorodAsp.Services;
 
-public class ExecutionContextService : IExecutionContextService
+public class ExecutionContextAccessor(IHttpContextAccessor httpContextAccessor) : IExecutionContextAccessor
 {
-    private readonly IHttpContextAccessor _httpContextAccessor;
-
-    public ExecutionContextService(
-        IHttpContextAccessor httpContextAccessor)
-    {
-        _httpContextAccessor = httpContextAccessor;
-    }
-    
     public IReadOnlyRepository<Language> LanguageRepository { get; set; }
 
     public Task<int> GetCurrentLanguageId()
@@ -30,10 +22,10 @@ public class ExecutionContextService : IExecutionContextService
 
     public string GetCurrentUrl()
     {
-        var request = _httpContextAccessor.HttpContext?.Request;
+        var request = httpContextAccessor.HttpContext?.Request;
         var scheme = request?.Scheme;
         var host = request?.Host.Value;
-        
+
         return $"{scheme}://{host}";
     }
 }
