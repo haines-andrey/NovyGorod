@@ -23,16 +23,16 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var projects = await _mediator.Send(new SearchPostsRequest
         var currentLanguageId = await _executionContextAccessor.GetCurrentLanguageId();
+        var projects = await _mediator.Send(new PaginatePostsRequest
         {
             Type = PostType.Project, PageSize = 3, LanguageId = currentLanguageId
         });
-        var theatre = await _mediator.Send(new SearchPostsRequest
+        var theatre = await _mediator.Send(new PaginatePostsRequest
         {
             Type = PostType.Theatre, PageSize = 3, LanguageId = currentLanguageId,
         });
-        var school = await _mediator.Send(new SearchPostsRequest
+        var school = await _mediator.Send(new PaginatePostsRequest
         {
             Type = PostType.School, PageSize = 3, LanguageId = currentLanguageId,
         });
