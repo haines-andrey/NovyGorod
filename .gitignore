@@ -7,6 +7,7 @@ obj/
 src/Presentation/NovyGorodAsp/appsettings.ini
 src/Presentation/NovyGorodAsp/Logs
 src/Presentation/NovyGorodAsp/media-data
+src/Presentation/NovyGorodAsp/wwwroot/videos
 src/Presentation/NovyGorodAsp/wwwroot/lib
 src/Presentation/NovyGorodAsp/wwwroot/css/style.css
 src/Presentation/NovyGorodAsp/wwwroot/css/style.css.map

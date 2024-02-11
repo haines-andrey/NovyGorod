@@ -31,6 +31,7 @@
         <None Update="appsettings.ini">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+        <None Include="wwwroot\videos\main.mp4" />
     </ItemGroup>
 
     <ItemGroup>
