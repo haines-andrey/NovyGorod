@@ -6,23 +6,23 @@ using AutoMapper;
 using MediatR;
 using NovyGorod.Application.Common.Extensions;
 using NovyGorod.Application.Contracts.Common;
-using NovyGorod.Application.Contracts.Common.Search;
+using NovyGorod.Application.Contracts.Common.Paginate;
 using NovyGorod.Domain.ModelAccess;
 using NovyGorod.Domain.ModelAccess.Queries.Builders;
 using NovyGorod.Domain.ModelAccess.Queries.Results;
 
-namespace NovyGorod.Application.Common.Search;
+namespace NovyGorod.Application.Common.Paginate;
 
 [ExcludeFromCodeCoverage]
-public abstract class SearchModelsRequestHandler<TRequest, TModel, TModelDto>
-    : IRequestHandler<TRequest, SearchModelsResultDto<TModelDto>>
-    where TRequest : SearchModelsRequest<TModelDto>
+public abstract class PaginateModelsRequestHandler<TRequest, TModel, TModelDto>
+    : IRequestHandler<TRequest, ModelsPaginationDto<TModelDto>>
+    where TRequest : PaginateModelsRequest<TModelDto>
     where TModel : class
 {
     private readonly IMapper _mapper;
     private readonly IReadOnlyRepository<TModel> _modelRepository;
 
-    protected SearchModelsRequestHandler(
+    protected PaginateModelsRequestHandler(
         IMapper mapper,
         IReadOnlyRepository<TModel> modelRepository)
     {
@@ -30,15 +30,15 @@ public abstract class SearchModelsRequestHandler<TRequest, TModel, TModelDto>
         _modelRepository = modelRepository;
     }
 
-    public async Task<SearchModelsResultDto<TModelDto>> Handle(
+    public async Task<ModelsPaginationDto<TModelDto>> Handle(
         TRequest request,
         CancellationToken cancellationToken)
     {
         var query = GetQueryBuilder(request).Build();
         var pagination = await _modelRepository.Paginate(query, cancellationToken);
-        var searchResultDto = CreateResultDto(pagination, request);
+        var paginationDto = MapToDto(pagination, request);
 
-        return searchResultDto;
+        return paginationDto;
     }
 
     protected virtual IQueryBuilder<TModel> GetQueryBuilder(TRequest request)
@@ -48,21 +48,21 @@ public abstract class SearchModelsRequestHandler<TRequest, TModel, TModelDto>
             .Take(request.PageSize);
     }
 
-    private SearchModelsResultDto<TModelDto> CreateResultDto(Pagination<TModel> pagination, TRequest request)
+    private ModelsPaginationDto<TModelDto> MapToDto(Pagination<TModel> pagination, TRequest request)
     {
         IReadOnlyCollection<TModelDto> itemsDto;
 
         if (request is IHasLanguageId hasLanguageId)
         {
-            itemsDto = _mapper.MapWithTranslation<TModelDto[]>(pagination.Items, hasLanguageId.LanguageId);
+            itemsDto = _mapper.MapWithTranslation<List<TModelDto>>(pagination.Items, hasLanguageId.LanguageId);
         }
         else
         {
-            itemsDto = _mapper.Map<TModelDto[]>(pagination.Items);
+            itemsDto = _mapper.Map<List<TModelDto>>(pagination.Items);
         }
 
-        var pagingDto = _mapper.Map<PagingResultDto>(pagination.Paging);
+        var pagingDto = _mapper.Map<PagingDto>(pagination.Paging);
 
-        return new SearchModelsResultDto<TModelDto> {Items = itemsDto, Paging = pagingDto};
+        return new ModelsPaginationDto<TModelDto> {Items = itemsDto, Paging = pagingDto};
     }
 }

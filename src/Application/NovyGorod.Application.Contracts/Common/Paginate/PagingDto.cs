@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace NovyGorod.Application.Contracts.Common.Search;
+namespace NovyGorod.Application.Contracts.Common.Paginate;
 
 [ExcludeFromCodeCoverage]
-public record PagingResultDto
+public record PagingDto
 {
     public int PageSize { get; init; }
 

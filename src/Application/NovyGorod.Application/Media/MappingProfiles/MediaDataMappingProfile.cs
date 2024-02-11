@@ -9,13 +9,13 @@ namespace NovyGorod.Application.Media.MappingProfiles;
 
 public class MediaDataMappingProfile : Profile
 {
-    public MediaDataMappingProfile(IExecutionContextService executionContextService)
+    public MediaDataMappingProfile(IExecutionContextAccessor executionContextAccessor)
     {
         CreateMap<MediaData, MediaDataDto>()
             .ForMember(x => x.Url,
                 opt => opt.MapFrom(media =>
                     media.IsLocal
-                        ? $"{executionContextService.GetCurrentUrl()}/mediadata/{media.Id}"
+                        ? $"{executionContextAccessor.GetCurrentUrl()}/mediadata/{media.Id}"
                         : media.Url));
 
         CreateMap<CreateExternalMediaDataRequest, MediaData>()

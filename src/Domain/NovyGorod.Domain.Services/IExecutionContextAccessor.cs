@@ -1,6 +1,6 @@
 ﻿namespace NovyGorod.Domain.Services;
 
-public interface IExecutionContextService
+public interface IExecutionContextAccessor
 {
     Task<int> GetCurrentLanguageId();
 

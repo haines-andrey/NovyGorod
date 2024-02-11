@@ -15,16 +15,16 @@ namespace NovyGorod.Application.Attachments;
 
 internal class GetAttachmentsListRequestHandler : IRequestHandler<GetAttachmentsListRequest, AttachmentsListDto>
 {
-    private readonly IExecutionContextService _executionContextService;
+    private readonly IExecutionContextAccessor _executionContextAccessor;
     private readonly IMapper _mapper;
     private readonly IReadOnlyRepository<Attachment> _repository;
 
     public GetAttachmentsListRequestHandler(
-        IExecutionContextService executionContextService,
+        IExecutionContextAccessor executionContextAccessor,
         IMapper mapper,
         IReadOnlyRepository<Attachment> repository)
     {
-        _executionContextService = executionContextService;
+        _executionContextAccessor = executionContextAccessor;
         _mapper = mapper;
         _repository = repository;
     }
@@ -33,7 +33,7 @@ internal class GetAttachmentsListRequestHandler : IRequestHandler<GetAttachments
         GetAttachmentsListRequest request,
         CancellationToken cancellationToken)
     {
-        var currentLanguageId = await _executionContextService.GetCurrentLanguageId();
+        var currentLanguageId = await _executionContextAccessor.GetCurrentLanguageId();
 
         var queryFilter = Filters.Attachment.BlockIdIs(request.PostBlockId) &
                           Filters.Attachment.IsTranslatedInto(currentLanguageId); 

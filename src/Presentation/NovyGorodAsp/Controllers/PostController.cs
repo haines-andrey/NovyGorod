@@ -10,14 +10,14 @@ namespace NovyGorodAsp.Controllers;
 
 public class PostController : Controller
 {
-    private readonly IExecutionContextService _executionContextService;
+    private readonly IExecutionContextAccessor _executionContextAccessor;
     private readonly IMediator _mediator;
 
     public PostController(
-        IExecutionContextService executionContextService,
+        IExecutionContextAccessor executionContextAccessor,
         IMediator mediator)
     {
-        _executionContextService = executionContextService;
+        _executionContextAccessor = executionContextAccessor;
         _mediator = mediator;
     }
 
@@ -48,7 +48,7 @@ public class PostController : Controller
     [HttpGet("post/{id}")]
     public async Task<IActionResult> View(int id)
     {
-        var currentLanguageId = await _executionContextService.GetCurrentLanguageId();
+        var currentLanguageId = await _executionContextAccessor.GetCurrentLanguageId();
         var request = new GetPostRequest { Id = id, LanguageId = currentLanguageId };
         var post = await _mediator.Send(request);
 
@@ -59,15 +59,15 @@ public class PostController : Controller
 
     private async Task<IActionResult> ViewPostsList(PostType type, string actionName, int pageIndex)
     {
-        var currentLanguageId = await _executionContextService.GetCurrentLanguageId();
-        var request = new SearchPostsRequest
+        var currentLanguageId = await _executionContextAccessor.GetCurrentLanguageId();
+        var request = new PaginatePostsRequest
         {
             Type = type, LanguageId = currentLanguageId, PageSize = 6, PageIndex = --pageIndex,
         };
         var result = await _mediator.Send(request);
         var viewModel = new PostsListViewModel
         {
-            Type = request.Type, ControllerActionName = actionName, SearchResult = result,
+            Type = request.Type, ControllerActionName = actionName, ModelsPaginationResult = result,
         };
 
         return PartialView("ListView", viewModel);

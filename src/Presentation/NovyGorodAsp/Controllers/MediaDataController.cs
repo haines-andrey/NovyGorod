@@ -31,19 +31,19 @@ public class MediaDataController : Controller
         return File(stream, contentType ?? string.Empty);
     }
 
-    [HttpPost]
-    public async Task<BaseModelDto> Upload(IFormFile file)
-    {
-        var stream = file.OpenReadStream();
-        var extension = Path.GetExtension(file.FileName);
-
-        var request = new CreateLocalMediaDataRequest
-        {
-            Stream = stream, FileExtension = extension,
-        };
-
-        var dto = await _mediator.Send(request);
-
-        return dto;
-    }
+    // [HttpPost]
+    // public async Task<BaseModelDto> Upload(IFormFile file)
+    // {
+    //     var stream = file.OpenReadStream();
+    //     var extension = Path.GetExtension(file.FileName);
+    //
+    //     var request = new CreateLocalMediaDataRequest
+    //     {
+    //         Stream = stream, FileExtension = extension,
+    //     };
+    //
+    //     var dto = await _mediator.Send(request);
+    //
+    //     return dto;
+    // }
 }

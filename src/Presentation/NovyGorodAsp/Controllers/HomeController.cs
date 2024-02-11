@@ -10,29 +10,29 @@ namespace NovyGorodAsp.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly IExecutionContextService _executionContextService;
+    private readonly IExecutionContextAccessor _executionContextAccessor;
     private readonly IMediator _mediator;
 
     public HomeController(
-        IExecutionContextService executionContextService,
+        IExecutionContextAccessor executionContextAccessor,
         IMediator mediator)
     {
-        _executionContextService = executionContextService;
+        _executionContextAccessor = executionContextAccessor;
         _mediator = mediator;
     }
 
     public async Task<IActionResult> Index()
     {
-        var currentLanguageId = await _executionContextService.GetCurrentLanguageId();
-        var projects = await _mediator.Send(new SearchPostsRequest
+        var currentLanguageId = await _executionContextAccessor.GetCurrentLanguageId();
+        var projects = await _mediator.Send(new PaginatePostsRequest
         {
             Type = PostType.Project, PageSize = 3, LanguageId = currentLanguageId
         });
-        var theatre = await _mediator.Send(new SearchPostsRequest
+        var theatre = await _mediator.Send(new PaginatePostsRequest
         {
             Type = PostType.Theatre, PageSize = 3, LanguageId = currentLanguageId,
         });
-        var school = await _mediator.Send(new SearchPostsRequest
+        var school = await _mediator.Send(new PaginatePostsRequest
         {
             Type = PostType.School, PageSize = 3, LanguageId = currentLanguageId,
         });

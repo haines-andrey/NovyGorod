@@ -1,4 +1,4 @@
-﻿using NovyGorod.Application.Contracts.Common.Search;
+﻿using NovyGorod.Application.Contracts.Common.Paginate;
 using NovyGorod.Application.Contracts.Posts.Dto;
 using NovyGorod.Domain.Models.Posts;
 using NovyGorodAsp.Models.Shared;
@@ -9,16 +9,16 @@ public class PostsListViewModel
 {
     public PostType Type { get; init; }
 
-    public SearchModelsResultDto<PostListDto> SearchResult { get; init; }
+    public ModelsPaginationDto<PostListDto> ModelsPaginationResult { get; init; }
 
     public string ControllerActionName { get; init; }
 
     public PostListPaginationViewModel PaginationViewModel => new()
     {
         Type = Type,
-        Paging = SearchResult.Paging,
+        Paging = ModelsPaginationResult.Paging,
         ControllerActionName = ControllerActionName,
     };
 
-    public PostListContainerViewModel ContainerViewModel => new() {Posts = SearchResult.Items};
+    public PostListContainerViewModel ContainerViewModel => new() {Posts = ModelsPaginationResult.Items};
 }

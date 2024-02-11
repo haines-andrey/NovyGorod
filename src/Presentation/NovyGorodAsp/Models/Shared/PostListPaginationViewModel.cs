@@ -1,5 +1,4 @@
-﻿using NovyGorod.Application.Contracts.Common.Search;
-using NovyGorod.Application.Contracts.Posts.Requests;
+﻿using NovyGorod.Application.Contracts.Common.Paginate;
 using NovyGorod.Domain.Models.Posts;
 
 namespace NovyGorodAsp.Models.Shared;
@@ -8,7 +7,7 @@ public class PostListPaginationViewModel
 {
     public PostType Type { get; init; }
 
-    public PagingResultDto Paging { get; init; }
+    public PagingDto Paging { get; init; }
     
     public string ControllerActionName { get; init; }
 
