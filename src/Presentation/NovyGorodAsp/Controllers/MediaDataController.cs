@@ -1,10 +1,7 @@
-﻿using System.IO;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
-using NovyGorod.Application.Contracts.Common.Dto;
 using NovyGorod.Application.Contracts.Media.Requests;
 
 namespace NovyGorodAsp.Controllers;
@@ -23,7 +20,7 @@ public class MediaDataController : Controller
     [ResponseCache(Duration = 30 * 60, Location = ResponseCacheLocation.Any)]
     public async Task<IActionResult> View(int id)
     {
-        var request = new GetMediaDataRequest {Id = id};
+        var request = new GetMediaDataRequest { Id = id };
         var stream = await _mediator.Send(request);
 
         new FileExtensionContentTypeProvider().TryGetContentType(stream.Name, out var contentType);

@@ -30,7 +30,7 @@ public class Startup
     }
 
     public IConfiguration Configuration { get; }
-        
+
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllersWithViews()
@@ -43,7 +43,7 @@ public class Startup
         });
         services.AddCors(opt => opt.AddDefaultPolicy(builder => builder
             .AllowAnyOrigin()));
-        
+
         services.AddTransient<ExceptionHandlingMiddleware>();
     }
 
@@ -72,15 +72,15 @@ public class Startup
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
-            
-        var supportedCultures = new[] {new CultureInfo("ru")};
+
+        var supportedCultures = new[] { new CultureInfo("ru") };
         app.UseRequestLocalization(new RequestLocalizationOptions
         {
             DefaultRequestCulture = new RequestCulture("ru"),
             SupportedCultures = supportedCultures,
             SupportedUICultures = supportedCultures,
             ApplyCurrentCultureToResponseHeaders = true,
-            RequestCultureProviders = new List<IRequestCultureProvider>{new RouteDataRequestCultureProvider()}
+            RequestCultureProviders = new List<IRequestCultureProvider> { new RouteDataRequestCultureProvider() }
         });
 
         app.UseCors();
@@ -93,7 +93,7 @@ public class Startup
                 pattern: "",
                 defaults: new { controller = "Home", action = "Index" });
         });
-        
+
         app.UseStatusCodePages(new StatusCodePagesOptions
         {
             HandleAsync = ctx =>
