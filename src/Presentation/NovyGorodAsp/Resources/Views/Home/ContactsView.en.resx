@@ -14,4 +14,7 @@
     <data name="contacts" xml:space="preserve">
         <value>Contacts</value>
     </data>
+    <data name="files" xml:space="preserve">
+        <value>Files</value>
+    </data>
 </root>

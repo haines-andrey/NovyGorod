@@ -35,4 +35,20 @@ public class ContactsViewModel
         IconName = "bi-instagram",
         OpenLinkInNewPage = true,
     };
+
+    public ContactViewModel CommercialOffer { get; } = new()
+    {
+        Url = "https://docs.google.com/document/d/1kvkoTo0c4cjxs6AlsaTy0Z7pQyk_uUUh/edit?usp=sharing&ouid=111055367660056526815&rtpof=true&sd=true",
+        Title = "Коммерческое предложение",
+        IconName = "bi-filetype-docx",
+        OpenLinkInNewPage = true,
+    };
+    
+    public ContactViewModel AccessionAgreement { get; } = new()
+    {
+        Url = "https://docs.google.com/document/d/15ZpbRq5NT7KYJvH9ryfBEOnDmwnRzcbf/edit?usp=sharing&ouid=111055367660056526815&rtpof=true&sd=true",
+        Title = "Договор присоединения",
+        IconName = "bi-filetype-docx",
+        OpenLinkInNewPage = true,
+    };
 }

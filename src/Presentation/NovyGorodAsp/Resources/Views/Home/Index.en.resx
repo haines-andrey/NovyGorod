@@ -44,4 +44,7 @@
     <data name="more-about-school" xml:space="preserve">
         <value>More about school</value>
     </data>
+    <data name="work-direction" xml:space="preserve">
+        <value>Work direction</value>
+    </data>
 </root>

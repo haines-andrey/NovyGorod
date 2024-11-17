@@ -18,7 +18,8 @@
         <value>Телестудия Новый Город</value>
     </data>
     <data name="company-summary" xml:space="preserve">
-        <value>Белорусская частная компания, осуществляющая производство авторских телевизионных программ и видеопродукции различного назначения, сотрудничающая с ведущими государственными и частными телевизионными каналами Республики Беларусь.</value>
+        <value>Частная белорусская компания&lt;br&gt;
+Производство кино- и видеопродукции различного назначения, а также обучение в этой области&lt;br&gt;</value>
     </data>
     <data name="projects" xml:space="preserve">
         <value>Проекты</value>
@@ -43,5 +44,25 @@
     </data>
     <data name="more-about-school" xml:space="preserve">
         <value>Подробнее о телешколе</value>
+    </data>
+    <data name="work-direction" xml:space="preserve">
+        <value>Выполним любой заказ по видеопроизводству, начиная от самых маленьких видеороликов различных мероприятий и до пакетов программ под ключ:
+&lt;ul&gt;
+&lt;li&gt;мероприятия&lt;/li&gt;
+&lt;li&gt;презентационные ролики&lt;/li&gt;
+&lt;li&gt;реклама&lt;/li&gt;
+&lt;li&gt;анимация&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5&gt;ТВ проекты:&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;шоу&lt;/li&gt;
+&lt;li&gt;образование&lt;/li&gt;
+&lt;li&gt;социальные проекты&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5&gt;Фильмы:&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;игровые&lt;/li&gt;
+&lt;li&gt;документальные&lt;/li&gt;
+&lt;/ul&gt;</value>
     </data>
 </root>
